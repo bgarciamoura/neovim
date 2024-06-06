@@ -1,0 +1,45 @@
+name: Auto create PRs when Pushing
+
+on:
+  push:
+    branches:
+      - feature/*
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    env:
+      PR_NUMBER: ""
+    steps:
+      - name: Setup GitHub CLI
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install jq
+        run: sudo apt install jq
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        run: |
+          gh pr create -a @me -B main --title 'Automatic PR creation to merge ${{ github.ref_name }} into main' --body 'Created an automatic Pull Request for ${{ github.ref_name }} using Github CLI'  || gh pr edit -B main --title 'Automatic PR creation to merge ${{ github.ref_name }} into main' --body 'Created an automatic Pull Request for ${{ github.ref_name }} using Github CLI'
+        env:
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: List last PR
+        run: |
+          PR_NUMBER=$(gh pr list --limit 1 --json number --jq '.[0].number')
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+        env:
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+  
+      - name: Fetch the main branch
+        run: git fetch origin main
+
+      - name: Merge PR
+        if: ${{ env.PR_NUMBER }}
+        run: |
+          gh pr merge $PR_NUMBER --auto --merge --delete-branch
+        env:
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
