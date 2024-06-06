@@ -8,6 +8,7 @@ Soooo... let's start with our folder structure, i decided to change the folder s
 
 Here's a simple example of how this folder's structure looks like:
 
+```
 ~/.config/nvim/
 │
 ├── init.vim               # Main configuration file that sources other files
@@ -44,4 +45,4 @@ Here's a simple example of how this folder's structure looks like:
 │   └── mylang.vim         # Custom syntax highlighting for specific languages
 │
 └── README.md              # Documentation for the configuration
-
+```
