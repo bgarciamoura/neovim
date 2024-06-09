@@ -11,38 +11,51 @@ Here's a simple example of how this folder's structure looks like:
 ```
 ~/.config/nvim/
 │
-├── init.vim               # Main configuration file that sources other files
-├── autoload/
-│   └── plug.vim           # Handles plugin management
+├── init.lua                    # Main configuration file that sources other files
 │
-├── colors/                # Contains color scheme files
-│
-├── settings/              # General settings
-│   ├── options.vim        # General options like tab settings, line numbers, etc.
-│   └── mappings.vim       # Key mappings for common actions
-│
-├── plugins/               # Holds plugin configurations
-│   ├── nerdtree.vim       # Configuration for NERDTree plugin
-│   └── fugitive.vim       # Configuration for Fugitive plugin
-│
-├── filetypes/             # Filetype-specific settings
-│   ├── python.vim         # Settings specific to Python files
-│   └── javascript.vim     # Settings specific to JavaScript files
-│
-├── after/                 # Settings that override default settings
-│   ├── ftplugin/          # Filetype-specific overrides
-│   │   ├── python.vim     # Overrides for Python files
-│   │   └── javascript.vim # Overrides for JavaScript files
-│   ├── plugin/            # Plugin-specific overrides
-│   │   ├── nerdtree.vim   # Overrides for NERDTree plugin
-│   │   └── fugitive.vim   # Overrides for Fugitive plugin
-│   └── config.vim         # General overrides (e.g., mappings, options)
-│
-├── snippets/              # Contains snippet files for UltiSnips or other snippet plugins
-│   └── python.snippets    # Snippets for Python files
-│
-├── syntax/                # Syntax highlighting customizations
-│   └── mylang.vim         # Custom syntax highlighting for specific languages
-│
-└── README.md              # Documentation for the configuration
+├── lua
+│    ├── after/                 # Settings that override default settings
+│    │   ├── ftplugin/          # Filetype-specific overrides
+│    │   │   ├── typescript.lua # Overrides for Typescript files
+│    │   │   └── javascript.lua # Overrides for JavaScript files
+│    │   ├── plugin/            # Plugin-specific overrides
+│    │   │   ├── nerdtree.lua   # Overrides for NERDTree plugin
+│    │   │   └── fugitive.lua   # Overrides for Fugitive plugin
+│    │   └── init.lua           # Default export file
+│    │ 
+│    ├── autoload/
+│    │   ├── init.lua           # Default export file
+│    │   └── lazy.lua           # Lazy plugin manager autoload settings
+│    │ 
+│    ├── colors/                # Contains color scheme files    
+│    │   ├── init.lua           # Default export file
+│    │   └── catppuccin.lua     # The expecific theme settings
+│    │     
+│    ├── filetypes/             # Filetype-specific settings
+│    │   ├── init.lua           # Default export file
+│    │   ├── python.lua         # Settings specific to Python files
+│    │   └── javascript.lua     # Settings specific to JavaScript files
+│    │  
+│    ├── plugins/               # Holds plugin configurations
+│    │   ├── init.lua           # Default export file
+│    │   ├── nerdtree.lua       # Configuration for NERDTree plugin
+│    │   └── fugitive.lua       # Configuration for Fugitive plugin   
+│    │ 
+│    ├── settings/              # General settings
+│    │   ├── init.lua           # Default export file
+│    │   ├── options.lua        # General options like tab settings, line numbers, etc.
+│    │   └── mappings.lua       # Key mappings for common actions
+│    │ 
+│    │
+│    ├── snippets/              # Contains snippet files for UltiSnips or other snippet plugins
+│    │   ├── init.lua           # Default export file
+│    │   └── python.snippets    # Snippets for Python files
+│    │
+│    └── syntax/                # Syntax highlighting customizations
+│        ├── init.lua           # Default export file
+│        └── mylang.lua         # Custom syntax highlighting for specific languages
+│ 
+├── .gitignore                  # Settings for git not upload some files
+│ 
+└── README.md                   # Documentation for the configuration
 ```
