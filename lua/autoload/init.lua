@@ -1,3 +1,8 @@
 require("autoload.lazy")
 
-require("lazy").setup({})
+local lazy = require("lazy")
+
+
+lazy.setup({
+	{ "folke/which-key.nvim", event = "VeryLazy" },
+})

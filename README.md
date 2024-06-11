@@ -6,7 +6,7 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
 
 Soooo... let's start with our folder structure, i decided to change the folder structure a little bit of my previous version. For this version i decided to try a modularizable version with each module taking care of what's it responsability.
 
-Here's a simple example of how this folder's structure looks like:
+Here's a simple, but modularized, example of how this folder's structure looks like:
 
 ```
 ~/.config/nvim/
