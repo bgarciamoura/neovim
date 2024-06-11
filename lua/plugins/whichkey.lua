@@ -1,9 +1,5 @@
 local which_key = require("which-key")
-
-which_key.init = function()
-	vim.o.timeout = true
-	vim.o.timeoutlen = 300
-end
+local default_opts = { noremap = true, silent = true }
 
 local which_key_opts = {
   plugins = {
@@ -34,12 +30,15 @@ local which_key_opts = {
   },
 }
 
-local default_opts = { noremap = true, silent = true }
-
 local files_shortcuts = { 
   name = "File", 
   s = { ":w<CR>", "Save File", unpack(default_opts) },
   q = { ":q<CR>", "Close File", unpack(default_opts) },
+}
+
+local explorer_shortcuts = {
+  name = "Explore",
+  e = { ":Explore<CR>", "Open File Explorer On Current Path", unpack(default_opts) },
 }
 
 local which_key_shortcuts = {
@@ -50,6 +49,7 @@ local which_key_shortcuts = {
 which_key.register({
   f = files_shortcuts,
   w = which_key_shortcuts,
+  e = explorer_shortcuts,
 }, { prefix = "<leader>", mode = "n" })
 
 which_key.setup(which_key_opts)
