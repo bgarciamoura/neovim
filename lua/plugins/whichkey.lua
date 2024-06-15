@@ -38,7 +38,8 @@ local files_shortcuts = {
 
 local explorer_shortcuts = {
   name = "Explore",
-  e = { ":Explore<CR>", "Open File Explorer On Current Path", unpack(default_opts) },
+  e = { ":Lexplore<CR>", "Open a Side File Explorer On Current Path", unpack(default_opts) },
+  f = { ":Explore<CR>", "Open File Explorer On Current Path", unpack(default_opts) },
 }
 
 local which_key_shortcuts = {

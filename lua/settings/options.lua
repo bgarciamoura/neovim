@@ -13,3 +13,5 @@ vim.opt.smartindent = true
 vim.opt.termguicolors = true
 vim.o.timeout = true
 vim.o.timeoutlen = 300
+
+vim.g.netrw_winsize = 25
