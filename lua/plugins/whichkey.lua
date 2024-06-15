@@ -47,11 +47,19 @@ local which_key_shortcuts = {
   z = "Show Which Keys Suggestions"
 }
 
+local lazygit_shortcuts = {
+  name = "LazyGit",
+  g = { ":LazyGit<CR>", "Open the lazygit window to perform git actions", unpack(default_opts) },
+}
+
 which_key.register({
   f = files_shortcuts,
   w = which_key_shortcuts,
   e = explorer_shortcuts,
+  l = lazygit_shortcuts,
 }, { prefix = "<leader>", mode = "n" })
+
+
 
 which_key.setup(which_key_opts)
 
