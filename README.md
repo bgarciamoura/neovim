@@ -38,7 +38,7 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 │    │  
 │    ├── plugins/               # Holds plugin configurations
 │    │   ├── init.lua           # Default export file
-│    │   ├── nerdtree.lua       # Configuration for NERDTree plugin
+│    │   ├── whichkey.lua       # Shows your keymaps in a navegatable panel
 │    │   └── fugitive.lua       # Configuration for Fugitive plugin   
 │    │ 
 │    ├── settings/              # General settings
