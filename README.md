@@ -113,6 +113,18 @@ In the plugin configuration file, located on ```~/.config/nvim/lua/plugins/which
 
 For example, let's say that you want to save your file without typing ```:w<CR>``` in the command pallete, you can configure which-key to do that by pressing ```<leader>s```, then you can see this on which key popup, even if you forget this again, just by pressing the ```<leader>``` key
 
+### LazyGit
+
+[Oh my God, how I love this plugin](https://github.com/kdheepak/lazygit.nvim)
+
+For the most part of the world, using Git commands it's just type commands on CLI, others uses GUI as Github Desktop, but, as a Neovim user, why not to use a CLI/GUI interface inside Neovim?!?!?!?!
+
+And than was born LazyGit for Neovim, this is an amazing plugin that utilize the terminal plugin LazyGit inside Neovim interface.
+
+It's one of the best way of deal with GIT inside Neovim, IMO.
+
+To use it you'll have to install the [LazyGit plugin](https://github.com/jesseduffield/lazygit) for your terminal and [Plenary](https://github.com/nvim-lua/plenary.nvim) that is a plugin to deal with some Neovim Lua Code.
+
 ## License
 
 Distributed under the MIT License.
