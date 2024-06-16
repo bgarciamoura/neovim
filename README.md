@@ -25,6 +25,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#which-key">Which Key</a>
         </li>
+        <li>
+            <a href="#lazygit">LazyGit</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -101,6 +104,8 @@ As Count Dracula once said:
 
 So, let's create a little list of all my installed plugins with, or without, some explanations.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Which Key
 
 [Folke's Which Key](https://github.com/folke/which-key.nvim)
@@ -112,6 +117,22 @@ For people as me, that almost forgot everything, this plugin is gold cuz, even i
 In the plugin configuration file, located on ```~/.config/nvim/lua/plugins/whichkey.lua```, you can define how the plugin popup will show, new key bindings for every action you want and the plugin behavior.
 
 For example, let's say that you want to save your file without typing ```:w<CR>``` in the command pallete, you can configure which-key to do that by pressing ```<leader>s```, then you can see this on which key popup, even if you forget this again, just by pressing the ```<leader>``` key
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### LazyGit
+
+[Oh my God, how I love this plugin](https://github.com/kdheepak/lazygit.nvim)
+
+For the most part of the world, using Git commands it's just type commands on CLI, others uses GUI as Github Desktop, but, as a Neovim user, why not to use a CLI/GUI interface inside Neovim?!?!?!?!
+
+And than was born LazyGit for Neovim, this is an amazing plugin that utilize the terminal plugin LazyGit inside Neovim interface.
+
+It's one of the best way of deal with GIT inside Neovim, IMO.
+
+To use it you'll have to install the [LazyGit plugin](https://github.com/jesseduffield/lazygit) for your terminal and [Plenary](https://github.com/nvim-lua/plenary.nvim) that is a plugin to deal with some Neovim Lua Code.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
