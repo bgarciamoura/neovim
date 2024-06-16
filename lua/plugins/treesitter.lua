@@ -14,4 +14,7 @@ treesitter.setup({
   sync_install = false,
   highlight = { enable = true },
   indent = { enable = true },
+  auto_install = true,
 })
+
+return treesitter
