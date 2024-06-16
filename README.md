@@ -36,6 +36,11 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         </li>
         <li>
             <a href="#nvim-telescope">Nvim Telescope</a>
+            <ul>
+                <li>
+                    <a href="#telescope-themes">Telescope Themes</a>
+                </li>
+            </ul>
         </li>
       </ul>
     </li>
@@ -175,6 +180,19 @@ So Telescope is just for you!!!
 With it you can just grep for all files in the project, looking for a word, for functions or whatever you want. With the right configuration you can even replace code on all files from just one place.
 
 Dig into Telescope documentation and you'll enter in the rabbit hole.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### Telescope Themes
+
+[Make me beatiful](https://github.com/andrew-george/telescope-themes)
+
+We already has Telescope to show us the installed themes, why not change and persist the theme that we choose???
+
+For that i've install this awesome plugin, that gives us the ability to persist the chosen theme.
+
+I just made one adjust in the plugin code. The plugin store the chosen theme on `~/.config/nvim/lua/current-theme.lua` and then, you'll have to import the file on your Neovim configuration, so I made a change in the plugin's function that create this file to the path be another one - `~/.config/nvim/lua/colors/current-theme.lua`
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
