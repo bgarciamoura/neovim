@@ -34,6 +34,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#nvim-web-devicons">Nvim Web Devicons</a>
         </li>
+        <li>
+            <a href="#nvim-telescope">Nvim Telescope</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -158,6 +161,20 @@ For me, as a colorblind person, its my a normal world, for the rest of the world
 Who don't like to see icons, beautiful icons, everywhere?? If you don't, i fell sorry for you.
 
 For me, icons is one fantastic things in the computer world and i love to see icons on my code editor, sooooo.... Nvim-Web-Devicons helps me to visualize what I dreamed about, LOL!!!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Nvim Telescope
+
+[Keep Searchin'](https://github.com/nvim-telescope/telescope.nvim)
+
+Tired of searching for a file, for a open buffer or just for a simple word inside your gigantic project???
+
+So Telescope is just for you!!!
+
+With it you can just grep for all files in the project, looking for a word, for functions or whatever you want. With the right configuration you can even replace code on all files from just one place.
+
+Dig into Telescope documentation and you'll enter in the rabbit hole.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
