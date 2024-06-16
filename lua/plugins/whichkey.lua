@@ -51,12 +51,27 @@ local lazygit_shortcuts = {
   name = "LazyGit",
   g = { ":LazyGit<CR>", "Open the lazygit window to perform git actions", unpack(default_opts) },
 }
+-- " Using Lua functions
+-- nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+-- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+-- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+-- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+local telescope_shortcuts = {
+  name = "Telescope",
+  f = { "<cmd>lua require('telescope.builtin').find_files()<CR>", "Find current folder files using Telescope",        unpack(default_opts) },
+  g = { "<cmd>lua require('telescope.builtin').live_grep()<CR>",  "Grepping using Telescope",                         unpack(default_opts) },
+  b = { "<cmd>lua require('telescope.builtin').buffers()<CR>",    "Find in opened buffers using Telescope",           unpack(default_opts) },
+  h = { "<cmd>lua require('telescope.builtin').help_tags()<CR>",  "Find help in plugins/neovim docs using Telescope", unpack(default_opts) },
+}
+
 
 which_key.register({
   f = files_shortcuts,
   w = which_key_shortcuts,
   e = explorer_shortcuts,
   l = lazygit_shortcuts,
+  t = telescope_shortcuts,
 }, { prefix = "<leader>", mode = "n" })
 
 
