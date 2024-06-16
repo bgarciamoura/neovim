@@ -21,6 +21,11 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
     </li> 
     <li>
       <a href="#plugins-list">Plugins List</a>
+      <ul>
+        <li>
+            <a href="#which-key">Which Key</a>
+        </li>
+      </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -122,16 +127,15 @@ Bruno Garcia Moura - itsme@bgarciamoura.com
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-[contributors-shield]: https://img.shields.io/github/contributors/bgarciamoura/gh-actions-template.svg?style=for-the-badge
-[contributors-url]: https://github.com/bgarciamoura/gh-actions-template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/bgarciamoura/gh-actions-template.svg?style=for-the-badge
-[forks-url]: https://github.com/bgarciamoura/gh-actions-template/network/members
-[stars-shield]: https://img.shields.io/github/stars/bgarciamoura/gh-actions-template.svg?style=for-the-badge
-[stars-url]: https://github.com/bgarciamoura/gh-actions-template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/bgarciamoura/gh-actions-template.svg?style=for-the-badge
-[issues-url]: https://github.com/bgarciamoura/gh-actions-template/issues
-[license-shield]: https://img.shields.io/github/license/bgarciamoura/gh-actions-template.svg?style=for-the-badge
-[license-url]: https://github.com/bgarciamoura/gh-actions-template/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
+[contributors-url]: https://github.com/bgarciamoura/neovim-0.10-config/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
+[forks-url]: https://github.com/bgarciamoura/neovim-0.10-config/network/members
+[stars-shield]: https://img.shields.io/github/stars/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
+[stars-url]: https://github.com/bgarciamoura/neovim-0.10-config/stargazers
+[issues-shield]: https://img.shields.io/github/issues/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
+[issues-url]: https://github.com/bgarciamoura/neovim-0.10-config/issues
+[license-shield]: https://img.shields.io/github/license/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
+[license-url]: https://github.com/bgarciamoura/neovim-0.10-config/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/bgarciamoura
