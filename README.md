@@ -31,6 +31,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#nvim-treesitter">Nvim Treesitter</a>
         </li>
+        <li>
+            <a href="#nvim-web-devicons">Nvim Web Devicons</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -56,14 +59,14 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 │    │   ├── ftplugin/          # Filetype-specific overrides
 │    │   │   ├── typescript.lua # Overrides for Typescript files
 │    │   │   └── javascript.lua # Overrides for JavaScript files
+│    │   │
 │    │   ├── plugin/            # Plugin-specific overrides
 │    │   │   ├── nerdtree.lua   # Overrides for NERDTree plugin
 │    │   │   └── fugitive.lua   # Overrides for Fugitive plugin
 │    │   └── init.lua           # Default export file
 │    │ 
-│    ├── autoload/
-│    │   ├── init.lua           # Default export file
-│    │   └── lazy.lua           # Lazy plugin manager autoload settings
+│    ├── autoload/              # Settings that are triggered when open neovim
+│    │   └── init.lua           # Default export file including the lazy plugin manager start config
 │    │ 
 │    ├── colors/                # Contains color scheme files    
 │    │   ├── init.lua           # Default export file
@@ -76,6 +79,7 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 │    │  
 │    ├── plugins/               # Holds plugin configurations
 │    │   ├── init.lua           # Default export file
+│    │   ├── lazy.lua           # Lazy plugin manager autoload settings
 │    │   ├── whichkey.lua       # Shows your keymaps in a navegatable panel
 │    │   └── treesitter.lua     # Configuration for Nvim-Treesitter
 │    │ 
@@ -144,6 +148,16 @@ To use it you'll have to install the [LazyGit plugin](https://github.com/jessedu
 Oh, what's is a world without all its colors?!?!
 
 For me, as a colorblind person, its my a normal world, for the rest of the world its a torture, soooo, let's install Nvim-Treesitter and put some colors in the code
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Nvim Web Devicons
+
+[Iconic Icons](https://github.com/nvim-tree/nvim-web-devicons)
+
+Who don't like to see icons, beautiful icons, everywhere?? If you don't, i fell sorry for you.
+
+For me, icons is one fantastic things in the computer world and i love to see icons on my code editor, sooooo.... Nvim-Web-Devicons helps me to visualize what I dreamed about, LOL!!!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
