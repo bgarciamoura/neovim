@@ -28,6 +28,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#lazygit">LazyGit</a>
         </li>
+        <li>
+            <a href="#nvim-treesitter">Nvim Treesitter</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -74,7 +77,7 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 │    ├── plugins/               # Holds plugin configurations
 │    │   ├── init.lua           # Default export file
 │    │   ├── whichkey.lua       # Shows your keymaps in a navegatable panel
-│    │   └── fugitive.lua       # Configuration for Fugitive plugin   
+│    │   └── treesitter.lua     # Configuration for Nvim-Treesitter
 │    │ 
 │    ├── settings/              # General settings
 │    │   ├── init.lua           # Default export file
@@ -131,6 +134,16 @@ And than was born LazyGit for Neovim, this is an amazing plugin that utilize the
 It's one of the best way of deal with GIT inside Neovim, IMO.
 
 To use it you'll have to install the [LazyGit plugin](https://github.com/jesseduffield/lazygit) for your terminal and [Plenary](https://github.com/nvim-lua/plenary.nvim) that is a plugin to deal with some Neovim Lua Code.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Nvim Treesitter
+
+[Don't be colorblind as me](https://github.com/nvim-treesitter/nvim-treesitter)
+
+Oh, what's is a world without all its colors?!?!
+
+For me, as a colorblind person, its my a normal world, for the rest of the world its a torture, soooo, let's install Nvim-Treesitter and put some colors in the code
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
