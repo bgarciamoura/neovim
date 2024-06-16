@@ -25,6 +25,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#which-key">Which Key</a>
         </li>
+        <li>
+            <a href="#lazygit">LazyGit</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -101,6 +104,8 @@ As Count Dracula once said:
 
 So, let's create a little list of all my installed plugins with, or without, some explanations.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Which Key
 
 [Folke's Which Key](https://github.com/folke/which-key.nvim)
@@ -113,6 +118,8 @@ In the plugin configuration file, located on ```~/.config/nvim/lua/plugins/which
 
 For example, let's say that you want to save your file without typing ```:w<CR>``` in the command pallete, you can configure which-key to do that by pressing ```<leader>s```, then you can see this on which key popup, even if you forget this again, just by pressing the ```<leader>``` key
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### LazyGit
 
 [Oh my God, how I love this plugin](https://github.com/kdheepak/lazygit.nvim)
@@ -124,6 +131,8 @@ And than was born LazyGit for Neovim, this is an amazing plugin that utilize the
 It's one of the best way of deal with GIT inside Neovim, IMO.
 
 To use it you'll have to install the [LazyGit plugin](https://github.com/jesseduffield/lazygit) for your terminal and [Plenary](https://github.com/nvim-lua/plenary.nvim) that is a plugin to deal with some Neovim Lua Code.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
