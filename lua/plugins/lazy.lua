@@ -10,6 +10,8 @@ lazy.setup({
   { "nvim-tree/nvim-web-devicons" },
   { "andrew-george/telescope-themes" },
   { "nvim-telescope/telescope.nvim", tag = '0.1.6', dependencies = { "nvim-lua/plenary.nvim" } },
+  { "brenoprata10/nvim-highlight-colors" },
+
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },
