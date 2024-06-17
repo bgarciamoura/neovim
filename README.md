@@ -52,12 +52,15 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         </li>
         <li>
             <a href="#nvim-neo-tree">Nvim Neo Tree</a>
+            <ul>
+                <li>
+                    <a href="#nui">NUI</a>
+                </li>
+            </ul>
         </li>
-        <ul>
-            <li>
-                <a href="#nui">NUI</a>
-            </li>
-        </ul>
+        <li>
+            <a href="#lualine">Lualine</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -257,6 +260,14 @@ Here it will be used, primary, by Neo Tree as a way to preview the file before o
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Lualine
+
+[What's your status?](https://github.com/nvim-lualine/lualine.nvim)
+
+Lualine is a elegant, if not fancy, way of show more things in the statusline, it's fully customizable and you can add a lot of things in that, even a music player, why? The real question is: Why not?
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## License
 
 Distributed under the MIT License.
@@ -282,4 +293,6 @@ Bruno Garcia Moura - itsme@bgarciamoura.com
 [license-shield]: https://img.shields.io/github/license/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
 [license-url]: https://github.com/bgarciamoura/neovim-0.10-config/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+
+
 [linkedin-url]: https://linkedin.com/in/bgarciamoura

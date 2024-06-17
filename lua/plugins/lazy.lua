@@ -13,6 +13,8 @@ lazy.setup({
   { "brenoprata10/nvim-highlight-colors" },
   { "MunifTanjim/nui.nvim" },
   { "nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = { "MunifTanjim/nui.nvim" } },
+  { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },
@@ -20,4 +22,5 @@ lazy.setup({
   -- colorschemes
   { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
   { "diegoulloao/neofusion.nvim", lazy = false, priority = 1000, opts = {} },
+  { "rebelot/kanagawa.nvim", lazy = false, priority = 1000, opts = {} },
 })
