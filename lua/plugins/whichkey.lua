@@ -38,7 +38,8 @@ local files_shortcuts = {
 
 local explorer_shortcuts = {
   name = "Explore",
-  e = { ":Lexplore<CR>", "Open a Side File Explorer On Current Path", unpack(default_opts) },
+  e = { ":Neotree toggle<CR>", "Open a Side File Explorer using NEOTREE", unpack(default_opts) },
+  -- e = { ":Lexplore<CR>", "Open a Side File Explorer On Current Path", unpack(default_opts) },
   f = { ":Explore<CR>", "Open File Explorer On Current Path", unpack(default_opts) },
 }
 
