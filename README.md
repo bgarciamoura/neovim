@@ -47,6 +47,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="#nvim-highlight-colors">Nvim Highlight Colors</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -208,6 +211,16 @@ For that i've install this awesome plugin, that gives us the ability to persist 
 
 I just made one adjust in the plugin code. The plugin store the chosen theme on `~/.config/nvim/lua/current-theme.lua` and then, you'll have to import the file on your Neovim configuration, so I made a change in the plugin's function that create this file to the path be another one - `~/.config/nvim/lua/colors/current-theme.lua`
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Nvim Highlight Colors
+
+[I can see clearly now...](https://github.com/brenoprata10/nvim-highlight-colors)
+
+It's a pain in the a.. when you're typing a color and can't see wich is the color you typed, to solve that we'll use nvim highlight colors.
+
+This plugins use the background of the typed color to show a block with the actual color, making so much easier to find the desired color.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
