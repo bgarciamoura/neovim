@@ -33,6 +33,11 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         </li>
         <li>
             <a href="#nvim-web-devicons">Nvim Web Devicons</a>
+            <ul>
+                <li>
+                    <a href="#nvim-material-icon">Nvim Material Icon</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="#nvim-telescope">Nvim Telescope</a>
@@ -166,6 +171,16 @@ For me, as a colorblind person, its my a normal world, for the rest of the world
 Who don't like to see icons, beautiful icons, everywhere?? If you don't, i fell sorry for you.
 
 For me, icons is one fantastic things in the computer world and i love to see icons on my code editor, sooooo.... Nvim-Web-Devicons helps me to visualize what I dreamed about, LOL!!!
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### Nvim Material Icon
+
+[Material things, they come and go](https://github.com/DaikyXendo/nvim-material-icon)
+
+Who never use something with material theme or material icons???
+
+Its just fair to use here in Neovim, cuz that we install this awesome plugin.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
