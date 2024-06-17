@@ -11,6 +11,10 @@ lazy.setup({
   { "andrew-george/telescope-themes" },
   { "nvim-telescope/telescope.nvim", tag = '0.1.6', dependencies = { "nvim-lua/plenary.nvim" } },
 
+  -- icons
+  { "DaikyXendo/nvim-material-icon" },
+
   -- colorschemes
   { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
+  { "diegoulloao/neofusion.nvim", lazy = false, priority = 1000, opts = {} },
 })
