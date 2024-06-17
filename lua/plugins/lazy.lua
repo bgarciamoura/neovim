@@ -11,7 +11,9 @@ lazy.setup({
   { "andrew-george/telescope-themes" },
   { "nvim-telescope/telescope.nvim", tag = '0.1.6', dependencies = { "nvim-lua/plenary.nvim" } },
   { "brenoprata10/nvim-highlight-colors" },
-
+  { "MunifTanjim/nui.nvim" },
+  { "3rd/image.nvim" },
+  { "nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = { "MunifTanjim/nui.nvim", "3rd/image.nvim" } },
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },
