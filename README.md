@@ -50,6 +50,14 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#nvim-highlight-colors">Nvim Highlight Colors</a>
         </li>
+        <li>
+            <a href="#nvim-neo-tree">Nvim Neo Tree</a>
+        </li>
+        <ul>
+            <li>
+                <a href="#nui">NUI</a>
+            </li>
+        </ul>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -221,6 +229,31 @@ I just made one adjust in the plugin code. The plugin store the chosen theme on 
 It's a pain in the a.. when you're typing a color and can't see wich is the color you typed, to solve that we'll use nvim highlight colors.
 
 This plugins use the background of the typed color to show a block with the actual color, making so much easier to find the desired color.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Nvim Neo Tree
+
+[Look to Yggdrasil](https://github.com/nvim-neo-tree/neo-tree.nvim)
+
+Ntree is just fine, but at this point, I already have colorschemes, icons, even the material icons. So Ntree become a little untasty for me and i decided to install a new tree, or must I say a NEO TREE.
+
+Neo-tree is a little less performatic than nvim-tree, but it's more beautiful to me.
+
+The only trowback to me is that it has one dependency plus Plenary, but I'll take my chances LOL.
+
+[For reference, here is the defaults for lua config](https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/lua/neo-tree/defaults.lua)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### NUI
+
+[So you like windows...](https://github.com/MunifTanjim/nui.nvim)
+
+Nui is a powefull plugin that allows another plugins to create new windows, even in linux, to show content.
+
+Here it will be used, primary, by Neo Tree as a way to preview the file before open it.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

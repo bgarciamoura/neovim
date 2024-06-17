@@ -15,3 +15,5 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 vim.g.netrw_winsize = 25
+
+-- vim.lsp.inlay_hint.enable()
