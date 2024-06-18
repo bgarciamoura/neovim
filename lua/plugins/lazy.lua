@@ -14,6 +14,7 @@ lazy.setup({
   { "MunifTanjim/nui.nvim" },
   { "nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = { "MunifTanjim/nui.nvim" } },
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  { "iamcco/markdown-preview.nvim", event = "VeryLazy", build = function() vim.fn["mkdp#util#install"]() end, ft = { "markdown" }  },
 
 
   -- icons
