@@ -67,6 +67,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#persisted">Persisted</a>
         </li>
+        <li>
+            <a href="#linters-formatters-and-lsp">Linters Formatters and LSP</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -305,10 +308,44 @@ Another great feature in this plugin, is the integration with Telescope. This gi
 
 The Telescope extension may be opened via :Telescope persisted. The available actions are:
 
-<CR> - Open/source the session file
-<C-b> - Add/update the git branch for the session file
-<C-c> - Copy the session file
+<CR> - Open/source the session file</br>
+<C-b> - Add/update the git branch for the session file</br>
+<C-c> - Copy the session file</br>
 <C-d> - Delete the session file
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Linters Formatters and LSP
+
+[Don't be such a coc](https://github.com/neoclide/coc.nvim)
+
+Like I said, I'm a little lazy, cuz that I decided to give a try and install coc.nvim.
+One of the worst things in coc.nvim is her backend that runs on nodejs, and a lot of people that uses Neovim, don't want to install NodeJS just to use LSP, Linters or anything else, but I already have to have NodeJS because I primarly works on NodeJS framework.
+
+Coc.nvim is almost plug'n play, you just have to install their extensions with the command: ```:CocInstall coc-<name of extension>``` and you're ready to go.
+
+<strike>
+[I'm not part of Masonry](https://github.com/williamboman/mason.nvim)</br>
+[Our language is love](https://github.com/neovim/nvim-lspconfig)</br>
+[Let's stick those things together](https://github.com/williamboman/mason-lspconfig.nvim)</br>
+[None...pointer exception](https://github.com/nvimtools/none-ls.nvim)</br>
+
+In this session, I'll install four plugins, the first one, Mason, has the ability of install, uninstall and update LSP, DAP, Lintters and Formatters, basically it's a Lazy.nvim for LSPs.
+
+Keep in mind that Mason requires some external dependencies:
+
+- GIT
+- Curl or Wget
+- Unzip
+- Tar
+- GZIP
+
+The second one is Lspconfig, this plugin is responsable of configure the downloaded LSP that you've been chosen from Mason.
+
+The third one is Mason-Lspconfig, basically it auto configure the new downloaded things from Mason, basically it keeps lsp configs updated.
+
+The last one is None-ls, the successor for null-ls, from the docs:
+>Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.</strike>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -340,4 +377,5 @@ Bruno Garcia Moura - itsme@bgarciamoura.com
 
 
 [linkedin-url]: https://linkedin.com/in/bgarciamoura
+Linters, Formatters and LSP
 

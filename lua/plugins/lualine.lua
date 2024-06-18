@@ -28,6 +28,7 @@ local conditions = {
   end,
 }
 
+
 local config = {
   options = {
     -- Disable sections and component separators
@@ -139,7 +140,7 @@ ins_left {
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
+    color_warn = { bg = colors.yellow},
     color_info = { fg = colors.cyan },
   },
 }
@@ -153,24 +154,31 @@ ins_left {
 }
 
 ins_left {
-  -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
+    local status = vim.fn['coc#status']()
+    return status ~= '' and status or 'No Coc Status'
   end,
-  icon = ' LSP:',
+  icon = '  LSP:',
   color = { fg = '#ffffff', gui = 'bold' },
+  -- Lsp server name .
+  -- function()
+  --   local msg = 'No Active Lsp'
+  --   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  --   -- local clients = vim.lsp.get_active_clients()
+  --   local clients = get_coc_status
+  --   if next(clients) == nil then
+  --     return msg
+  --   end
+  --   for _, client in ipairs(clients) do
+  --     local filetypes = client.config.filetypes
+  --     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+  --       return client.name
+  --     end
+  --   end
+  --   return msg
+  -- end,
+  -- icon = ' LSP:',
+  -- color = { fg = '#ffffff', gui = 'bold' },
 }
 
 -- Add components to right sections

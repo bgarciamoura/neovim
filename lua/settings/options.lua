@@ -1,3 +1,6 @@
+local vim = vim
+
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.loaded_ruby_provider = 0
@@ -20,6 +23,7 @@ vim.o.fillchars = "eob: "
 -- vim.o.foldcolumn = "1"
 -- vim.wo.numberwidth = 10
 vim.o.autoread = true
+vim.g.coc_node_path = "/Users/bgmoura/.local/share/mise/installs/node/lts/bin/node"
 
 
 -- Add new line to the end of the file
@@ -33,5 +37,17 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
       last_nonblank, n_lines, true, { '' })
     end
   end,
+})
+
+vim.diagnostic.config({
+  virtual_text = {
+    spacing = 8,
+  },
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "always",
+  },
+  update_in_insert = false,
 })
 

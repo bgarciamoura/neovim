@@ -17,6 +17,7 @@ lazy.setup({
   { "iamcco/markdown-preview.nvim", event = "VeryLazy", build = function() vim.fn["mkdp#util#install"]() end, ft = { "markdown" }  },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
   { "olimorris/persisted.nvim", lazy = false },
+  { "neoclide/coc.nvim", branch = "release" },
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },
