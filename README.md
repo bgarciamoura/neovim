@@ -268,6 +268,15 @@ Lualine is a elegant, if not fancy, way of show more things in the statusline, i
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+### Markdown Preview
+
+[On your marks, down, preview...](https://github.com/iamcco/markdown-preview.nvim)
+
+As the name says, this plugins allow us to preview the markdown we are editting in real time.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## License
 
 Distributed under the MIT License.

@@ -52,11 +52,6 @@ local lazygit_shortcuts = {
   name = "LazyGit",
   g = { ":LazyGit<CR>", "Open the lazygit window to perform git actions", unpack(default_opts) },
 }
--- " Using Lua functions
--- nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
--- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
--- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
--- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 local telescope_shortcuts = {
   name = "Telescope",
@@ -76,6 +71,15 @@ local telescope_shortcuts = {
   t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>",         "Goto the definition of the type under the cursor",       unpack(default_opts) },
 }
 
+local find_shortcuts = {
+  name = "Word find",
+  c = { ":noh<CR>", "Clear the last search highlight", unpack(default_opts) },
+}
+
+local mdpreview_shortcuts = {
+  name = "Markdown Preview",
+  t = { ":MarkdownPreviewToggle<CR>", "Toggle the markdown preview", unpack(default_opts) },
+}
 
 which_key.register({
   f = files_shortcuts,
@@ -83,6 +87,8 @@ which_key.register({
   e = explorer_shortcuts,
   l = lazygit_shortcuts,
   t = telescope_shortcuts,
+  s = find_shortcuts,
+  m = mdpreview_shortcuts,
 }, { prefix = "<leader>", mode = "n" })
 
 
