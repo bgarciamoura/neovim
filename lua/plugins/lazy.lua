@@ -24,4 +24,11 @@ lazy.setup({
   { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
   { "diegoulloao/neofusion.nvim", lazy = false, priority = 1000, opts = {} },
   { "rebelot/kanagawa.nvim", lazy = false, priority = 1000, opts = {} },
+  { "scottmckendry/cyberdream.nvim", lazy = false, priority = 1000, opts = {} },
+  { "Mofiqul/dracula.nvim", lazy = false, priority = 1000, opts = {} },
+  { "Mofiqul/vscode.nvim", lazy = false, priority = 1000, opts = {} },
+  { "navarasu/onedark.nvim", lazy = false, priority = 1000, opts = {} },
+  { "EdenEast/nightfox.nvim", lazy = false, priority = 1000, opts = {} },
+  { "maxmx03/fluoromachine.nvim", lazy = false, priority = 1000, opts = {} },
+  { "oxfist/night-owl.nvim", lazy = false, priority = 1000, opts = {} },
 })
