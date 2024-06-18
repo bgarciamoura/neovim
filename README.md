@@ -61,6 +61,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#lualine">Lualine</a>
         </li>
+        <li>
+            <a href="#indent-blankline">Indent Blankline</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -277,6 +280,16 @@ As the name says, this plugins allow us to preview the markdown we are editting 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Indent Blankline      
+
+[Tired of being lost](https://github.com/lukas-reineke/indent-blankline.nvim)
+
+This simple plugin adds a indent line, yeh just that, but why it's awesome, cuz with it you'll never being lost again, you'll always see a stroke connecting where do you are and where that code block belongs.
+
+Give it a try and you'll never regret.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## License
 
 Distributed under the MIT License.
@@ -305,3 +318,4 @@ Bruno Garcia Moura - itsme@bgarciamoura.com
 
 
 [linkedin-url]: https://linkedin.com/in/bgarciamoura
+
