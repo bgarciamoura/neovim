@@ -6,3 +6,4 @@ require("plugins.telescope")
 require("plugins.nvim-neo-tree")
 require("plugins.lualine")
 require("plugins.nvim-highlight-colors")
+
