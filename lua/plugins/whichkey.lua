@@ -82,6 +82,7 @@ local mdpreview_shortcuts = {
   t = { ":MarkdownPreviewToggle<CR>", "Toggle the markdown preview", unpack(default_opts) },
 }
 
+
 which_key.register({
   f = files_shortcuts,
   w = which_key_shortcuts,
