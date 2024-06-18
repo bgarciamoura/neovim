@@ -217,3 +217,4 @@ ins_right {
 lualine.setup(config)
 
 return lualine
+

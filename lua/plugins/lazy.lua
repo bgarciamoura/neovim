@@ -15,6 +15,7 @@ lazy.setup({
   { "nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = { "MunifTanjim/nui.nvim" } },
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "iamcco/markdown-preview.nvim", event = "VeryLazy", build = function() vim.fn["mkdp#util#install"]() end, ft = { "markdown" }  },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 
 
   -- icons
@@ -32,3 +33,4 @@ lazy.setup({
   { "maxmx03/fluoromachine.nvim", lazy = false, priority = 1000, opts = {} },
   { "oxfist/night-owl.nvim", lazy = false, priority = 1000, opts = {} },
 })
+
