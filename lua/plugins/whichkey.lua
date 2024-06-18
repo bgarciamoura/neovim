@@ -60,7 +60,7 @@ local telescope_shortcuts = {
   b = { "<cmd>lua require('telescope.builtin').buffers()<CR>",                      "Find in opened buffers using Telescope",                 unpack(default_opts) },
   h = { "<cmd>lua require('telescope.builtin').help_tags()<CR>",                    "Find help in plugins/neovim docs using Telescope",       unpack(default_opts) },
   i = { "<cmd>lua require('telescope.builtin').git_files()<CR>",                    "Find just git files on current dir using Telescope",     unpack(default_opts) },
-  x = { "<cmd>lua require('telescope.builtin').colorscheme()<CR>",               "Find and change the theme using Telescope",              unpack(default_opts) },
+  x = { "<cmd>lua require('telescope.builtin').colorscheme()<CR>",                  "Find and change the theme using Telescope",              unpack(default_opts) },
   c = { ":Telescope themes<CR>",                                                    "Find and change the theme using Telescope",              unpack(default_opts) },
   q = { "<cmd>lua require('telescope.builtin').quickfix()<CR>",                     "Find items in quickfix list using Telescope",            unpack(default_opts) },
   u = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",    "Live fuzzy search inside of the currently open buffer",  unpack(default_opts) },
@@ -69,6 +69,7 @@ local telescope_shortcuts = {
   m = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>",          "Goto the implementation of the word under the cursor",   unpack(default_opts) },
   e = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>",              "Goto the definition of the word under the cursor",       unpack(default_opts) },
   t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>",         "Goto the definition of the type under the cursor",       unpack(default_opts) },
+  s = { "<cmd>:Telescope persisted<CR>",                                            "Show all sessions and local if there's a need of that",  unpack(default_opts) },
 }
 
 local find_shortcuts = {
@@ -96,3 +97,4 @@ which_key.register({
 which_key.setup(which_key_opts)
 
 return which_key
+

@@ -16,7 +16,7 @@ lazy.setup({
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "iamcco/markdown-preview.nvim", event = "VeryLazy", build = function() vim.fn["mkdp#util#install"]() end, ft = { "markdown" }  },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
-
+  { "olimorris/persisted.nvim", lazy = false },
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },

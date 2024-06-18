@@ -64,6 +64,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#indent-blankline">Indent Blankline</a>
         </li>
+        <li>
+            <a href="#persisted">Persisted</a>
+        </li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -287,6 +290,25 @@ As the name says, this plugins allow us to preview the markdown we are editting 
 This simple plugin adds a indent line, yeh just that, but why it's awesome, cuz with it you'll never being lost again, you'll always see a stroke connecting where do you are and where that code block belongs.
 
 Give it a try and you'll never regret.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Persisted
+
+[Our session starts in 5 minutes...](https://github.com/olimorris/persisted.nvim)
+
+I'm tired of change a Neovim option in config files, close Neovim, open it again and look for the previous file to keep editing.
+
+I know, I'm lazy, and I regonize this, cuz that I installed Persisted, the plugin that auto save the current session and restore that session to me.
+
+Another great feature in this plugin, is the integration with Telescope. This gives you the ability of choose between the existing sessions and load then as you want.
+
+The Telescope extension may be opened via :Telescope persisted. The available actions are:
+
+<CR> - Open/source the session file
+<C-b> - Add/update the git branch for the session file
+<C-c> - Copy the session file
+<C-d> - Delete the session file
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
