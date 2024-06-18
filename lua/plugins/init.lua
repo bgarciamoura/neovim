@@ -7,4 +7,5 @@ require("plugins.nvim-neo-tree")
 require("plugins.lualine")
 require("plugins.nvim-highlight-colors")
 require("plugins.indent-blankline")
+require("plugins.persisted")
 
