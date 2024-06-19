@@ -27,14 +27,15 @@ vim.g.coc_node_path = "/Users/bgmoura/.local/share/mise/installs/node/lts/bin/no
 
 
 -- Add new line to the end of the file
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup('UserOnSave', {}),
   pattern = '*',
   callback = function()
     local n_lines = vim.api.nvim_buf_line_count(0)
     local last_nonblank = vim.fn.prevnonblank(n_lines)
-    if last_nonblank <= n_lines then vim.api.nvim_buf_set_lines(0,
-      last_nonblank, n_lines, true, { '' })
+    if last_nonblank <= n_lines then
+      vim.api.nvim_buf_set_lines(0,
+        last_nonblank, n_lines, true, { '' })
     end
   end,
 })
@@ -51,3 +52,13 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
+
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
+  pattern = "*",
+  command = "hi! link Visual VisualActive",
+})
+
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
+  pattern = "*",
+  command = "hi! link Visual VisualInactive",
+})
