@@ -72,6 +72,7 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         </li>
       </ul>
     </li>
+    <li><a href="#usefull-keys">Usefull Keys</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -344,6 +345,38 @@ The third one is Mason-Lspconfig, basically it auto configure the new downloaded
 The last one is None-ls, the successor for null-ls, from the docs:
 
 > Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.</strike>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Usefull keys
+
+gg - move cursor to first line
+
+#G - move cursor to # line
+
+GG move cursor to last line
+
+CTRL+f - move cursor Forward full page
+
+CTRL+b - move cursor Backwards full page
+
+CTRL+u - move cursor Up half page
+
+CTRL+d - move cursor Down half page
+
+zt - move screen so cursor is at Top
+
+zb - move screen so cursor is at Bottom
+
+zz - center screen on cursor (very useful!)
+
+ZZ - save document and quit (be careful!)
+
+H - move cursor to top ("high up" or "home") of window
+
+M - move to middle of window
+
+L - move to bottom ("low" or "last line") of window
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
