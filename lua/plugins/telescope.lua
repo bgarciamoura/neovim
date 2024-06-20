@@ -2,16 +2,16 @@ local telescope = require("telescope")
 
 telescope.load_extension("themes")
 
-telescope.setup{
+telescope.setup {
   defaults = { layout_strategy = "flex" },
-  pickers = { 
-    colorscheme = { 
+  pickers = {
+    colorscheme = {
       enable_preview = true,
       on_change = function()
         print("oi")
       end,
-    } 
-  }, 
+    }
+  },
   extensions = {
     themes = {
       enable_previewer = true,
@@ -22,7 +22,7 @@ telescope.setup{
       },
     },
     persisted = {
-      layout_config = { width = 0.55, height = 0.55}
+      layout_config = { width = 0.55, height = 0.55 }
     }
   },
 }
@@ -30,4 +30,3 @@ telescope.setup{
 
 
 return telescope
-

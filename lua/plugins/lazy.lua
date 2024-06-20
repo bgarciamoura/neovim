@@ -33,14 +33,45 @@ lazy.setup({
   { "DaikyXendo/nvim-material-icon" },
 
   -- colorschemes
-  { "folke/tokyonight.nvim",               lazy = false,      priority = 1000, opts = {} },
-  { "diegoulloao/neofusion.nvim",          lazy = false,      priority = 1000, opts = {} },
-  { "rebelot/kanagawa.nvim",               lazy = false,      priority = 1000, opts = {} },
-  { "scottmckendry/cyberdream.nvim",       lazy = false,      priority = 1000, opts = {} },
-  { "Mofiqul/dracula.nvim",                lazy = false,      priority = 1000, opts = {} },
-  { "Mofiqul/vscode.nvim",                 lazy = false,      priority = 1000, opts = {} },
-  { "navarasu/onedark.nvim",               lazy = false,      priority = 1000, opts = {} },
-  { "EdenEast/nightfox.nvim",              lazy = false,      priority = 1000, opts = {} },
-  { "maxmx03/fluoromachine.nvim",          lazy = false,      priority = 1000, opts = {} },
-  { "oxfist/night-owl.nvim",               lazy = false,      priority = 1000, opts = {} },
+  { "folke/tokyonight.nvim",               lazy = false,        priority = 1000, opts = {} },
+  { "diegoulloao/neofusion.nvim",          lazy = false,        priority = 1000, opts = {} },
+  { "rebelot/kanagawa.nvim",               lazy = false,        priority = 1000, opts = {} },
+  { "scottmckendry/cyberdream.nvim",       lazy = false,        priority = 1000, opts = {} },
+  { "dracula/vim",                         as = "dracula",      lazy = false,    priority = 1000 },
+  { "Mofiqul/vscode.nvim",                 lazy = false,        priority = 1000, opts = {} },
+  { "navarasu/onedark.nvim",               lazy = false,        priority = 1000, opts = {} },
+  { "EdenEast/nightfox.nvim",              lazy = false,        priority = 1000, opts = {} },
+  { "maxmx03/fluoromachine.nvim",          lazy = false,        priority = 1000, opts = {} },
+  { "oxfist/night-owl.nvim",               lazy = false,        priority = 1000, opts = {} },
+  { "catppuccin/nvim",                     name = "catppuccin", priority = 1000 },
+  { "sho-87/kanagawa-paper.nvim",          lazy = false,        priority = 1000, opts = {}, },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require 'nordic'
+          .load()
+    end
+  },
+  { "rose-pine/neovim",            name = "rose-pine", lazy = false,   priority = 1000, opts = {} },
+  {
+    'maxmx03/fluoromachine.nvim',
+    lazy = true,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local fm = require 'fluoromachine'
+
+      fm.setup {
+        glow = true,
+        theme = 'fluoromachine',
+        transparent = true,
+      }
+    end
+  },
+  { "bluz71/vim-nightfly-colors",  name = "nightfly",  lazy = false,   priority = 1000 },
+  { 'marko-cerovac/material.nvim', name = "material",  lazy = false,   priority = 1000, opts = {} },
+  { "shaunsingh/moonlight.nvim",   lazy = false,       priority = 1000 },
+
 })
