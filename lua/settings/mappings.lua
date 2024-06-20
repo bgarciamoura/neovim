@@ -19,3 +19,9 @@ map("n", "<leader>cc", ':keepjumps normal! ggVG "*yG<CR>', { desc = "Copy the en
 map("n", "<leader>sv", ':vsplit<CR>', { desc = "Split the screen verticaly" })
 map("n", "<leader>sh", ':split<CR>', { desc = "Split the screen horizontaly" })
 map("n", "<leader>qo", '<C-w>o', { desc = "Close all splitted buffers but the active one" })
+
+-- Codeium
+map('i', '<C-g>', "<cmd>call codeium#Accept()<CR>", { desc = "Accept codeium suggestion" })
+map('i', '<C-;>', "<cmd>call codeium#CycleCompletions(1)<CR>", { desc = "Cycle codeium suggestion" })
+map('i', '<C-,>', "<cmd>call codeium#CycleCompletions(-1)<CR>", { desc = "Cycle codeium suggestion" })
+map('i', '<C-x>', "<cmd>call codeium#Clear()<CR>", { desc = "Clear codeium suggestion" })
