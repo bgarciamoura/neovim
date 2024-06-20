@@ -78,7 +78,6 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
   </ol>
 </details>
 
-
 ## Folder Structure
 
 Soooo... let's start with our folder structure, i decided to change the folder structure a little bit of my previous version. For this version i decided to try a modularizable version with each module taking care of what's it responsability.
@@ -100,30 +99,30 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 │    │   │   ├── nerdtree.lua   # Overrides for NERDTree plugin
 │    │   │   └── fugitive.lua   # Overrides for Fugitive plugin
 │    │   └── init.lua           # Default export file
-│    │ 
+│    │
 │    ├── autoload/              # Settings that are triggered when open neovim
 │    │   └── init.lua           # Default export file including the lazy plugin manager start config
-│    │ 
-│    ├── colors/                # Contains color scheme files    
+│    │
+│    ├── colors/                # Contains color scheme files
 │    │   ├── init.lua           # Default export file
 │    │   └── catppuccin.lua     # The expecific theme settings
-│    │     
+│    │
 │    ├── filetypes/             # Filetype-specific settings
 │    │   ├── init.lua           # Default export file
 │    │   ├── python.lua         # Settings specific to Python files
 │    │   └── javascript.lua     # Settings specific to JavaScript files
-│    │  
+│    │
 │    ├── plugins/               # Holds plugin configurations
 │    │   ├── init.lua           # Default export file
 │    │   ├── lazy.lua           # Lazy plugin manager autoload settings
 │    │   ├── whichkey.lua       # Shows your keymaps in a navegatable panel
 │    │   └── treesitter.lua     # Configuration for Nvim-Treesitter
-│    │ 
+│    │
 │    ├── settings/              # General settings
 │    │   ├── init.lua           # Default export file
 │    │   ├── options.lua        # General options like tab settings, line numbers, etc.
 │    │   └── mappings.lua       # Key mappings for common actions
-│    │ 
+│    │
 │    │
 │    ├── snippets/              # Contains snippet files for UltiSnips or other snippet plugins
 │    │   ├── init.lua           # Default export file
@@ -132,9 +131,9 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 │    └── syntax/                # Syntax highlighting customizations
 │        ├── init.lua           # Default export file
 │        └── mylang.lua         # Custom syntax highlighting for specific languages
-│ 
+│
 ├── .gitignore                  # Settings for git not upload some files
-│ 
+│
 └── README.md                   # Documentation for the configuration
 ```
 
@@ -143,6 +142,7 @@ Here's a simple, but modularized, example of how this folder's structure looks l
 I'm still working on my plugins cuz... what's neovim without the sweet tasty of a ton of plugins????
 
 As Count Dracula once said:
+
 > **"What's is a 'NEOVIM'?! A miserable little pile of 'PLUGINS'..."**
 
 So, let's create a little list of all my installed plugins with, or without, some explanations.
@@ -157,9 +157,9 @@ From a Vim/Neovim monster, AKA Folke, Which Key is a amazing plugin that shows a
 
 For people as me, that almost forgot everything, this plugin is gold cuz, even if you forgot which key you defined, it can show for you how can you do something.
 
-In the plugin configuration file, located on ```~/.config/nvim/lua/plugins/whichkey.lua```, you can define how the plugin popup will show, new key bindings for every action you want and the plugin behavior.
+In the plugin configuration file, located on `~/.config/nvim/lua/plugins/whichkey.lua`, you can define how the plugin popup will show, new key bindings for every action you want and the plugin behavior.
 
-For example, let's say that you want to save your file without typing ```:w<CR>``` in the command pallete, you can configure which-key to do that by pressing ```<leader>s```, then you can see this on which key popup, even if you forget this again, just by pressing the ```<leader>``` key
+For example, let's say that you want to save your file without typing `:w<CR>` in the command pallete, you can configure which-key to do that by pressing `<leader>s`, then you can see this on which key popup, even if you forget this again, just by pressing the `<leader>` key
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -231,7 +231,6 @@ For that i've install this awesome plugin, that gives us the ability to persist 
 
 I just made one adjust in the plugin code. The plugin store the chosen theme on `~/.config/nvim/lua/current-theme.lua` and then, you'll have to import the file on your Neovim configuration, so I made a change in the plugin's function that create this file to the path be another one - `~/.config/nvim/lua/colors/current-theme.lua`
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Nvim Highlight Colors
@@ -266,7 +265,6 @@ Nui is a powefull plugin that allows another plugins to create new windows, even
 
 Here it will be used, primary, by Neo Tree as a way to preview the file before open it.
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Lualine
@@ -277,7 +275,6 @@ Lualine is a elegant, if not fancy, way of show more things in the statusline, i
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ### Markdown Preview
 
 [On your marks, down, preview...](https://github.com/iamcco/markdown-preview.nvim)
@@ -286,7 +283,7 @@ As the name says, this plugins allow us to preview the markdown we are editting 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Indent Blankline      
+### Indent Blankline
 
 [Tired of being lost](https://github.com/lukas-reineke/indent-blankline.nvim)
 
@@ -322,7 +319,7 @@ The Telescope extension may be opened via :Telescope persisted. The available ac
 Like I said, I'm a little lazy, cuz that I decided to give a try and install coc.nvim.
 One of the worst things in coc.nvim is her backend that runs on nodejs, and a lot of people that uses Neovim, don't want to install NodeJS just to use LSP, Linters or anything else, but I already have to have NodeJS because I primarly works on NodeJS framework.
 
-Coc.nvim is almost plug'n play, you just have to install their extensions with the command: ```:CocInstall coc-<name of extension>``` and you're ready to go.
+Coc.nvim is almost plug'n play, you just have to install their extensions with the command: `:CocInstall coc-<name of extension>` and you're ready to go.
 
 <strike>
 [I'm not part of Masonry](https://github.com/williamboman/mason.nvim)</br>
@@ -345,7 +342,8 @@ The second one is Lspconfig, this plugin is responsable of configure the downloa
 The third one is Mason-Lspconfig, basically it auto configure the new downloaded things from Mason, basically it keeps lsp configs updated.
 
 The last one is None-ls, the successor for null-ls, from the docs:
->Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.</strike>
+
+> Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.</strike>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -359,9 +357,7 @@ Distributed under the MIT License.
 
 Bruno Garcia Moura - itsme@bgarciamoura.com
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 [contributors-shield]: https://img.shields.io/github/contributors/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
 [contributors-url]: https://github.com/bgarciamoura/neovim-0.10-config/graphs/contributors
@@ -374,8 +370,6 @@ Bruno Garcia Moura - itsme@bgarciamoura.com
 [license-shield]: https://img.shields.io/github/license/bgarciamoura/neovim-0.10-config.svg?style=for-the-badge
 [license-url]: https://github.com/bgarciamoura/neovim-0.10-config/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-
-
 [linkedin-url]: https://linkedin.com/in/bgarciamoura
-Linters, Formatters and LSP
 
+Linters, Formatters and LSP
