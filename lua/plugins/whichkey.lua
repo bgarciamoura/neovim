@@ -102,6 +102,11 @@ local window_management = {
   l = { "<C-w>l", "Move the cursor for the upper window use <A-right>", unpack(default_opts) },
 }
 
+local coc_shortcuts = {
+  name = "Coc",
+  i = { ":OR<CR>", "Organize the imports", unpack(default_opts) },
+}
+
 which_key.register({
   f = files_shortcuts,
   w = which_key_shortcuts,
@@ -112,6 +117,7 @@ which_key.register({
   m = mdpreview_shortcuts,
   x = text_management,
   p = window_management,
+  c = coc_shortcuts,
 }, { prefix = "<leader>", mode = "n" })
 
 
