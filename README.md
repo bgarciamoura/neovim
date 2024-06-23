@@ -76,6 +76,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#statuscol">Statuscol</a>
         </li>
+        <li>
+            <a href="#dropbar">Dropbar</a>
+        </li>
       </ul>
     </li>
     <li><a href="#usefull-keys">Usefull Keys</a></li>
@@ -375,6 +378,19 @@ This plugin allow you to customize the status column.
 The default one is not very good or customizable, but with this you can make your own status column.
 
 One thing I've to say is, with this you'll have to use Neovim 0.10 or higher.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Dropbar
+
+[Tell 'em what happens when you drop a bar of soap in prison.](https://github.com/Bekaboo/dropbar.nvim)
+
+Breadcumbs, breadcumbs everywhere!!!!!!
+
+Who doesn't like breadcumbs as VSCode's status bar?
+
+Thinking about it, I decided to give a try and install Dropbar, this plugin is awesome, simple and easy to use.
+It renders the breadcumb bar in Neovim, giving you the ability to see where you are and where you want to go, also allowing you to navigate trough files as a explorer.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

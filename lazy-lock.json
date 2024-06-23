@@ -3,6 +3,7 @@
   "coc.nvim": { "branch": "release", "commit": "f0ce9ae23d6ce9d0cbabe73bdb738e45accc6f08" },
   "codeium.vim": { "branch": "main", "commit": "7a01ffb1e6538fe634f294908a50a7b680039284" },
   "cyberdream.nvim": { "branch": "main", "commit": "db76342d8dff74b9382bf1e9c9e648ee16869809" },
+  "dropbar.nvim": { "branch": "master", "commit": "79847a78ec0c58f5e5c0360192b03d0cee803e95" },
   "emmet-vim": { "branch": "master", "commit": "3fb2f63799e1922f7647ed9ff3b32154031a76ee" },
   "fluoromachine.nvim": { "branch": "main", "commit": "d060b60425f15c16d8cdaf52e92b12dbce2b5ed4" },
   "indent-blankline.nvim": { "branch": "master", "commit": "4036c8ae9cc29faf8e6443fa5b23e679db055d24" },
