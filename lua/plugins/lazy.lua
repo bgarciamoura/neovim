@@ -28,6 +28,7 @@ lazy.setup({
   { "neoclide/coc.nvim",                   branch = "release" },
   { "mattn/emmet-vim",                     lazy = true },
   { "Exafunction/codeium.vim",             event = "BufEnter" },
+  { "yamatsum/nvim-cursorline",            event = "BufEnter" },
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },

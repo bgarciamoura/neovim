@@ -70,6 +70,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#linters-formatters-and-lsp">Linters Formatters and LSP</a>
         </li>
+        <li>
+            <a href="#cursorline">Cursorline</a>
+        </li>
       </ul>
     </li>
     <li><a href="#usefull-keys">Usefull Keys</a></li>
@@ -345,6 +348,18 @@ The third one is Mason-Lspconfig, basically it auto configure the new downloaded
 The last one is None-ls, the successor for null-ls, from the docs:
 
 > Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.</strike>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Cursorline
+
+[Show your cursor position](https://github.com/yamatsum/nvim-cursorline)
+
+Here is a simple plugin that show your cursor position. Not just by highlighting the line, but also by underlining the word under the cursor and the other equal words in the current document.
+
+It's awesome, simple and easy to use.
+
+So why not give it a try?
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
