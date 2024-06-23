@@ -9,4 +9,5 @@ require("plugins.nvim-highlight-colors")
 require("plugins.indent-blankline")
 require("plugins.persisted")
 require("plugins.coc")
-
+require("plugins.cursorline")
+require("plugins.statuscolumn")

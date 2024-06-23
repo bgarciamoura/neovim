@@ -19,11 +19,13 @@ vim.o.timeoutlen = 300
 vim.o.cursorline = true
 vim.o.encoding = "utf-8"
 vim.o.fillchars = "eob: "
--- vim.o.signcolumn = "yes:1"
--- vim.o.foldcolumn = "1"
--- vim.wo.numberwidth = 10
 vim.o.autoread = true
 vim.g.coc_node_path = "/Users/bgmoura/.local/share/mise/installs/node/lts/bin/node"
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 
 -- Add new line to the end of the file

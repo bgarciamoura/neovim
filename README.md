@@ -70,6 +70,15 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#linters-formatters-and-lsp">Linters Formatters and LSP</a>
         </li>
+        <li>
+            <a href="#cursorline">Cursorline</a>
+        </li>
+        <li>
+            <a href="#statuscol">Statuscol</a>
+        </li>
+        <li>
+            <a href="#dropbar">Dropbar</a>
+        </li>
       </ul>
     </li>
     <li><a href="#usefull-keys">Usefull Keys</a></li>
@@ -348,6 +357,43 @@ The last one is None-ls, the successor for null-ls, from the docs:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Cursorline
+
+[Show your cursor position](https://github.com/yamatsum/nvim-cursorline)
+
+Here is a simple plugin that show your cursor position. Not just by highlighting the line, but also by underlining the word under the cursor and the other equal words in the current document.
+
+It's awesome, simple and easy to use.
+
+So why not give it a try?
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Statuscol
+
+[Computer, status record](https://github.com/luukvbaal/statuscol.nvim)
+
+This plugin allow you to customize the status column.
+
+The default one is not very good or customizable, but with this you can make your own status column.
+
+One thing I've to say is, with this you'll have to use Neovim 0.10 or higher.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Dropbar
+
+[Tell 'em what happens when you drop a bar of soap in prison.](https://github.com/Bekaboo/dropbar.nvim)
+
+Breadcumbs, breadcumbs everywhere!!!!!!
+
+Who doesn't like breadcumbs as VSCode's status bar?
+
+Thinking about it, I decided to give a try and install Dropbar, this plugin is awesome, simple and easy to use.
+It renders the breadcumb bar in Neovim, giving you the ability to see where you are and where you want to go, also allowing you to navigate trough files as a explorer.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Usefull keys
 
 gg - move cursor to first line
@@ -377,6 +423,8 @@ H - move cursor to top ("high up" or "home") of window
 M - move to middle of window
 
 L - move to bottom ("low" or "last line") of window
+
+za - toggle fold
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
