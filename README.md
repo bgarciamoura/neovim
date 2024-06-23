@@ -73,6 +73,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#cursorline">Cursorline</a>
         </li>
+        <li>
+            <a href="#statuscol">Statuscol</a>
+        </li>
       </ul>
     </li>
     <li><a href="#usefull-keys">Usefull Keys</a></li>
@@ -363,6 +366,18 @@ So why not give it a try?
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Statuscol
+
+[Computer, status record](https://github.com/luukvbaal/statuscol.nvim)
+
+This plugin allow you to customize the status column.
+
+The default one is not very good or customizable, but with this you can make your own status column.
+
+One thing I've to say is, with this you'll have to use Neovim 0.10 or higher.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Usefull keys
 
 gg - move cursor to first line
@@ -392,6 +407,8 @@ H - move cursor to top ("high up" or "home") of window
 M - move to middle of window
 
 L - move to bottom ("low" or "last line") of window
+
+za - toggle fold
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

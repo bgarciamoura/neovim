@@ -29,6 +29,7 @@ lazy.setup({
   { "mattn/emmet-vim",                     lazy = true },
   { "Exafunction/codeium.vim",             event = "BufEnter" },
   { "yamatsum/nvim-cursorline",            event = "BufEnter" },
+  { "luukvbaal/statuscol.nvim",            event = "BufEnter" },
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },
