@@ -40,11 +40,19 @@ neotree.setup {
         require("neo-tree.command").execute({ action = "close" })
       end,
     },
+    {
+      event = "neotree.command.open",
+      handler = function()
+        require("neo-tree.command").execute({ action = "close" })
+      end,
+    }
   },
   window = {
     width = 30,
-
+    mappgins = {
+    },
   },
+
 }
 
 
