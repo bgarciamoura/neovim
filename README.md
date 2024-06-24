@@ -79,6 +79,9 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
         <li>
             <a href="#dropbar">Dropbar</a>
         </li>
+        <li>
+            <a href="#tabby">Tabby</a>
+        </li>
       </ul>
     </li>
     <li><a href="#usefull-keys">Usefull Keys</a></li>
@@ -391,6 +394,14 @@ Who doesn't like breadcumbs as VSCode's status bar?
 
 Thinking about it, I decided to give a try and install Dropbar, this plugin is awesome, simple and easy to use.
 It renders the breadcumb bar in Neovim, giving you the ability to see where you are and where you want to go, also allowing you to navigate trough files as a explorer.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Tabby
+
+[Tabline for Neovim](https://github.com/nanozuki/tabby.nvim)
+
+To be really honest, I don't know if I'll stay with this plugin or not. I'll keep it here, but I'll probably remove it in the future.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

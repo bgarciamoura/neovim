@@ -107,6 +107,17 @@ local coc_shortcuts = {
   i = { ":OR<CR>", "Organize the imports", unpack(default_opts) },
 }
 
+local tabby_shortcuts = {
+  name = "Tabby",
+  e = { ":$tabnew<CR>", "Create a new tab", unpack(default_opts) },
+  c = { ":tabclose<CR>", "Close the current tab", unpack(default_opts) },
+  o = { ":tabonly<CR>", "Close all other tabs", unpack(default_opts) },
+  p = { ":tabp<CR>", "Go to the previous tab", unpack(default_opts) },
+  n = { ":tabn<CR>", "Go to the next tab", unpack(default_opts) },
+  x = { ":-tabmove<CR>", "Move the current tab to the left", unpack(default_opts) },
+  y = { ":+tabmove<CR>", "Move the current tab to the right", unpack(default_opts) },
+}
+
 which_key.register({
   f = files_shortcuts,
   w = which_key_shortcuts,
@@ -118,6 +129,7 @@ which_key.register({
   x = text_management,
   p = window_management,
   c = coc_shortcuts,
+  T = tabby_shortcuts
 }, { prefix = "<leader>", mode = "n" })
 
 
