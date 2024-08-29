@@ -32,6 +32,7 @@ lazy.setup({
   { "luukvbaal/statuscol.nvim",            event = "BufEnter" },
   { 'Bekaboo/dropbar.nvim',                event = "BufEnter" },
   { "nanozuki/tabby.nvim",                 dependencies = { "nvim-tree/nvim-web-devicons" } },
+  { "numToStr/Comment.nvim" },
 
   -- icons
   { "DaikyXendo/nvim-material-icon" },
