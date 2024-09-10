@@ -6,4 +6,7 @@ require('core.commands')
 require('lsp.lspconfig')
 require('plugins.neo-tree')
 require('plugins.nvim-cmp')
+require('plugins.mason-lspconfig')
+require('plugins.statuscol')
+require('plugins.lualine')
 

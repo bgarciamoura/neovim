@@ -29,7 +29,7 @@ lazy.setup({
     -- "nvim-tree/nvim-web-devicons"
 
     -- Gitsigns
-    { 'lewis6991/gitsigns.nvim', lazy = true },
+    { 'lewis6991/gitsigns.nvim',      lazy = true },
 
     -- Statusline
     {
@@ -48,7 +48,7 @@ lazy.setup({
       'windwp/nvim-autopairs',
       event = 'InsertEnter',
       config = function()
-        require('nvim-autopairs').setup{}
+        require('nvim-autopairs').setup {}
       end
     },
 
@@ -71,17 +71,34 @@ lazy.setup({
       },
     },
 
+    -- Install LSP, Linters and Formatters
+    {
+      "williamboman/mason.nvim"
+    },
+
+    -- Linking mason with nvim-lspconfig
+    {
+      "williamboman/mason-lspconfig.nvim"
+    },
+
     -- File Tree
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
       dependencies = {
         "nvim-lua/plenary.nvim",
-	-- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-	"MunifTanjim/nui.nvim",
-	-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        -- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+        -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
       }
-    }
+    },
+
+    { "mattn/emmet-vim",           lazy = true },
+
+    { "Exafunction/codeium.vim",   event = "BufEnter" },
+    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+    { "luukvbaal/statuscol.nvim",  event = "BufEnter" },
+    { 'Bekaboo/dropbar.nvim',      event = "BufEnter" },
+    { "kdheepak/lazygit.nvim" },
   },
 })
-
