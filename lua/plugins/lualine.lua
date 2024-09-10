@@ -62,7 +62,8 @@ local config = {
     lualine_x = {},
   },
   extensions = {
-    "neo-tree"
+    "neo-tree",
+    "mason",
   },
 }
 
@@ -80,7 +81,7 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
+  color = { fg = colors.blue },      -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -136,11 +137,11 @@ ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
-  sources = { 'nvim_diagnostic' },
+  sources = { 'nvim_diagnostic', 'nvim_lsp' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
-    color_warn = { bg = colors.yellow},
+    color_warn = { bg = colors.yellow },
     color_info = { fg = colors.cyan },
   },
 }
@@ -154,36 +155,30 @@ ins_left {
 }
 
 ins_left {
+  -- Lsp server name .
   function()
-    local status = vim.fn['coc#status']()
-    return status ~= '' and status or 'No Coc Status'
+    local msg = 'No Active Lsp'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    -- local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.buf_get_clients(0)
+    if next(clients) == nil then
+      return msg
+    end
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return client.name
+      end
+    end
+    return msg
   end,
   icon = '  LSP:',
   color = { fg = '#ffffff', gui = 'bold' },
-  -- Lsp server name .
-  -- function()
-  --   local msg = 'No Active Lsp'
-  --   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-  --   -- local clients = vim.lsp.get_active_clients()
-  --   local clients = get_coc_status
-  --   if next(clients) == nil then
-  --     return msg
-  --   end
-  --   for _, client in ipairs(clients) do
-  --     local filetypes = client.config.filetypes
-  --     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-  --       return client.name
-  --     end
-  --   end
-  --   return msg
-  -- end,
-  -- icon = ' LSP:',
-  -- color = { fg = '#ffffff', gui = 'bold' },
 }
 
 -- Add components to right sections
 ins_right {
-  'o:encoding', -- option component same as &encoding in viml
+  'o:encoding',       -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
   color = { fg = colors.green, gui = 'bold' },
@@ -225,4 +220,3 @@ ins_right {
 lualine.setup(config)
 
 return lualine
-

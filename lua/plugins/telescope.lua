@@ -1,32 +1,18 @@
-local telescope = require("telescope")
+local telescope = require('telescope')
+local builtin = require('telescope.builtin')
 
-telescope.load_extension("themes")
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+vim.keymap.set('n', '<leader>fm', ':Telescope node_modules list<CR>', {
+  noremap = true,
+  silent = true
+})
+
+telescope.load_extension('node_modules')
 
 telescope.setup {
-  defaults = { layout_strategy = "flex" },
-  pickers = {
-    colorscheme = {
-      enable_preview = true,
-      on_change = function()
-        print("oi")
-      end,
-    }
-  },
-  extensions = {
-    themes = {
-      enable_previewer = true,
-      enable_live_preview = true,
-      ignore = {},
-      persist = {
-        enabled = true,
-      },
-    },
-    persisted = {
-      layout_config = { width = 0.55, height = 0.55 }
-    }
-  },
 }
-
-
-
-return telescope

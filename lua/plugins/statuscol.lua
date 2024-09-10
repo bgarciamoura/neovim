@@ -1,7 +1,7 @@
 local statuscol = require("statuscol")
 local builtin = require("statuscol.builtin")
 
-statuscol.setup({
+statuscol.setup {
   setopt = true,
   thousands = false,
   relculright = false,
@@ -35,7 +35,5 @@ statuscol.setup({
   },
 
 
-})
+}
 
-
-return statuscol
