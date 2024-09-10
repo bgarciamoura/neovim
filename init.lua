@@ -1,8 +1,0 @@
-require("autoload")
-require("settings")
-require("plugins")
-require("filetypes")
-require("after")
-require("snippets")
-require("syntax")
-require("colors")
