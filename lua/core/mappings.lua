@@ -20,15 +20,15 @@ map("n", "<leader>sv", ':vsplit<CR>', { desc = "Split the screen verticaly" })
 map("n", "<leader>sh", ':split<CR>', { desc = "Split the screen horizontaly" })
 map("n", "<leader>qo", '<C-w>o', { desc = "Close all splitted buffers but the active one" })
 map("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Open or close Neotree" })
-map("n", "<leader>jj", ":Neotree focus<CR>", { desc = "Focus on Neotree buffer"})
+map("n", "<leader>jj", ":Neotree focus<CR>", { desc = "Focus on Neotree buffer" })
 
-map('n', '<leader>r', ':so %<CR>', { desc = "Reload configuration without restart nvim"})
-map('n', '<leader>q', ':qa!<CR>', { desc = "Close all windows and exit from Neovim with <leader> and q"})
+map('n', '<leader>r', ':so %<CR>', { desc = "Reload configuration without restart nvim" })
+map('n', '<leader>q', ':qa!<CR>', { desc = "Close all windows and exit from Neovim with <leader> and q" })
 
 
 -- Codeium
--- map('i', '<C-g>', "<cmd>call codeium#Accept()<CR>", { desc = "Accept codeium suggestion" })
--- map('i', '<C-;>', "<cmd>call codeium#CycleCompletions(1)<CR>", { desc = "Cycle codeium suggestion" })
--- map('i', '<C-,>', "<cmd>call codeium#CycleCompletions(-1)<CR>", { desc = "Cycle codeium suggestion" })
--- map('i', '<C-x>', "<cmd>call codeium#Clear()<CR>", { desc = "Clear codeium suggestion" })
+map('i', '<C-g>', "<cmd>call codeium#Accept()<CR>", { desc = "Accept codeium suggestion" })
+map('i', '<C-;>', "<cmd>call codeium#CycleCompletions(1)<CR>", { desc = "Cycle codeium suggestion" })
+map('i', '<C-,>', "<cmd>call codeium#CycleCompletions(-1)<CR>", { desc = "Cycle codeium suggestion" })
+map('i', '<C-x>', "<cmd>call codeium#Clear()<CR>", { desc = "Clear codeium suggestion" })
 

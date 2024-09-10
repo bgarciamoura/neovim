@@ -100,5 +100,13 @@ lazy.setup({
     { "luukvbaal/statuscol.nvim",  event = "BufEnter" },
     { 'Bekaboo/dropbar.nvim',      event = "BufEnter" },
     { "kdheepak/lazygit.nvim" },
+    {
+      'nvim-telescope/telescope.nvim',
+      branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-node-modules.nvim', }
+    },
+
+    -- Global search and replace
+    { 'nvim-pack/nvim-spectre' },
   },
 })

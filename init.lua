@@ -9,4 +9,5 @@ require('plugins.nvim-cmp')
 require('plugins.mason-lspconfig')
 require('plugins.statuscol')
 require('plugins.lualine')
-
+require('plugins.telescope')
+require('plugins.spectre')
