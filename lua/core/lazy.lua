@@ -24,15 +24,12 @@ end
 -- Start setup
 lazy.setup({
   spec = {
-
-
     -- Icons
     { 'kyazdani42/nvim-web-devicons', lazy = true },
     -- "nvim-tree/nvim-web-devicons"
 
     -- Gitsigns
     { 'lewis6991/gitsigns.nvim', lazy = true },
-
 
     -- Statusline
     {
@@ -46,7 +43,6 @@ lazy.setup({
     -- Treesitter
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
-
     -- Autopair
     {
       'windwp/nvim-autopairs',
@@ -56,25 +52,25 @@ lazy.setup({
       end
     },
 
-    -- -- LSP
-    -- { 'neovim/nvim-lspconfig' },
-    --
-    -- -- Autocomplete
-    -- {
-    --   'hrsh7th/nvim-cmp',
-    --   -- load cmp on InsertEnter
-    --   event = 'InsertEnter',
-    --   -- these dependencies will only be loaded when cmp loads
-    --   -- dependencies are always lazy-loaded unless specified otherwise
-    --   dependencies = {
-    --     'L3MON4D3/LuaSnip',
-    --     'hrsh7th/cmp-nvim-lsp',
-    --     'hrsh7th/cmp-path',
-    --     'hrsh7th/cmp-buffer',
-    --     'saadparwaiz1/cmp_luasnip',
-    --   },
-    -- },
-    
+    -- LSP
+    { 'neovim/nvim-lspconfig' },
+
+    -- Autocomplete
+    {
+      'hrsh7th/nvim-cmp',
+      -- load cmp on InsertEnter
+      event = 'InsertEnter',
+      -- these dependencies will only be loaded when cmp loads
+      -- dependencies are always lazy-loaded unless specified otherwise
+      dependencies = {
+        'L3MON4D3/LuaSnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-buffer',
+        'saadparwaiz1/cmp_luasnip',
+      },
+    },
+
     -- File Tree
     {
       "nvim-neo-tree/neo-tree.nvim",
@@ -88,3 +84,4 @@ lazy.setup({
     }
   },
 })
+
