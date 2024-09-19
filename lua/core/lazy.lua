@@ -108,5 +108,13 @@ lazy.setup({
 
     -- Global search and replace
     { 'nvim-pack/nvim-spectre' },
+
+    -- Themes
+    {
+      "0xstepit/flow.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    },
   },
 })
