@@ -95,7 +95,7 @@ lazy.setup({
 
     { "mattn/emmet-vim",           lazy = true },
 
-    { "Exafunction/codeium.vim",   event = "BufEnter" },
+    -- { "Exafunction/codeium.vim",   event = "BufEnter" },
     { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
     { "luukvbaal/statuscol.nvim",  event = "BufEnter" },
     { 'Bekaboo/dropbar.nvim',      event = "BufEnter" },
