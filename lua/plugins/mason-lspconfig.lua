@@ -4,7 +4,7 @@ local mason = require("mason")
 mason.setup {}
 
 masonlsp.setup {
-  ensure_installed = { "lua_ls", 'yamlls', 'ts_ls', 'tailwindcss', 'prismals', 'jsonls', 'html', 'eslint', 'emmet_ls', 'dockerls', 'docker_compose_language_service', 'cssls', 'cssmodules_ls', 'css_variables', 'cmake', 'angularls', 'vtsls' },
+  ensure_installed = { "lua_ls", 'yamlls', 'ts_ls', 'prismals', 'jsonls', 'html', 'eslint', 'emmet_ls', 'dockerls', 'docker_compose_language_service', 'cssls', 'cssmodules_ls', 'css_variables', 'cmake', 'vtsls' },
 }
 
 
