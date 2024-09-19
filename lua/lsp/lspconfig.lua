@@ -122,8 +122,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { "lua_ls", 'yamlls', 'ts_ls', 'prismals', 'jsonls', 'html', 'eslint', 'emmet_ls', 'dockerls',
-  'docker_compose_language_service', 'cssls', 'cssmodules_ls', 'css_variables', 'cmake', 'vtsls' }
+local servers = { "lua_ls", 'vtsls' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
