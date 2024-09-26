@@ -83,7 +83,7 @@ lazy.setup({
     { 'nvim-pack/nvim-spectre' },
 
     -- LSP
-    { 'neoclide/coc.nvim',     branch = 'release' },
+    { 'neoclide/coc.nvim',     branch = 'release', build = { 'coc#util#install()' } },
 
     -- Themes
     {

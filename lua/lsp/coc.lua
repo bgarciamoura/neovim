@@ -2,6 +2,20 @@ local vim = vim
 local keyset = vim.keymap.set
 
 vim.g.coc_node_path = '/home/vycros/.local/share/mise/installs/node/20.17.0/bin/node'
+vim.g.coc_global_extensions = {
+  'coc-json',
+  'coc-tsserver',
+  'coc-html',
+  'coc-css',
+  'coc-yaml',
+  'coc-prettier',
+  'coc-html-css-support',
+  'coc-explorer',
+  'coc-eslint',
+  'coc-emmet',
+  'coc-styled-components',
+  'coc-docker'
+}
 
 function _G.check_back_space()
   local col = vim.fn.col(".") - 4
