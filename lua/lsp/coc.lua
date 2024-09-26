@@ -15,7 +15,8 @@ vim.g.coc_global_extensions = {
   'coc-emmet',
   'coc-styled-components',
   'coc-docker',
-  'coc-lua'
+  'coc-lua',
+  'coc-snippets',
 }
 
 function _G.check_back_space()
@@ -63,7 +64,7 @@ keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
 keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
 
 -- Use K to show documentation in preview window
-function _G.show_docs(
+function _G.show_docs()
   local cw = vim.fn.expand('<cword>')
   if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
     vim.api.nvim_command('h ' .. cw)
