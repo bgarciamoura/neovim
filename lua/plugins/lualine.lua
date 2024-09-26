@@ -1,4 +1,5 @@
 local lualine = require("lualine")
+local vim = vim
 
 local colors = {
   bg       = '#202328',
@@ -63,7 +64,6 @@ local config = {
   },
   extensions = {
     "neo-tree",
-    "mason",
   },
 }
 
@@ -137,7 +137,7 @@ ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
-  sources = { 'nvim_diagnostic', 'nvim_lsp' },
+  sources = { 'nvim_diagnostic', 'coc' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
@@ -157,20 +157,8 @@ ins_left {
 ins_left {
   -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    -- local clients = vim.lsp.get_active_clients()
-    local clients = vim.lsp.buf_get_clients(0)
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
+    local status = vim.fn['coc#status']()
+    return status ~= '' and status or 'No Coc Status'
   end,
   icon = '  LSP:',
   color = { fg = '#ffffff', gui = 'bold' },
@@ -220,3 +208,4 @@ ins_right {
 lualine.setup(config)
 
 return lualine
+

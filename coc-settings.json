@@ -1,0 +1,6 @@
+{
+  "suggest.noselect": true,
+  "coc.preferences.formatOnSave": true,
+  "eslint.nodePath": "/home/vycros/.local/share/mise/installs/node/20.17.0/bin/node",
+}
+

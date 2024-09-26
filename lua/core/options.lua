@@ -27,6 +27,10 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
+vim.o.updatetime = 303
+vim.o.signcolumn = "yes"
+
+
 
 -----------------------------------------------------------
 -- Memory, CPU

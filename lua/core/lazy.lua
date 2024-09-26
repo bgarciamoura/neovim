@@ -1,3 +1,4 @@
+local vim = vim
 -----------------------------------------------------------
 -- Plugin manager configuration file
 -----------------------------------------------------------
@@ -52,35 +53,6 @@ lazy.setup({
       end
     },
 
-    -- LSP
-    { 'neovim/nvim-lspconfig' },
-
-    -- Autocomplete
-    {
-      'hrsh7th/nvim-cmp',
-      -- load cmp on InsertEnter
-      event = 'InsertEnter',
-      -- these dependencies will only be loaded when cmp loads
-      -- dependencies are always lazy-loaded unless specified otherwise
-      dependencies = {
-        'L3MON4D3/LuaSnip',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-buffer',
-        'saadparwaiz1/cmp_luasnip',
-      },
-    },
-
-    -- Install LSP, Linters and Formatters
-    {
-      "williamboman/mason.nvim"
-    },
-
-    -- Linking mason with nvim-lspconfig
-    {
-      "williamboman/mason-lspconfig.nvim"
-    },
-
     -- File Tree
     {
       "nvim-neo-tree/neo-tree.nvim",
@@ -93,13 +65,13 @@ lazy.setup({
       }
     },
 
-    { "mattn/emmet-vim",           lazy = true },
+    { "mattn/emmet-vim",                 lazy = true },
 
     -- { "Exafunction/codeium.vim",   event = "BufEnter" },
-    { "github/copilot.vim",        event = "BufEnter" },
-    { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
-    { "luukvbaal/statuscol.nvim",  event = "BufEnter" },
-    { 'Bekaboo/dropbar.nvim',      event = "BufEnter" },
+    { "github/copilot.vim",              event = "BufEnter" },
+    { "nvim-lualine/lualine.nvim",       dependencies = { "nvim-tree/nvim-web-devicons" } },
+    { "luukvbaal/statuscol.nvim",        event = "BufEnter" },
+    { 'Bekaboo/dropbar.nvim',            event = "BufEnter" },
     { "kdheepak/lazygit.nvim" },
     {
       'nvim-telescope/telescope.nvim',
@@ -110,8 +82,8 @@ lazy.setup({
     -- Global search and replace
     { 'nvim-pack/nvim-spectre' },
 
-    -- Formatter
-    { 'stevearc/conform.nvim' },
+    -- LSP
+    { 'neoclide/coc.nvim',     branch = 'release' },
 
     -- Themes
     {
@@ -122,3 +94,4 @@ lazy.setup({
     },
   },
 })
+
