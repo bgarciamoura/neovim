@@ -110,6 +110,9 @@ lazy.setup({
     -- Global search and replace
     { 'nvim-pack/nvim-spectre' },
 
+    -- Formatter
+    { 'stevearc/conform.nvim' },
+
     -- Themes
     {
       "0xstepit/flow.nvim",
