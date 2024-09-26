@@ -14,7 +14,8 @@ vim.g.coc_global_extensions = {
   'coc-eslint',
   'coc-emmet',
   'coc-styled-components',
-  'coc-docker'
+  'coc-docker',
+  'coc-lua'
 }
 
 function _G.check_back_space()
@@ -36,17 +37,19 @@ end
 -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
 -- other plugins before putting this into your config
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
-keyset("i", "<TAB>",
-  'coc#pum#visible() ? coc#pum#next(4) : v:lua.check_back_space() ? "<TAB>" :  v:lua.has_words_before() ? coc#refresh() : "<TAB>"',
+
+
+keyset("i", "<Down>",
+  'coc#pum#visible() ? coc#pum#next(4) : v:lua.check_back_space() ? "<Down>" :  v:lua.has_words_before() ? coc#refresh() : "<Down>"',
   opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(4) : "\<C-h>"]], opts)
+keyset("i", "<Up>", [[coc#pum#visible() ? coc#pum#prev(4) : "\<C-h>"]], opts)
 
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+-- Use <c-space> to trigger completion
+keyset("i", "<C-space>", "coc#refresh()", { silent = true, expr = true })
 
 -- Use <c-j> to trigger snippets
 keyset("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)")
--- Use <c-space> to trigger completion
-keyset("i", "<C-space>", "coc#refresh()", { silent = true, expr = true })
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
@@ -60,7 +63,7 @@ keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
 keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
 
 -- Use K to show documentation in preview window
-function _G.show_docs()
+function _G.show_docs(
   local cw = vim.fn.expand('<cword>')
   if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
     vim.api.nvim_command('h ' .. cw)
