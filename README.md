@@ -18,7 +18,7 @@ And now, with neovim 0.10, i have a lot to change in my previous config, sooooo.
   <ol>
     <li>
       <a href="#folder-structure">Folder Structure</a>
-    </li> 
+    </li>
     <li>
       <a href="#plugins-list">Plugins List</a>
       <ul>
@@ -334,6 +334,8 @@ One of the worst things in coc.nvim is her backend that runs on nodejs, and a lo
 
 Coc.nvim is almost plug'n play, you just have to install their extensions with the command: `:CocInstall coc-<name of extension>` and you're ready to go.
 
+To install the python provider system wide, you'll have to run the command `pip install pynvim` and you're ready to go.
+
 <strike>
 [I'm not part of Masonry](https://github.com/williamboman/mason.nvim)</br>
 [Our language is love](https://github.com/neovim/nvim-lspconfig)</br>
@@ -465,3 +467,4 @@ Bruno Garcia Moura - itsme@bgarciamoura.com
 [linkedin-url]: https://linkedin.com/in/bgarciamoura
 
 Linters, Formatters and LSP
+
