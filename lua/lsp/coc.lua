@@ -40,12 +40,19 @@ end
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
 
 
-keyset("i", "<Down>",
-  'coc#pum#visible() ? coc#pum#next(4) : v:lua.check_back_space() ? "<Down>" :  v:lua.has_words_before() ? coc#refresh() : "<Down>"',
-  opts)
-keyset("i", "<Up>", [[coc#pum#visible() ? coc#pum#prev(4) : "\<C-h>"]], opts)
 
-keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+-- keyset("i", "<Down>",
+-- 'coc#pum#visible() ? coc#pum#next(4) : v:lua.check_back_space() ? "<Down>" :  v:lua.has_words_before() ? coc#refresh() : "<Down>"',
+-- opts)
+
+-- Close the completion menu if it's opened, or just move the cursor down
+
+
+keyset("i", "<Down>", [[coc#pum#visible() ? coc#pum#next(4) : "<Down>"]], opts)
+
+keyset("i", "<Up>", [[coc#pum#visible() ? coc#pum#prev(4) : "<Up>"]], opts)
+
+keyset("i", "<cr>", [[coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"]], opts)
 -- Use <c-space> to trigger completion
 keyset("i", "<C-space>", "coc#refresh()", { silent = true, expr = true })
 
