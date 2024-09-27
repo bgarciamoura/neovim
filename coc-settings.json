@@ -1,6 +1,8 @@
 {
   "suggest.noselect": true,
   "coc.preferences.formatOnSave": true,
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
   "eslint.autoFixOnSave": true,
   "eslint.experimental.useFlatConfig": true,
   "snippets.ultisnips.pythonPrompt": false

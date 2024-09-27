@@ -1,5 +1,11 @@
 local vim = vim
 local keyset = vim.keymap.set
+local npairs = require('nvim-autopairs')
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+
+-- Autopair causes some issues with coc CR complete
+npairs.setup({ map_cr = false })
+_G.MUtils = {}
 
 vim.g.coc_node_path = '/home/vycros/.local/share/mise/installs/node/20.17.0/bin/node'
 vim.g.coc_global_extensions = {
@@ -32,32 +38,25 @@ function _G.has_words_before()
       == nil
 end
 
--- Use Tab for trigger completion with characters ahead and navigate
--- NOTE: There's always a completion item selected by default, you may want to enable
--- no select by setting `"suggest.noselect": true` in your configuration file
--- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
--- other plugins before putting this into your config
-local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
-
-
-
--- keyset("i", "<Down>",
--- 'coc#pum#visible() ? coc#pum#next(4) : v:lua.check_back_space() ? "<Down>" :  v:lua.has_words_before() ? coc#refresh() : "<Down>"',
--- opts)
-
--- Close the completion menu if it's opened, or just move the cursor down
-
+MUtils.completion_confirm = function()
+  if vim.fn["coc#pum#visible"]() ~= 0 then
+    return vim.fn["coc#pum#confirm"]()
+  else
+    return npairs.autopairs_cr()
+  end
+end
 
 keyset("i", "<Down>", [[coc#pum#visible() ? coc#pum#next(4) : "<Down>"]], opts)
 
 keyset("i", "<Up>", [[coc#pum#visible() ? coc#pum#prev(4) : "<Up>"]], opts)
 
-keyset("i", "<cr>", [[coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "<CR>"]], opts)
--- Use <c-space> to trigger completion
-keyset("i", "<C-space>", "coc#refresh()", { silent = true, expr = true })
+keyset("i", "<CR>", 'v:lua.MUtils.completion_confirm()', opts)
+
 
 -- Use <c-j> to trigger snippets
 keyset("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)")
+-- Use <c-space> to trigger completion
+keyset("i", "<C-space>", "coc#refresh()", { silent = true, expr = true })
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
@@ -111,9 +110,4 @@ vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { n
 
 -- Add `:OR` command for organize imports of the current buffer
 vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
-
--- Add (Neo)Vim's native statusline support
--- NOTE: Please see `:h coc-status` for integrations with external plugins that
--- provide custom statusline: lightline.vim, vim-airline
-vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
