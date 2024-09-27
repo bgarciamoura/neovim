@@ -52,7 +52,7 @@ keyset("i", "<Down>", [[coc#pum#visible() ? coc#pum#next(4) : "<Down>"]], opts)
 
 keyset("i", "<Up>", [[coc#pum#visible() ? coc#pum#prev(4) : "<Up>"]], opts)
 
-keyset("i", "<cr>", [[coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"]], opts)
+keyset("i", "<cr>", [[coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "<CR>"]], opts)
 -- Use <c-space> to trigger completion
 keyset("i", "<C-space>", "coc#refresh()", { silent = true, expr = true })
 
