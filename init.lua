@@ -9,6 +9,7 @@ require('plugins.lualine')
 require('plugins.telescope')
 require('plugins.spectre')
 require('plugins.menu')
+require('plugins.precognition')
 require('lsp.coc')
 require('themes.current-theme')
 

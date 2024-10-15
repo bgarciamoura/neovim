@@ -105,6 +105,12 @@ lazy.setup({
     {
       "nvchad/minty",
       cmd = { "Shades", "Huefy" },
+    },
+
+    -- Suggestions for movimentation
+    {
+      "tris203/precognition.nvim",
+      event = "VeryLazy",
     }
   },
 })
