@@ -92,6 +92,20 @@ lazy.setup({
       priority = 1000,
       opts = {},
     },
+
+    -- Beautiful menu
+    {
+      "nvchad/volt", lazy = true,
+    },
+    {
+      "nvchad/menu", lazy = true,
+    },
+
+    -- Color picker
+    {
+      "nvchad/minty",
+      cmd = { "Shades", "Huefy" },
+    }
   },
 })
 

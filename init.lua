@@ -8,6 +8,7 @@ require('plugins.statuscol')
 require('plugins.lualine')
 require('plugins.telescope')
 require('plugins.spectre')
+require('plugins.menu')
 require('lsp.coc')
 require('themes.current-theme')
 
