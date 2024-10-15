@@ -25,6 +25,9 @@ map("n", "<leader>jj", ":Neotree focus<CR>", { desc = "Focus on Neotree buffer" 
 map('n', '<leader>r', ':so %<CR>', { desc = "Reload configuration without restart nvim" })
 map('n', '<leader>q', ':qa!<CR>', { desc = "Close all windows and exit from Neovim with <leader> and q" })
 
+-- Move lines up and down
+map('n', '<C-j>', ':m .+1<CR>==', { desc = "Move the current line down" })
+map('n', '<C-k>', ':m .-2<CR>==', { desc = "Move the current line up" })
 
 -- Codeium
 map('i', '<C-g>', "<cmd>call codeium#Accept()<CR>", { desc = "Accept codeium suggestion" })
