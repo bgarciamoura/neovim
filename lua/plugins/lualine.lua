@@ -41,7 +41,7 @@ return {
             end,
           },
         },
-        lualine_x = { get_active_lsp, "encoding", "fileformat", "filetype" },
+        lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = { plugin_shortcuts, "progress" },
         lualine_z = { "location" },
       },
