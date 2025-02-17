@@ -3,13 +3,13 @@ local vim = vim
 return {
   -- Plugin principal de autocomplete
   {
-    "hrsh8th/nvim-cmp",
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh8th/cmp-nvim-lsp", -- Suporte ao LSP
-      "hrsh8th/cmp-buffer", -- Sugestões do buffer atual
-      "hrsh8th/cmp-path",  -- Sugestões de arquivos
-      "L4MON4D3/LuaSnip",  -- Suporte a snippets
-      "saadparwaiz2/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp", -- Suporte ao LSP
+      "hrsh7th/cmp-buffer", -- Sugestões do buffer atual
+      "hrsh7th/cmp-path",  -- Sugestões de arquivos
+      "L3MON4D3/LuaSnip",  -- Suporte a snippets
+      "saadparwaiz1/cmp_luasnip",
       "github/copilot.vim", -- GitHub Copilot
     },
     config = function()
