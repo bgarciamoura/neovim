@@ -1,6 +1,5 @@
 local vim = vim
 
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.loaded_ruby_provider = 0
@@ -30,14 +29,12 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.o.updatetime = 303
 vim.o.signcolumn = "yes"
 
-
-
 -----------------------------------------------------------
 -- Memory, CPU
 -----------------------------------------------------------
-vim.opt.hidden = true           -- Enable background buffers
-vim.opt.history = 100           -- Remember N lines in history
-vim.opt.lazyredraw = true       -- Faster scrolling
-vim.opt.synmaxcol = 240         -- Max column for syntax highlight
-vim.opt.updatetime = 250        -- ms to wait for trigger an event
-
+vim.opt.hidden = true      -- Enable background buffers
+vim.opt.history = 100      -- Remember N lines in history
+vim.opt.lazyredraw = true  -- Faster scrolling
+vim.opt.synmaxcol = 240    -- Max column for syntax highlight
+vim.opt.updatetime = 250   -- ms to wait for trigger an event
+vim.opt.lazyredraw = false -- Don't redraw while executing macros

@@ -41,3 +41,8 @@ map("n", "<leader>gn", "<cmd>Gitsigns next_hunk<CR>", { desc = "Próxima altera�
 map("n", "<leader>gp", "<cmd>Gitsigns prev_hunk<CR>", { desc = "Alteração anterior" })
 map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Adicionar alteração ao staging" })
 map("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "Reverter alteração" })
+
+-- Persistence
+map("n", "<leader>ss", [[<cmd>lua require("persistence").load()<CR>]], { noremap = true, silent = true })                -- Restaurar última sessão
+map("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<CR>]], { noremap = true, silent = true }) -- Restaurar sessão mais recente
+map("n", "<leader>sd", [[<cmd>lua require("persistence").stop()<CR>]], { noremap = true, silent = true })                -- Desativar salvamento de sessão na sessão atual

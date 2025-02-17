@@ -5,12 +5,12 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
     local handle = io.popen("echo $USER")
-   local username = handle:read("*a"):gsub("\n", "")
+    local username = handle:read("*a"):gsub("\n", "")
     handle:close()
 
     -- ASCII ART (Alternando entre banners aleatórios)
     local banners = {
-      
+
       {
         "      ___           ___           ___           ___      ",
         "     /\\__\\         /\\  \\         /\\__\\         /\\  \\     ",
@@ -60,7 +60,7 @@ return {
         "██╔══██╗██║   ██║",
         "██████╔╝╚██████╔╝",
         "╚═════╝  ╚═════╝ ",
-      }
+      },
     }
 
     -- Escolher um banner aleatório
@@ -69,6 +69,11 @@ return {
 
     -- Botões de ação
     dashboard.section.buttons.val = {
+      dashboard.button(
+        "R",
+        "  Restaurar Sessão",
+        "[[<cmd>lua require('persistence').load({ last = true })<CR>]]"
+      ),
       dashboard.button("e", "📄 Novo Arquivo", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "🔍 Buscar Arquivo", ":Telescope find_files<CR>"),
       dashboard.button("r", "📂 Arquivos Recentes", ":Telescope oldfiles<CR>"),
@@ -94,5 +99,4 @@ return {
     -- Aplicar tema e configuração ao Alpha
     alpha.setup(dashboard.config)
   end,
-
 }
