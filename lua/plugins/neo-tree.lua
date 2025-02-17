@@ -1,11 +1,11 @@
 local neotree = {
- "nvim-neo-tree/neo-tree.nvim",
- branch = "v3.x",
- dependencies = {
-   "nvim-lua/plenary.nvim",
-   "nvim-tree/nvim-web-devicons",
-   "MunifTanjim/nui.nvim"
- },
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v3.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "MunifTanjim/nui.nvim",
+  },
   config = function()
     require("neo-tree").setup({
       close_if_last_window = true, -- Fecha se for o único buffer aberto
@@ -13,7 +13,7 @@ local neotree = {
       enable_git_status = true,
       enable_diagnostics = true,
       filesystem = {
-        hijack_netrw = true, -- Substitui o explorador de arquivos padrão
+        hijack_netrw = true,       -- Substitui o explorador de arquivos padrão
         follow_current_file = enabled, -- Expande automaticamente para o arquivo atual
         use_libuv_file_watcher = true, -- Atualiza automaticamente ao modificar arquivos
         filtered_items = {
@@ -29,13 +29,13 @@ local neotree = {
         width = 35,
         mappings = {
           ["<CR>"] = "open", -- Abrir arquivo com Enter
-          ["o"] = "open", -- Atalho alternativo como no VSCode
+          ["o"] = "open",   -- Atalho alternativo como no VSCode
           ["s"] = "open_split", -- Abrir em split horizontal
           ["v"] = "open_vsplit", -- Abrir em split vertical
           ["t"] = "open_tabnew", -- Abrir em nova aba
           ["<C-r>"] = "refresh", -- Atualizar árvore
           ["h"] = "close_node", -- Fechar diretório
-          ["l"] = "open", -- Abrir diretório/arquivo
+          ["l"] = "open",   -- Abrir diretório/arquivo
         },
       },
       default_component_configs = {
@@ -71,11 +71,11 @@ local neotree = {
   end,
 }
 
-vim.cmd [[
-  highlight NeoTreeNormal guibg=#1e1e1e guifg=#d4d4d4
-  highlight NeoTreeNormalNC guibg=#1e1e1e guifg=#d4d4d4
-  highlight NeoTreeCursorLine guibg=#323232
-  highlight NeoTreeIndentMarker guifg=#5a5a5a
-]]
+-- vim.cmd [[
+--   highlight NeoTreeNormal guibg=#1e1e1e guifg=#d4d4d4
+--   highlight NeoTreeNormalNC guibg=#1e1e1e guifg=#d4d4d4
+--   highlight NeoTreeCursorLine guibg=#323232
+--   highlight NeoTreeIndentMarker guifg=#5a5a5a
+-- ]]
 
 return neotree
