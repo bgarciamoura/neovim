@@ -23,6 +23,19 @@ return {
           ["<Up>"] = cmp.mapping.select_prev_item(),    -- Sugestão anterior (seta para cima)
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirmação do autocomplete
           ["<ESC>"] = cmp.mapping.close(),              -- Fecha o autocomplete
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            local copilot_keys = vim.fn["copilot#Accept"]()
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif copilot_keys ~= "" and type(copilot_keys) == "string" then
+              vim.api.nvim_feedkeys(copilot_keys, "i", true)
+            else
+              fallback()
+            end
+          end, {
+            "i",
+            "s",
+          }),
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp" }, -- Sugestões do LSP
@@ -42,7 +55,7 @@ return {
 
       -- Configura um evento para monitorar a inatividade
       cmp.event:on("menu_opened", function()
-        vim.defer_fn(close_autocomplete, 3000) -- Fecha após 3000ms (3s)
+        vim.defer_fn(close_autocomplete, 10000) -- Fecha após 10000ms (10s)
       end)
     end,
   },
@@ -51,9 +64,9 @@ return {
   {
     "github/copilot.vim",
     config = function()
-      -- Atalhos para o Copilot
-      vim.g.copilot_no_tab_map = true -- Não sobrescreve <Tab>
-      vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_assume_mapped = true
+      vim.g.copilot_tab_fallback = ""
     end,
   },
 }
