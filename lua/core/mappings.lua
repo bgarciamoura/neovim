@@ -29,11 +29,15 @@ map("n", "<leader>q", ":qa!<CR>", { desc = "Close all windows and exit from Neov
 map("n", "<C-j>", ":m .+1<CR>==", { desc = "Move the current line down" })
 map("n", "<C-k>", ":m .-2<CR>==", { desc = "Move the current line up" })
 
--- Codeium
-map("i", "<C-g>", "<cmd>call codeium#Accept()<CR>", { desc = "Accept codeium suggestion" })
-map("i", "<C-;>", "<cmd>call codeium#CycleCompletions(1)<CR>", { desc = "Cycle codeium suggestion" })
-map("i", "<C-,>", "<cmd>call codeium#CycleCompletions(-1)<CR>", { desc = "Cycle codeium suggestion" })
-map("i", "<C-x>", "<cmd>call codeium#Clear()<CR>", { desc = "Clear codeium suggestion" })
+-- Move visual block up and down
+map("x", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move the visual block down" })
+map("x", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move the visual block up" })
+
+-- Mapear Ctrl+V para colar no Neovim (usando o clipboard do sistema)
+map("i", "<C-v>", "<C-r>+", { desc = "Colar no modo de inserção" })
+map("n", "<C-v>", '"+p', { desc = "Colar no modo normal" })
+map("v", "<C-v>", '"+p', { desc = "Colar no modo visual" })
+map("c", "<C-v>", "<C-r>+", { desc = "Colar no modo comando" })
 
 -- Git Signs
 map("n", "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Git Blame na linha atual" })
