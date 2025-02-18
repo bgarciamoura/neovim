@@ -1,128 +1,126 @@
+local function map(mode, target_keys, command, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, target_keys, command, options)
+end
+
 return {
   "jake-stewart/multicursor.nvim",
   branch = "1.0",
   config = function()
     local mc = require("multicursor-nvim")
-
     mc.setup()
 
-    local set = vim.keymap.set
+    -- Adicionar/remover cursores
+    map(
+      "n",
+      "<S-Up>",
+      "<cmd>lua require('multicursor-nvim').lineAddCursor(-1)<CR>",
+      { desc = "Adicionar cursor acima" }
+    )
+    map(
+      "n",
+      "<S-Down>",
+      "<cmd>lua require('multicursor-nvim').lineAddCursor(1)<CR>",
+      { desc = "Adicionar cursor abaixo" }
+    )
+    map(
+      "n",
+      "<leader><Up>",
+      "<cmd>lua require('multicursor-nvim').lineSkipCursor(-1)<CR>",
+      { desc = "Pular cursor acima" }
+    )
+    map(
+      "n",
+      "<leader><Down>",
+      "<cmd>lua require('multicursor-nvim').lineSkipCursor(1)<CR>",
+      { desc = "Pular cursor abaixo" }
+    )
 
-    -- Add or skip cursor above/below the main cursor.
-    set({ "n", "x" }, "<S-up>", function()
-      mc.lineAddCursor(-1)
-    end)
-    set({ "n", "x" }, "<S-down>", function()
-      mc.lineAddCursor(1)
-    end)
-    set({ "n", "x" }, "<leader><up>", function()
-      mc.lineSkipCursor(-1)
-    end)
-    set({ "n", "x" }, "<leader><down>", function()
-      mc.lineSkipCursor(1)
-    end)
+    -- Adicionar/remover cursores por correspondência
+    map(
+      "n",
+      "<leader>n",
+      "<cmd>lua require('multicursor-nvim').matchAddCursor(1)<CR>",
+      { desc = "Adicionar cursor na próxima correspondência" }
+    )
+    map(
+      "n",
+      "<leader>s",
+      "<cmd>lua require('multicursor-nvim').matchSkipCursor(1)<CR>",
+      { desc = "Pular cursor na próxima correspondência" }
+    )
+    map(
+      "n",
+      "<leader>N",
+      "<cmd>lua require('multicursor-nvim').matchAddCursor(-1)<CR>",
+      { desc = "Adicionar cursor na correspondência anterior" }
+    )
+    map(
+      "n",
+      "<leader>S",
+      "<cmd>lua require('multicursor-nvim').matchSkipCursor(-1)<CR>",
+      { desc = "Pular cursor na correspondência anterior" }
+    )
 
-    -- Add or skip adding a new cursor by matching word/selection
-    set({ "n", "x" }, "<leader>n", function()
-      mc.matchAddCursor(1)
-    end)
-    set({ "n", "x" }, "<leader>s", function()
-      mc.matchSkipCursor(1)
-    end)
-    set({ "n", "x" }, "<leader>N", function()
-      mc.matchAddCursor(-1)
-    end)
-    set({ "n", "x" }, "<leader>S", function()
-      mc.matchSkipCursor(-1)
-    end)
+    -- Adicionar todos os cursores correspondentes
+    map(
+      "n",
+      "<leader>A",
+      "<cmd>lua require('multicursor-nvim').matchAllAddCursors()<CR>",
+      { desc = "Adicionar cursores em todas as correspondências" }
+    )
 
-    -- In normal/visual mode, press `mwap` will create a cursor in every match of
-    -- the word captured by `iw` (or visually selected range) inside the bigger
-    -- range specified by `ap`. Useful to replace a word inside a function, e.g. mwif.
-    set({ "n", "x" }, "mw", function()
-      mc.operator({ motion = "iw", visual = true })
-      -- Or you can pass a pattern, press `mwi{` will select every \w,
-      -- basically every char in a `{ a, b, c, d }`.
-      -- mc.operator({ pattern = [[\<\w]] })
-    end)
+    -- Alternar entre cursores
+    map(
+      "n",
+      "<S-Left>",
+      "<cmd>lua require('multicursor-nvim').nextCursor()<CR>",
+      { desc = "Mover para o próximo cursor" }
+    )
+    map(
+      "n",
+      "<S-Right>",
+      "<cmd>lua require('multicursor-nvim').prevCursor()<CR>",
+      { desc = "Mover para o cursor anterior" }
+    )
 
-    -- Press `mWi"ap` will create a cursor in every match of string captured by `i"` inside range `ap`.
-    set("n", "mW", mc.operator)
+    -- Deletar cursores
+    map(
+      "n",
+      "<leader>x",
+      "<cmd>lua require('multicursor-nvim').deleteCursor()<CR>",
+      { desc = "Deletar o cursor atual" }
+    )
 
-    -- Add all matches in the document
-    set({ "n", "x" }, "<leader>A", mc.matchAllAddCursors)
+    -- Manuseio do mouse
+    map(
+      "n",
+      "<C-LeftMouse>",
+      "<cmd>lua require('multicursor-nvim').handleMouse()<CR>",
+      { desc = "Adicionar/remover cursor com o mouse" }
+    )
+    map(
+      "n",
+      "<C-LeftDrag>",
+      "<cmd>lua require('multicursor-nvim').handleMouseDrag()<CR>",
+      { desc = "Arrastar para criar cursores" }
+    )
 
-    -- You can also add cursors with any motion you prefer:
-    -- set("n", "<right>", function()
-    --     mc.addCursor("w")
-    -- end)
-    -- set("n", "<leader><right>", function()
-    --     mc.skipCursor("w")
-    -- end)
+    -- Restaurar cursores
+    map(
+      "n",
+      "<leader>gv",
+      "<cmd>lua require('multicursor-nvim').restoreCursors()<CR>",
+      { desc = "Restaurar cursores apagados" }
+    )
 
-    -- Rotate the main cursor.
-    set({ "n", "x" }, "<S-left>", mc.nextCursor)
-    set({ "n", "x" }, "<S-right>", mc.prevCursor)
-
-    -- Delete the main cursor.
-    set({ "n", "x" }, "<leader>x", mc.deleteCursor)
-
-    -- Add and remove cursors with control + left click.
-    set("n", "<c-leftmouse>", mc.handleMouse)
-    set("n", "<c-leftdrag>", mc.handleMouseDrag)
-
-    -- Easy way to add and remove cursors using the main cursor.
-    set({ "n", "x" }, "<c-q>", mc.toggleCursor)
-
-    -- Clone every cursor and disable the originals.
-    set({ "n", "x" }, "<leader><c-q>", mc.duplicateCursors)
-
-    set("n", "<esc>", function()
-      if not mc.cursorsEnabled() then
-        mc.enableCursors()
-      elseif mc.hasCursors() then
-        mc.clearCursors()
-      else
-        -- Default <esc> handler.
-      end
-    end)
-
-    -- bring back cursors if you accidentally clear them
-    set("n", "<leader>gv", mc.restoreCursors)
-
-    -- Align cursor columns.
-    set("n", "<leader>a", mc.alignCursors)
-
-    -- Split visual selections by regex.
-    set("x", "S", mc.splitCursors)
-
-    -- Append/insert for each line of visual selections.
-    set("x", "I", mc.insertVisual)
-    set("x", "A", mc.appendVisual)
-
-    -- match new cursors within visual selections by regex.
-    set("x", "M", mc.matchCursors)
-
-    -- Rotate visual selection contents.
-    set("x", "<leader>t", function()
-      mc.transposeCursors(1)
-    end)
-    set("x", "<leader>T", function()
-      mc.transposeCursors(-1)
-    end)
-
-    -- Jumplist support
-    set({ "x", "n" }, "<c-i>", mc.jumpForward)
-    set({ "x", "n" }, "<c-o>", mc.jumpBackward)
-
-    -- Customize how cursors look.
+    -- Estilização dos cursores múltiplos
     local hl = vim.api.nvim_set_hl
     hl(0, "MultiCursorCursor", { link = "Cursor" })
     hl(0, "MultiCursorVisual", { link = "Visual" })
     hl(0, "MultiCursorSign", { link = "SignColumn" })
-    hl(0, "MultiCursorMatchPreview", { link = "Search" })
-    hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
-    hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
-    hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
   end,
 }
