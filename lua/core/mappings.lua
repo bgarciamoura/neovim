@@ -101,8 +101,6 @@ map("v", "p", '"_dP', { desc = "Substituir texto sem afetar clipboard" })
 map("n", "<leader>t", ":split | terminal<CR>", { desc = "Abrir terminal no split" })
 map("n", "<leader>vt", ":vsplit | terminal<CR>", { desc = "Abrir terminal em vertical" })
 
--- Alternar entre os dois últimos buffers
-map("n", "<leader><leader>", "<C-^>", { desc = "Alternar entre buffers" })
 
 -- Selecionar e substituir
 map("n", "<leader>sr", ":%s//g<Left><Left>", { desc = "Selecionar e substituir no arquivo" })
