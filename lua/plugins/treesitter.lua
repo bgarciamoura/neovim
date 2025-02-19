@@ -16,11 +16,11 @@ return {
           "markdown",
           "bash",
           "markdown",
-        },                         -- Instala os parsers automaticamente:w
+        },                             -- Instala os parsers automaticamente:w
 
         highlight = { enable = true }, -- Ativa o realce de sintaxe
-        indent = { enable = true }, -- Melhor indentação automática
-        autotag = { enable = true }, -- Fecha automaticamente tags HTML/JSX
+        indent = { enable = true },    -- Melhor indentação automática
+        -- autotag = { enable = true }, -- Fecha automaticamente tags HTML/JSX
       })
     end,
   },
