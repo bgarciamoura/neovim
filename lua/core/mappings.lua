@@ -106,3 +106,16 @@ map("n", "<leader>vt", ":vsplit | terminal<CR>", { desc = "Abrir terminal em ver
 map("n", "<leader>sr", ":%s//g<Left><Left>", { desc = "Selecionar e substituir no arquivo" })
 map("v", "<leader>sr", "y:%s/<C-r>0//g<Left><Left>", { desc = "Selecionar e substituir na seleção" })
 map("n", "<leader>sw", ":Spectre<CR>", { desc = "Selecionar e substituir no workspace" })
+
+-- Neotest
+map("n", "<leader>js", "<cmd>lua require('neotest').run.stop()<cr>", { desc = "Parar execução de testes" })
+map("n", "<leader>jr", "<cmd>lua require('neotest').run.run()<cr>", { desc = "Executar testes" })
+map("n", "<leader>jf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
+  { desc = "Executar testes do arquivo" })
+map("n", "<leader>jo", "<cmd>lua require('neotest').output.open()<cr>", { desc = "Abrir saída de testes" })
+map("n", "<leader>ju", "<cmd>lua require('neotest').summary.toggle()<cr>",
+  { desc = "Alternar visibilidade do resumo de testes" })
+map("n", "<leader>jp", "<cmd>lua require('neotest').jump.prev({status = 'failed'})<cr>",
+  { desc = "Ir para o próximo teste falho" })
+map("n", "<leader>jn", "<cmd>lua require('neotest').jump.next({status = 'failed'})<cr>",
+  { desc = "Ir para o teste anterior falho" })
