@@ -24,12 +24,12 @@ return {
 
     })
   end,
-  vim.api.nvim_set_keymap("n", "<leader>js", "<cmd>lua require('neotest').run.stop()<cr>", {}),
-  vim.api.nvim_set_keymap("n", "<leader>jr", "<cmd>lua require('neotest').run.run()<cr>", {}),
-  vim.api.nvim_set_keymap("n", "<leader>jf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", {}),
-  vim.api.nvim_set_keymap("n", "<leader>jo", "<cmd>lua require('neotest').output.open()<cr>", {}),
-  vim.api.nvim_set_keymap("n", "<leader>ju", "<cmd>lua require('neotest').summary.toggle()<cr>", {}),
-  vim.api.nvim_set_keymap("n", "<leader>jp", "<cmd>lua require('neotest').jump.prev({status = 'failed'})<cr>", {}),
-  vim.api.nvim_set_keymap("n", "<leader>jn", "<cmd>lua require('neotest').jump.next({status = 'failed'})<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>js", "<cmd>lua require('neotest').run.stop()<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>jr", "<cmd>lua require('neotest').run.run()<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>jf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>jo", "<cmd>lua require('neotest').output.open()<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>ju", "<cmd>lua require('neotest').summary.toggle()<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>jp", "<cmd>lua require('neotest').jump.prev({status = 'failed'})<cr>", {}),
+  -- vim.api.nvim_set_keymap("n", "<leader>jn", "<cmd>lua require('neotest').jump.next({status = 'failed'})<cr>", {}),
 
 }
