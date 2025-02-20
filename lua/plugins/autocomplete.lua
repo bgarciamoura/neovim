@@ -10,13 +10,29 @@ return {
       "hrsh7th/cmp-path",     -- Sugestões de arquivos
       "L3MON4D3/LuaSnip",     -- Suporte a snippets
       "saadparwaiz1/cmp_luasnip",
-      "github/copilot.vim",   -- GitHub Copilot
+      "github/copilot.vim",   -- GitHub Copilot,
+      "onsails/lspkind-nvim", -- Ícones no autocomplete
     },
     config = function()
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
 
       cmp.setup({
-        mapping = {
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol',          -- show only symbol annotations
+            maxwidth = {
+              menu = 50,              -- leading text (labelDetails)
+              abbr = 50,              -- actual suggestion item
+            },
+            ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+            before = function(entry, vim_item)
+              return vim_item
+            end
+          })
+        },
+        mapping    = {
           ["<C-n>"] = cmp.mapping.select_next_item(),        -- Próxima sugestão
           ["<C-p>"] = cmp.mapping.select_prev_item(),        -- Sugestão anterior
           ["<Down>"] = cmp.mapping.select_next_item(),       -- Próxima sugestão (seta para baixo)
@@ -37,7 +53,7 @@ return {
             "s",
           }),
         },
-        sources = cmp.config.sources({
+        sources    = cmp.config.sources({
           { name = "nvim_lsp" }, -- Sugestões do LSP
           { name = "buffer" },   -- Sugestões do buffer
           { name = "path" },     -- Sugestões de arquivos
