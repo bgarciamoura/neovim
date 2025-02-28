@@ -13,9 +13,12 @@ local neotree = {
       enable_git_status = true,
       enable_diagnostics = true,
       filesystem = {
-        hijack_netrw = true,             -- Substitui o explorador de arquivos padrão
-        follow_current_file = 'enabled', -- Expande automaticamente para o arquivo atual
-        use_libuv_file_watcher = true,   -- Atualiza automaticamente ao modificar arquivos
+        hijack_netrw = true,           -- Substitui o explorador de arquivos padrão
+        follow_current_file = {
+          enabled = true,              -- Atualiza automaticamente ao mudar de arquivo
+          leave_dirs_open = true,      -- Deixa diretórios abertos
+        },                             -- Expande automaticamente para o arquivo atual
+        use_libuv_file_watcher = true, -- Atualiza automaticamente ao modificar arquivos
         filtered_items = {
           visible = true,
           hide_dotfiles = false, -- Se quiser ocultar arquivos ocultos (como .git)

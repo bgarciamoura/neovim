@@ -4,4 +4,7 @@ require("core.autocommands")
 require("config.lazy")
 require("config.lspconfig")
 
-vim.cmd.colorscheme("catppuccin")
+-- Theme
+require("themes.cyberpunk")
+
+-- vim.cmd.colorscheme("catppuccin")
