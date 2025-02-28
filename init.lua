@@ -5,6 +5,6 @@ require("config.lazy")
 require("config.lspconfig")
 
 -- Theme
-require("themes.cyberpunk")
+require("themes.cyberpunk-soft")
 
 -- vim.cmd.colorscheme("catppuccin")
