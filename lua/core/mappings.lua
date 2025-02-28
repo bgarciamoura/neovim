@@ -119,3 +119,21 @@ map("n", "<leader>jp", "<cmd>lua require('neotest').jump.prev({status = 'failed'
   { desc = "Ir para o próximo teste falho" })
 map("n", "<leader>jn", "<cmd>lua require('neotest').jump.next({status = 'failed'})<cr>",
   { desc = "Ir para o teste anterior falho" })
+
+-- Selecionar uma palavra para a esquerda do cursor
+map("n", "gw", "viw", { desc = "Selecionar palavra para a esquerda" })
+
+-- Selecionar uma palavra para a direita do cursor
+map("n", "ge", "vaw", { desc = "Selecionar palavra para a direita" })
+
+-- Selecionar texto entre aspas
+map("n", "gq", "vi\"", { desc = "Selecionar texto entre aspas" })
+
+-- Selecionar texto entre parênteses
+map("n", "gQ", "vi)", { desc = "Selecionar texto entre parênteses" })
+
+-- Selecionar texto entre colchetes
+map("n", "g[", "vi[", { desc = "Selecionar texto entre colchetes" })
+
+-- Selecionar texto entre chaves
+map("n", "g{", "vi{", { desc = "Selecionar texto entre chaves" })
