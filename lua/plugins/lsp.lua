@@ -10,6 +10,11 @@ return {
 		end,
 	},
 
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+	},
+
 	-- Mason-LSPConfig: Integra Mason com o LSP
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -31,11 +36,15 @@ return {
 					"htmlhint", -- Linting para HTML
 					"markdownlint", -- Linting para Markdown
 					"hadolint", -- Linting para Dockerfile
-					"yamllint", -- Linting para yaml
 					"taplo", -- Linting para toml
-					"xmllint", -- Linting para xml
 					"prisma-language-server", -- Linting para prisma
-					"dotenv-linter", -- Linting para env
+				},
+				auto_update = true, -- Atualiza automaticamente as ferramentas instaladas
+				run_on_start = true, -- Instala automaticamente ao iniciar o Neovim
+				integrations = {
+					["mason-lspconfig"] = true,
+					["mason-null-ls"] = false,
+					["mason-nvim-dap"] = false,
 				},
 			})
 		end,
