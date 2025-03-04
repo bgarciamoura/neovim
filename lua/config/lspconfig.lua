@@ -16,7 +16,8 @@ local on_attach = function(client, bufnr)
 end
 
 -- Configurar servidores
-local servers = { "ts_ls", "eslint", "html", "cssls", "jsonls", "lua_ls", "angularls", "dockerls", "prismals", "nxls" }
+local servers = { "ts_ls", "eslint", "html", "cssls", "jsonls", "lua_ls", "angularls", "dockerls", "prismals", "nxls",
+  "somesass_ls", "biome" }
 for _, server in ipairs(servers) do
   lspconfig[server].setup({
     on_attach = on_attach,

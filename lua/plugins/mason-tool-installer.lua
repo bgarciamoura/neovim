@@ -4,7 +4,8 @@ return {
   config = function()
     require("mason-tool-installer").setup({
       ensure_installed = {
-        "eslint_d",        -- Ferramenta para linting rápido
+        --"eslint_d",        -- Ferramenta para linting rápido
+        "biome",           -- Ferramenta para linting mais rápida que o eslint
         "prettierd",       -- Formatação com Prettier mais rápida
         "stylua",          -- Formatação para Lua
         "shfmt",           -- Formatação para Shell Scripts
