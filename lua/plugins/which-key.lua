@@ -28,16 +28,20 @@ return {
 			{ "<leader>e", ":Neotree toggle<CR>", desc = "Abrir/Fechar NeoTree" },
 			{ "<leader>jj", ":Neotree focus<CR>", desc = "Focar no NeoTree" },
 
-			-- LSP
+			-- LSP + LSPSaga
 			{ "<leader>l", group = "LSP" },
-			{ "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Renomear Símbolo" },
-			{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Ações de Código" },
-			{ "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Ir para Definição" },
-			{ "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", desc = "Formatar Código" },
-			{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "Mostrar Documentação" },
-			{ "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Referências" },
-			{ "<leader>ls", "<cmd>Lspsaga outline<CR>", desc = "Abrir Outline" },
-			{ "<leader>lo", "<cmd>Lspsaga hover_doc<CR>", desc = "Abrir Documentação Hover" },
+			{ "<leader>lR", "<cmd>Lspsaga rename<CR>", desc = "Renomear Símbolo (LSPSaga)" },
+			{ "<leader>la", "<cmd>Lspsaga code_action<CR>", desc = "Ações de Código (LSPSaga)" },
+			{ "<leader>ld", "<cmd>Lspsaga peek_definition<CR>", desc = "Visualizar Definição" },
+			{ "<leader>lg", "<cmd>Lspsaga goto_definition<CR>", desc = "Ir para Definição" },
+			{ "<leader>lo", "<cmd>Lspsaga hover_doc<CR>", desc = "Mostrar Documentação" },
+			{ "<leader>lp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Erro Anterior" },
+			{ "<leader>ln", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Próximo Erro" },
+			{ "<leader>lx", "<cmd>Lspsaga show_diagnostics<CR>", desc = "Exibir Erros no Arquivo" },
+			{ "<leader>lt", "<cmd>Lspsaga term_toggle<CR>", desc = "Abrir Terminal Flutuante" },
+			{ "<leader>ls", "<cmd>Lspsaga outline<CR>", desc = "Exibir Estrutura do Código" },
+			{ "<leader>lf", "<cmd>Lspsaga finder<CR>", desc = "Localizar Referências e Definições" },
+			{ "<leader>lT", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Ir para Definição de Tipo" },
 
 			-- Git Signs
 			{ "<leader>g", group = "Git" },
