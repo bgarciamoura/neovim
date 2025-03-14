@@ -154,5 +154,5 @@ map("n", "g[", "vi[", { desc = "Selecionar texto entre colchetes" })
 map("n", "g{", "vi{", { desc = "Selecionar texto entre chaves" })
 
 -- Incrementar e decrementar números
-map("n", "<C-A>", "<C-a>", { desc = "Incrementar número" })
-map("n", "<C-x>", "<C-x>", { desc = "Decrementar número" })
+map("n", "<leader>ii", "<C-a>", { desc = "Incrementar número" })
+map("n", "<leader>dd", "<C-x>", { desc = "Decrementar número" })
