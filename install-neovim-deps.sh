@@ -95,6 +95,7 @@ install_npm_package() {
     
     print_message "$YELLOW" "Instalando $package..."
     if command_exists pnpm; then
+        pnpm config set ignore-build-scripts false -g
         pnpm add -g "$package"
     elif command_exists mise && mise ls --installed | grep -q "nodejs"; then
         mise x nodejs -- npm install -g "$package"
