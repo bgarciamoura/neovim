@@ -14,14 +14,6 @@ return {
 					information = "ℹ️",
 				},
 			})
-
-			-- Mapeamento para abrir o Trouble
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				{ noremap = true, silent = true }
-			)
 		end,
 	},
 }
