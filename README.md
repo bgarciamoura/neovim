@@ -1,25 +1,26 @@
-# 🚀 Neovim Development Environment
+# 🚀 Ultimate Neovim Development Environment
 
-A modern, feature-rich Neovim configuration designed for professional developers. This setup transforms Neovim into a full-featured IDE with intelligent code completion, Git integration, advanced navigation, and AI-powered assistance.
+A powerful, feature-rich Neovim configuration designed for professional developers. This setup transforms Neovim into a full-featured IDE with intelligent code completion, Git integration, advanced navigation, performance diagnostics, and AI-powered assistance.
 
 ![Neovim Development Environment](https://raw.githubusercontent.com/yourusername/neovim-config/main/screenshots/dashboard.png)
 
 ## ✨ Features
 
-- **🧠 AI-Powered Development** - GitHub Copilot integration for intelligent code suggestions
-- **🔍 Smart Code Navigation** - Jump to definitions, references, and symbols with ease
-- **🔧 Built-in LSP** - Intelligent code completion, diagnostics, and documentation
-- **🌲 Syntax Tree Analysis** - Treesitter for precise syntax highlighting and code understanding
-- **🔄 Git Integration** - Version control right in your editor with GitSigns and LazyGit
-- **📊 Testing & Debugging** - Run tests and debug your code without leaving Neovim
-- **🎨 Modern UI** - Beautiful themes, status line, and notifications
-- **⚡ Ultra-Fast Performance** - Optimized for speed with lazy-loading plugins
+- **🧠 AI-Powered Development** - GitHub Copilot integration with enhanced configuration and keyboard shortcuts
+- **🔍 Smart Code Navigation** - Jump to definitions, references, and symbols with enhanced LSP capabilities
+- **🔧 Comprehensive Language Support** - Full LSP integration for TypeScript, JavaScript, React, Angular, and more
+- **🌲 Deep Code Analysis** - Treesitter for precise syntax highlighting and code understanding
+- **🔄 Git Integration** - Seamless version control with GitSigns and LazyGit
+- **🔍 Performance Analytics** - Built-in diagnostic tools to measure startup time and plugin performance
+- **📊 Testing & Debugging** - Full DAP support for Node.js, TypeScript, Python, and more
+- **🎨 Modern UI** - Beautiful themes, customizable dashboard, and intelligent status line
+- **⚡ Lightning-Fast Performance** - Optimized lazy loading and performance monitoring
 
 ## 🖥️ Screenshots
 
 ![Code Editing](https://raw.githubusercontent.com/yourusername/neovim-config/main/screenshots/code-editing.png)
 ![Git Integration](https://raw.githubusercontent.com/yourusername/neovim-config/main/screenshots/git-integration.png)
-![Telescope Search](https://raw.githubusercontent.com/yourusername/neovim-config/main/screenshots/telescope.png)
+![Performance Analytics](https://raw.githubusercontent.com/yourusername/neovim-config/main/screenshots/performance.png)
 
 ## 🔧 Installation
 
@@ -27,8 +28,9 @@ A modern, feature-rich Neovim configuration designed for professional developers
 
 - Neovim 0.9.0 or later
 - Git
-- A Nerd Font (for icons)
-- Node.js (for LSP servers)
+- Node.js and npm
+- A Nerd Font
+- Ripgrep for search functionality
 
 ### Quick Install
 
@@ -45,76 +47,98 @@ nvim
 
 ## ⌨️ Key Features vs. VS Code
 
-| Feature | Neovim | VS Code |
+| Feature | This Neovim Config | VS Code |
 |---------|--------|---------|
-| **Speed** | Lightning fast, even with large files | Can lag with large files |
+| **Startup Time** | Lightning fast (<100ms with diagnostics) | Several seconds |
 | **Memory Usage** | Minimal (~100MB) | Heavy (500MB+) |
-| **Customization** | Complete control over every aspect | Limited to available settings and extensions |
-| **Keyboard-Driven** | Designed for keyboard efficiency | Primarily mouse-driven with keyboard shortcuts |
-| **Plugin Ecosystem** | Lightweight, focused plugins | Heavier extensions with more overhead |
-| **AI Integration** | GitHub Copilot integration | GitHub Copilot and other AI tools |
-| **Remote Development** | Native SSH support, lightweight | Requires VS Code Server, heavier |
-| **Startup Time** | Almost instant (<100ms) | Several seconds |
-| **Terminal Integration** | Seamless, built-in | Adequate but not as integrated |
+| **AI Integration** | Enhanced Copilot with better suggestions | Standard GitHub Copilot |
+| **Performance Analytics** | Built-in diagnostics for plugins & startup | Limited extension profiling |
+| **Customization** | Complete control with modular configuration | Limited to settings and extensions |
+| **Keyboard-Driven** | Comprehensive Which-Key integration | Primarily mouse-driven |
+| **Git Workflow** | Deeply integrated with specialized tools | Basic Git features |
+| **Session Management** | Advanced persistence with context retention | Basic workspace saving |
+| **Terminal Integration** | Seamless, highly configurable | Adequate but less integrated |
+| **Framework Support** | Specialized tooling for Next.js, Angular, NestJS | Generic support via extensions |
 
-## 🧩 Main Plugins
+## 🧩 Core Plugins
 
-### Navigation
-- **Telescope** - Fuzzy finder for files, buffers, and symbols
+### Intelligent Coding
+- **Copilot** - Enhanced AI suggestions with custom mappings and integration
+- **nvim-cmp** - Advanced completion with LSP integration
+- **Avante** - AI assistant integration
+- **LuaSnip** - Powerful snippet engine with custom snippets for frameworks
+
+### Navigation & Structure
+- **Telescope** - Fuzzy finder with optimized configuration
 - **Neo-tree** - File explorer with Git integration
-- **Which-key** - Displays keybindings as you type
-
-### Editing
+- **Which-key** - Comprehensive keyboard shortcuts with documentation
 - **Treesitter** - Advanced syntax highlighting and code navigation
-- **nvim-cmp** - Intelligent code completion
-- **nvim-surround** - Easily manage surrounding pairs
-- **nvim-autopairs** - Auto-close brackets and quotes
-- **multicursor** - Multiple cursor support
 
-### Git
+### Developer Experience
+- **Spectre** - Project-wide search and replace
+- **Persistence** - Session management with intelligent saving
+- **Diagnostic** - Performance measurement and optimization
+- **Multicursor** - Multiple cursor support similar to VS Code
+
+### Git Integration
 - **GitSigns** - Shows Git diff markers in the gutter
 - **LazyGit** - Full Git interface inside Neovim
 
-### LSP & Intelligence
-- **nvim-lspconfig** - Language Server Protocol support
-- **mason.nvim** - Easy installation of LSP servers
-- **GitHub Copilot** - AI-powered code completion
-- **LSP Saga** - Enhanced UI for LSP features
+### Backend Development
+- **Typescript-tools** - Enhanced TypeScript/JavaScript support
+- **Backend-frameworks** - Specialized support for NestJS, FastAPI, Django
+- **DAP** - Debug Adapter Protocol with configurations for Node.js, Python
 
-### Testing & Debugging
-- **Neotest** - Test runner framework
-- **nvim-dap** - Debug Adapter Protocol support
+### DevOps & Containers
+- **DevContainers** - Development in isolated containers
+- **Docker** - Docker file editing and container management
 
-### UI
-- **Alpha** - Beautiful dashboard
-- **Lualine** - Customizable status line
-- **Noice** - Enhanced UI for messages, cmdline, and popups
-- **indent-blankline** - Indentation guides
+### Styling & UI
+- **Alpha** - Beautiful dashboard with performance metrics
+- **Lualine** - Status line with Git and LSP integration
+- **Cyberpunk/Morta** - Custom theme with Neovim optimizations
+- **Noice** - Enhanced UI for notifications and command line
 
-## 💡 Why This Is Better Than VS Code
+## 💡 Why This Configuration Stands Out
 
-1. **Blazing Fast Performance** - Open and edit files instantly, even with large projects
-2. **Truly Customizable** - Everything can be tailored to your workflow
-3. **Terminal-First Workflow** - Seamless integration with your terminal environment
-4. **Minimal Resource Usage** - Uses a fraction of the memory compared to Electron-based editors
-5. **Keyboard-Focused Efficiency** - Designed for developers who prefer keyboard over mouse
-6. **Distraction-Free Environment** - Focus on your code without UI clutter
-7. **Portable Configuration** - Works anywhere Neovim runs, including remote servers
-8. **Lifetime Investment** - Skills transfer across all vi/vim/Neovim editors
+1. **Performance Obsessed** - Built-in diagnostics track startup time and plugin performance
+2. **Framework Specialized** - Custom snippets and tooling for Next.js, Angular, NestJS, and more
+3. **Enhanced AI Integration** - Optimized Copilot configuration for better suggestions
+4. **Modular Design** - Easily add, remove, or modify components without breaking everything
+5. **Full TypeScript Ecosystem** - Deep integration with TypeScript tools and frameworks
+6. **Visual Feedback** - Beautiful UI that provides helpful information without being intrusive
+7. **Container Ready** - Seamless development in Docker containers
+8. **Testing First** - Integrated test runners for Jest and other frameworks
 
 ## 🤔 Making the Switch from VS Code
 
 If you're coming from VS Code, here are some tips to ease the transition:
 
-1. Start with key mappings in normal mode (check out `lua/core/mappings.lua`)
-2. Learn the basics of Vim motions to move efficiently
-3. Use the dashboard (Alpha) to access common actions
-4. Press `<Space>` to see available commands with Which-key
-5. Use Telescope (`<Space>ff`) to find files, similar to VS Code's Quick Open
+1. Press `Space` to access Which-Key and discover available commands
+2. Use Alpha dashboard (startup screen) to access common actions
+3. Learn basic Vim motions (`h`,`j`,`k`,`l`, `w`, `b`, etc.) to move efficiently
+4. Use Telescope with `<Space>ff` for the familiar Quick Open experience
+5. Try `<Space>a` commands to access AI features like Copilot
 
-## 📚 Looking for More?
+## 📚 Documentation
 
-For detailed documentation on all features and keyboard shortcuts, see the [Wiki](https://github.com/yourusername/neovim-config/wiki).
+For more detailed documentation on all features and keyboard shortcuts, check the comments within each configuration file or use Which-Key in Neovim by pressing the space bar.
+
+## 🔑 Key Bindings Cheat Sheet
+
+Press `Space` to see a comprehensive menu of commands organized by category:
+
+- **f** - Files and search
+- **g** - Git operations
+- **l** - LSP and code navigation
+- **c** - Code and clipboard operations
+- **d** - Debugging
+- **t** - Terminal
+- **a** - AI assistance (Copilot, Avante)
+- **j** - Testing (Jest, etc.)
+- **w** - Window management
+- **b** - Buffer operations
+- **x** - Exit and session operations
 
 ## 🤝 Contributing
 
@@ -122,4 +146,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📝 License
 
-This Neovim configuration is released under the MIT License. See [LICENSE](LICENSE) for details.
+This Neovim configuration is released under the MIT License.

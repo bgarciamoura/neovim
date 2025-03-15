@@ -43,7 +43,7 @@ return {
 
 		-- Botões de ação
 		dashboard.section.buttons.val = {
-			dashboard.button("R", "  Restaurar Sessão", "<cmd>lua require('persistence').load()<CR>"),
+			dashboard.button("R", "💾 Restaurar Última Sessão", "<cmd>lua require('persistence').load()<CR>"),
 			dashboard.button("e", "📄 Novo Arquivo", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("f", "🔍 Buscar Arquivo", ":Telescope find_files<CR>"),
 			dashboard.button("r", "📂 Arquivos Recentes", ":Telescope oldfiles<CR>"),
