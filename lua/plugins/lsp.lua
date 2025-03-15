@@ -1,4 +1,20 @@
 return {
+	-- Detectar configuração do projeto e ajustar automaticamente
+	{
+		"folke/neoconf.nvim",
+		opts = {
+			import = {
+				vscode = true, -- importar configurações do .vscode/settings.json
+				coc = true, -- importar configurações do coc-settings.json
+			},
+			plugins = {
+				configls = {
+					enabled = true,
+					-- Validação para package.json, tsconfig.json, etc.
+				},
+			},
+		},
+	},
 	-- Plugin principal do LSP
 	{ "neovim/nvim-lspconfig" },
 

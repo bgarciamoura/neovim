@@ -202,6 +202,9 @@ return {
 			{ "<leader>sf", "<cmd>lua require('spectre').open_file_search()<CR>", desc = "Buscar no arquivo atual" },
 			{ "<leader>sp", "<cmd>Telescope projects<CR>", desc = "Projetos" },
 			{ "<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "Buscar texto" },
+			{ "<leader>sl", "<cmd>SessionList<CR>", desc = "Listar e carregar sessões" },
+			{ "<leader>sS", "<cmd>SessionSaveAs<CR>", desc = "Salvar sessão com nome" },
+			{ "<leader>sx", "<cmd>SessionDelete<CR>", desc = "Excluir sessão" },
 
 			-- [W] JANELAS (WINDOWS)
 			{ "<leader>w", group = "Janelas" },
@@ -280,6 +283,24 @@ return {
 			},
 			{ "<leader>mx", "<cmd>lua require('multicursor-nvim').deleteCursor()<CR>", desc = "Deletar cursor atual" },
 			{ "<leader>mr", "<cmd>lua require('multicursor-nvim').restoreCursors()<CR>", desc = "Restaurar cursores" },
+
+			-- [DC] DEVCONTAINERS
+			{ "<leader>dc", group = "DevContainers" },
+			{ "<leader>dcb", "<cmd>DevcontainerBuild<CR>", desc = "Construir contêiner" },
+			{ "<leader>dcr", "<cmd>DevcontainerBuildAndRun<CR>", desc = "Construir e executar" },
+			{ "<leader>dcu", "<cmd>DevcontainerComposeUp<CR>", desc = "Compose Up" },
+			{ "<leader>dcd", "<cmd>DevcontainerComposeDown<CR>", desc = "Compose Down" },
+			{ "<leader>dcs", "<cmd>DevcontainerStartAttached<CR>", desc = "Iniciar contêiner (anexado)" },
+			{ "<leader>dce", "<cmd>DevcontainerExec<CR>", desc = "Executar comando no contêiner" },
+			{ "<leader>dco", "<cmd>DevcontainerOpenExplorer<CR>", desc = "Abrir explorador no contêiner" },
+
+			-- [DK] DOCKER
+			{ "<leader>dk", group = "Docker" },
+			{ "<leader>dki", "<cmd>DockerImages<CR>", desc = "Listar imagens" },
+			{ "<leader>dkc", "<cmd>DockerContainers<CR>", desc = "Listar contêineres" },
+			{ "<leader>dkr", "<cmd>DockerRun<CR>", desc = "Executar contêiner" },
+			{ "<leader>dku", "<cmd>DockerComposeUp<CR>", desc = "Docker Compose Up" },
+			{ "<leader>dka", "<cmd>DockerAttach<CR>", desc = "Anexar a um contêiner" },
 
 			-- Mapeamentos para modos específicos
 			{
