@@ -26,22 +26,74 @@ A powerful, feature-rich Neovim configuration designed for professional develope
 
 ### Prerequisites
 
-- Neovim 0.9.0 or later
 - Git
-- Node.js and npm
-- A Nerd Font
-- Ripgrep for search functionality
+- A Nerd Font installed and configured in your terminal
+- Internet connection for downloading packages
 
-### Quick Install
+### Automatic Installation
+
+We provide two installation scripts that handle everything automatically:
+
+1. **`install-neovim.sh`**: Installs Neovim and core tools (Node.js, MISE, PNPM, Angular CLI)
+2. **`install-neovim-deps.sh`**: Installs language servers, linters, formatters, and other tools
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/neovim-config ~/.config/nvim
+# Download the installation scripts
+curl -LO https://raw.githubusercontent.com/bgarciamoura/neovim/main/install-neovim.sh
+curl -LO https://raw.githubusercontent.com/bgarciamoura/neovim/main/install-neovim-deps.sh
 
-# Install dependencies
-bash ~/.config/nvim/install-neovim-deps.sh
+# Make them executable
+chmod +x install-neovim.sh install-neovim-deps.sh
 
-# Start Neovim (plugins will install automatically)
+# Run the main installation script
+bash ./install-neovim.sh
+```
+
+The scripts will:
+- Detect your operating system (macOS, Ubuntu/Debian, or Windows with WSL2)
+- Install Neovim with the appropriate method for your system
+- Set up MISE (modern version manager) for Node.js
+- Install development tools like PNPM and Angular CLI (optional)
+- Clone this Neovim configuration
+- Install language servers, linters, and formatters
+- Configure everything automatically
+
+### Cross-Platform Support
+
+#### macOS
+- Automatically installs Homebrew if needed
+- Installs Neovim nightly build for latest features
+- Sets up environment for Apple Silicon or Intel processors
+
+#### Ubuntu/Debian Linux
+- Adds Neovim PPA for latest stable version
+- Installs necessary dependencies from apt
+- Sets up environment and tools appropriately
+
+#### Windows
+- Guides through WSL2 installation if needed
+- Sets up Ubuntu on WSL2
+- Installs all necessary components in the Linux environment
+
+### Manual Installation
+
+If you prefer to install manually:
+
+```bash
+# 1. Install Neovim (version 0.9.0 or later)
+# macOS: brew install --HEAD neovim
+# Ubuntu: add-apt-repository ppa:neovim-ppa/stable && apt-get update && apt-get install neovim
+
+# 2. Clone the repository
+git clone https://github.com/bgarciamoura/neovim ~/.config/nvim
+
+# 3. Install dependencies manually
+# - Node.js (LTS version recommended)
+# - Python with pynvim package
+# - Various LSP servers (typescript-language-server, lua-language-server, etc.)
+# - Linters and formatters (eslint, prettier, stylua, etc.)
+
+# 4. Start Neovim (plugins will install automatically)
 nvim
 ```
 
