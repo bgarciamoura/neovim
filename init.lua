@@ -8,7 +8,6 @@ if diagnostic_ok then
 end
 
 require("core.options")
-require("core.autocommands")
 require("config.lazy")
 require("config.lspconfig")
 
