@@ -62,7 +62,6 @@ return {
 				markdown = { "markdownlint" },
 				dockerfile = { "hadolint" },
 				yaml = { "yamllint" },
-				toml = { "taplo" },
 				xml = { "xmllint" },
 				prisma = { "prisma-language-server" }, -- Requer o Prisma CLI
 				["docker-compose"] = { "hadolint" },
