@@ -11,6 +11,9 @@ return {
 					lua = {
 						"stylua",
 					},
+					sh = {
+						"shfmt",
+					},
 				},
 				format_on_save = {
 					timeout_ms = 500,
@@ -66,6 +69,7 @@ return {
 				prisma = { "prisma-language-server" }, -- Requer o Prisma CLI
 				["docker-compose"] = { "hadolint" },
 				["env"] = { "dotenv-linter" }, -- Para arquivos .env
+				["sh"] = { "shellcheck" },
 			}
 
 			-- Lint automático ao salvar ou abrir um arquivo
