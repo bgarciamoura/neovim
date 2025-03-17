@@ -18,9 +18,9 @@ LSP_SERVERS=(
   "pyright"                      # Python
   "yaml-language-server"         # YAML
   "vim-language-server"          # VimScript
-  "angular-language-server"      # Angular
+  "@angular/language-server"     # Angular
   "tailwindcss-language-server"  # Tailwind CSS
-  "dockerfile-language-server"   # Dockerfile
+  "dockerfile-language-service"  # Dockerfile
   "graphql-language-service-cli" # GraphQL
   "volar"                        # Vue
   "svelte-language-server"       # Svelte
@@ -96,6 +96,8 @@ install_npm_package() {
   print_message "$YELLOW" "Instalando $package..."
   if command_exists pnpm; then
     pnpm config set ignore-build-scripts false -g
+    # Aprovar automaticamente os builds dos pacotes
+    yes | pnpm approve-builds -g
     pnpm add -g "$package"
   elif command_exists mise && mise ls --installed | grep -q "nodejs"; then
     mise x nodejs -- npm install -g "$package"

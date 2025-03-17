@@ -146,37 +146,54 @@ EOL
 
 # Função para instalar Neovim no WSL já configurado
 install_neovim_wsl() {
-    print_message "$BLUE" "==== Instalando Neovim no WSL Ubuntu ===="
-    
-    # Verificar se estamos no WSL
-    if ! grep -q "microsoft" /proc/version && ! grep -q "WSL" /proc/version; then
-        print_message "$RED" "Esta função deve ser executada dentro do WSL Ubuntu."
-        return 1
-    fi
-    
-    # Atualizar repositórios e instalar dependências básicas
-    print_message "$YELLOW" "Atualizando repositórios e instalando dependências básicas..."
-    sudo apt-get update
-    sudo apt-get install -y \
-        git \
-        curl \
-        wget \
-        unzip \
-        build-essential \
-        python3 \
-        python3-pip \
-        ripgrep \
-        fd-find \
-        zsh
-    
-    # Verificar se o ZSH está configurado corretamente
-    configure_zsh_for_wsl
-    
-    # Agora continuar com a instalação do Neovim
-    install_neovim_ubuntu_internal
-    
+  print_message "$BLUE" "==== Instalando Neovim (nightly) diretamente do GitHub ===="
+
+  # Verifica se o jq está instalado (necessário para processar JSON)
+  if ! command_exists jq; then
+    print_message "$RED" "❌ jq não está instalado. Por favor, instale-o para prosseguir."
+    return 1
+  fi
+
+ # Obter a arquitetura do kernel
+  arch=$(uname -m)
+
+  # Obter JSON dos releases e remover caracteres de controle com iconv
+  releases_json=$(curl -s https://api.github.com/repos/neovim/neovim/releases | iconv -c)
+
+  # Extrair a URL do asset para Linux (nvim-linux64.tar.gz)
+  asset_url=$(echo "$releases_json" | jq -r --arg arch "$arch" '.[] 
+  | select(.tag_name=="nightly") 
+  | .assets 
+  | .[] 
+  | select(.name | contains(".tar.gz") and contains("linux") and contains($arch)) 
+  | .browser_download_url')
+ 
+  if [ -z "$asset_url" ]; then
+    print_message "$RED" "❌ Não foi possível encontrar o asset do Neovim para Linux."
+    return 1
+  fi
+
+  print_message "$YELLOW" "Baixando Neovim da URL: $asset_url"
+  tmp_dir=$(mktemp -d)
+  curl -L -o "$tmp_dir/nvim-linux64.tar.gz" "$asset_url"
+
+  print_message "$YELLOW" "Extraindo o pacote..."
+  tar -xzf "$tmp_dir/nvim-linux64.tar.gz" -C "$tmp_dir"
+
+  # Supondo que a extração crie o diretório 'nvim-linux64'
+  sudo cp "$tmp_dir/nvim-linux64/bin/nvim" /usr/local/bin/
+  sudo cp -r "$tmp_dir/nvim-linux64/share" /usr/local/
+
+  rm -rf "$tmp_dir"
+
+  if command_exists nvim; then
+    print_message "$GREEN" "✅ Neovim instalado com sucesso: $(nvim --version | head -n 1)"
     return 0
-}
+  else
+    print_message "$RED" "❌ Falha ao instalar Neovim via GitHub."
+    return 1
+  fi
+
 
 # Função interna para configurar o ZSH no WSL
 configure_zsh_for_wsl() {
@@ -254,9 +271,9 @@ install_neovim_ubuntu_internal() {
         sudo apt-get install -y software-properties-common
         
         # Remover repositório estável se existir
-        if grep -q "^deb.*neovim-ppa/stable" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
+        if grep -q "^deb.*neovim-ppa/unstable" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
             print_message "$YELLOW" "Removendo repositório estável do Neovim..."
-            sudo add-apt-repository --remove -y ppa:neovim-ppa/stable
+            sudo add-apt-repository --remove -y ppa:neovim-ppa/unstable
         fi
         
         # Adicionar repositório unstable

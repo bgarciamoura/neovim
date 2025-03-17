@@ -82,7 +82,7 @@ If you prefer to install manually:
 ```bash
 # 1. Install Neovim (version 0.9.0 or later)
 # macOS: brew install --HEAD neovim
-# Ubuntu: add-apt-repository ppa:neovim-ppa/stable && apt-get update && apt-get install neovim
+# Ubuntu: add-apt-repository ppa:neovim-ppa/unstable && apt-get update && apt-get install neovim
 
 # 2. Clone the repository
 git clone https://github.com/bgarciamoura/neovim ~/.config/nvim

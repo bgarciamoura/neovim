@@ -9,71 +9,66 @@ fi
 
 # Função principal para instalação do Neovim no Ubuntu/Debian
 install_neovim_ubuntu() {
-  print_message "$BLUE" "==== Instalando Neovim na versão mais recente no Ubuntu ===="
+  print_message "$BLUE" "==== Instalando Neovim (nightly) diretamente do GitHub ===="
 
-  # Verificar versões atuais e disponíveis
-  check_neovim_versions
-
-  # Verificar se Neovim já está instalado
-  if command_exists nvim; then
-    if confirm "Deseja reinstalar/atualizar o Neovim para a versão de desenvolvimento mais recente?"; then
-      print_message "$YELLOW" "Prosseguindo com a reinstalação/atualização..."
-    else
-      print_message "$YELLOW" "Mantendo a instalação atual do Neovim."
-      return 0
-    fi
-  fi
-
-  # Verificar primeiro as dependências básicas
-  check_basic_dependencies
-
-  # Verificar repositório PPA do Neovim
-  check_and_add_neovim_ppa
-
-  # Instalar Neovim (versão nightly)
-  print_message "$YELLOW" "Atualizando repositórios e instalando a versão nightly do Neovim..."
-  sudo apt-get update
-  sudo apt-get install -y neovim
-
-  # Verificar se é realmente a versão nightly
-  if nvim --version | grep -q "NVIM v0.9" || ! nvim --version | grep -q "NVIM"; then
-    print_message "$YELLOW" "A versão instalada parece não ser a nightly. Tentando reinstalar forçando a versão mais recente..."
-    sudo apt-get install -y --reinstall neovim
-  fi
-
-  # Verificar a instalação do Neovim
-  if command_exists nvim; then
-    print_message "$GREEN" "✅ Neovim instalado com sucesso: $(nvim --version | head -n 1)"
-  else
-    print_message "$RED" "❌ Falha ao instalar Neovim. Por favor, tente instalar manualmente."
+  # Verifica se o jq está instalado (necessário para processar JSON)
+  if ! command_exists jq; then
+    print_message "$RED" "❌ jq não está instalado. Por favor, instale-o para prosseguir."
     return 1
   fi
 
-  # Instalar dependências adicionais
-  install_ubuntu_dependencies
+  # Obter a arquitetura do kernel
+  arch=$(uname -m)
 
-  # Configurar Python para Neovim
-  configure_python_for_neovim
+  # Obter JSON dos releases e remover caracteres de controle com iconv
+  releases_json=$(curl -s https://api.github.com/repos/neovim/neovim/releases | iconv -c)
 
-  # Perguntar sobre instalações adicionais
-  if confirm "Deseja configurar ferramentas de desenvolvimento adicionais?"; then
-    install_dev_tools
+  # Extrair a URL do asset para Linux (nvim-linux64.tar.gz)
+  asset_url=$(echo "$releases_json" | jq -r --arg arch "$arch" '.[] 
+  | select(.tag_name=="nightly") 
+  | .assets 
+  | .[] 
+  | select(.name | contains(".tar.gz") and contains("linux") and contains($arch)) 
+  | .browser_download_url')
+
+  print_message "$YELLOW" "Último release pré-lançamento do Neovim:"
+  print_message "$YELLOW" "URL do asset para Linux: $asset_url"
+
+  if [ -z "$asset_url" ]; then
+    print_message "$RED" "❌ Não foi possível encontrar o asset do Neovim para Linux."
+    return 1
   fi
 
-  print_message "$GREEN" "✅ Neovim foi instalado com sucesso no Ubuntu!"
-  print_message "$GREEN" "Para verificar a instalação, execute: nvim --version"
+  print_message "$YELLOW" "Baixando Neovim da URL: $asset_url"
+  tmp_dir=$(mktemp -d)
+  curl -L -o "$tmp_dir/nvim-linux64.tar.gz" "$asset_url"
 
-  return 0
+  print_message "$YELLOW" "Extraindo o pacote..."
+  tar -xzf "$tmp_dir/nvim-linux64.tar.gz" -C "$tmp_dir"
+
+  # Supondo que a extração crie o diretório 'nvim-linux64'
+  sudo cp "$tmp_dir/nvim-linux64/bin/nvim" /usr/local/bin/
+  sudo cp -r "$tmp_dir/nvim-linux64/share" /usr/local/
+
+  rm -rf "$tmp_dir"
+
+  if command_exists nvim; then
+    print_message "$GREEN" "✅ Neovim instalado com sucesso: $(nvim --version | head -n 1)"
+    return 0
+  else
+    print_message "$RED" "❌ Falha ao instalar Neovim via GitHub."
+    return 1
+  fi
 }
 
 # Função para verificar e adicionar o repositório PPA do Neovim
 check_and_add_neovim_ppa() {
   # Verificar se o repositório estável do Neovim já está adicionado
-  if ! grep -q "^deb.*neovim-ppa/stable" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
+  if ! grep -q "^deb.*neovim-ppa/unstable" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     print_message "$YELLOW" "Adicionando repositório PPA do Neovim..."
     sudo apt-get update
     sudo apt-get install -y software-properties-common
-    sudo add-apt-repository -y ppa:neovim-ppa/stable
+    sudo add-apt-repository -y ppa:neovim-ppa/unstable
   else
     print_message "$GREEN" "✅ Repositório PPA do Neovim já está adicionado."
   fi
