@@ -41,7 +41,7 @@ LINTERS_FORMATTERS=(
   "flake8"           # Python linter
   "hadolint"         # Dockerfile linter
   "docsify-cli"      # Documentação
-  "biome"            # JavaScript/TypeScript linter/formatter novo e rápido
+  "@biomejs/biome"   # JavaScript/TypeScript linter/formatter novo e rápido
 )
 
 # Lista de ferramentas extras para desenvolvimento

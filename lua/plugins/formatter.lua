@@ -6,7 +6,7 @@ return {
 				formatters_by_ft = {
 					javascript = { "biome", "prettier" },
 					typescript = { "biome", "prettier" },
-					json = { "biome" },
+					json = { "fixjson" },
 					css = { "biome", "css_beautify" },
 					lua = {
 						"stylua",
@@ -61,7 +61,7 @@ return {
 				html = { "htmlhint" },
 				css = { "stylelint" },
 				scss = { "stylelint" },
-				json = { "biome" },
+				json = { "jsonlint" },
 				markdown = { "markdownlint" },
 				dockerfile = { "hadolint" },
 				yaml = { "yamllint" },

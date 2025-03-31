@@ -35,3 +35,16 @@ for _, server in ipairs(servers) do
 		on_attach = on_attach,
 	})
 end
+
+local default_config = {
+	virtual_lines = true,
+}
+vim.diagnostic.config(default_config)
+
+vim.keymap.set("n", "<leader>dI", function()
+	if vim.diagnostic.config().virtual_lines == false then
+		vim.diagnostic.config(default_config)
+	else
+		vim.diagnostic.config({ virtual_lines = false })
+	end
+end, { desc = "Toggle showing all diagnostics" })
