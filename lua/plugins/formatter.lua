@@ -3,9 +3,19 @@ return {
 		"stevearc/conform.nvim",
 		config = function()
 			require("conform").setup({
+				formatters = {
+					biome = {
+						command = "biome",
+						args = { "format", "--stdin-file-path", "$FILENAME" },
+						stdin = true,
+						require_cwd = true,
+					},
+				},
 				formatters_by_ft = {
-					javascript = { "biome", "prettier" },
-					typescript = { "biome", "prettier" },
+					javascript = { "biome" },
+					typescript = { "biome" },
+					javascriptreact = { "biome" },
+					typescriptreact = { "biome" },
 					json = { "fixjson" },
 					css = { "biome", "css_beautify" },
 					lua = {

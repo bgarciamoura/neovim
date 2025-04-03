@@ -38,6 +38,7 @@ end
 
 local default_config = {
 	virtual_lines = true,
+	virtual_text = false,
 }
 vim.diagnostic.config(default_config)
 
@@ -46,5 +47,9 @@ vim.keymap.set("n", "<leader>dI", function()
 		vim.diagnostic.config(default_config)
 	else
 		vim.diagnostic.config({ virtual_lines = false })
+		vim.diagnostic.config({ virtual_text = {
+			prefix = "●",
+			spacing = 2,
+		} })
 	end
 end, { desc = "Toggle showing all diagnostics" })
