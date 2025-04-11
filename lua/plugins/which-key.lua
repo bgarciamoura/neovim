@@ -185,7 +185,7 @@ return {
 			-- [C] CÓDIGO/CLIPBOARD
 			{ "<leader>c", group = "Código/Clipboard" },
 			{ "<leader>cc", '"+y', desc = "Copiar para clipboard" },
-			{ "<leader>ca", ':keepjumps normal! ggVG "*yG<CR>', desc = "Copiar arquivo inteiro" },
+			{ "<leader>cA", ':keepjumps normal! ggVG "*yG<CR>', desc = "Copiar arquivo inteiro" },
 			{ "<leader>cf", "<cmd>lua require('conform').format()<CR>", desc = "Formatar código" },
 			{ "<leader>cg", "<cmd>Neogen<CR>", desc = "Gerar documentação" },
 			{ "<leader>cd", "<cmd>Lspsaga hover_doc<CR>", desc = "Mostrar documentação" },

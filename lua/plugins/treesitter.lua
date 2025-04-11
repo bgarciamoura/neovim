@@ -1,7 +1,8 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate", -- Atualiza os parsers automaticamente
+		build = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
@@ -15,16 +16,28 @@ return {
 					"yaml",
 					"markdown",
 					"bash",
-					"markdown",
 					"scss",
-					"angular",
 					"kotlin",
-				}, -- Instala os parsers automaticamente:w
+					"java",
+				},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = { enable = true },
+				sync_install = false,
+				auto_install = true,
+			})
 
-				highlight = { enable = true }, -- Ativa o realce de sintaxe
-				indent = { enable = true }, -- Melhor indentação automática
-				-- autotag = { enable = true }, -- Fecha automaticamente tags HTML/JSX
+			-- Forçar o recarregamento do highlighting
+			vim.api.nvim_create_autocmd("BufEnter", {
+				callback = function()
+					vim.cmd("TSEnable highlight")
+				end,
 			})
 		end,
+		dependencies = {
+			"windwp/nvim-ts-autotag",
+		},
 	},
 }
