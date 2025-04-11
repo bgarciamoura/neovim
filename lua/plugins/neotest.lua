@@ -6,7 +6,7 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-jest",
-		"nvim-neotest/neotest-java",
+		"rcasia/neotest-java",
 	},
 	config = function()
 		require("neotest").setup({

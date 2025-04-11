@@ -1,49 +1,50 @@
+local neoconf_wrapper = require("core.neoconf-wrapper")
+
 return {
-	-- Detectar configuração do projeto e ajustar automaticamente
+	-- Neoconf deve vir primeiro com alta prioridade
 	{
 		"folke/neoconf.nvim",
-		opts = {
-			import = {
-				vscode = true, -- importar configurações do .vscode/settings.json
-				coc = true, -- importar configurações do coc-settings.json
-			},
-			plugins = {
-				configls = {
-					enabled = true,
-					-- Validação para package.json, tsconfig.json, etc.
-				},
-			},
-		},
+		priority = 1000,
+		lazy = false,
+		config = function()
+			neoconf_wrapper.ensure_initialized()
+		end,
 	},
+
 	-- Plugin principal do LSP
 	{
 		"neovim/nvim-lspconfig",
+		priority = 900,
+		dependencies = { "folke/neoconf.nvim" },
 		config = function()
-			local lspconfig = require("lspconfig")
+			neoconf_wrapper.setup_lspconfig(function()
+				local lspconfig = require("lspconfig")
 
-			lspconfig.jdtls.setup({
-				settings = {
-					java = {
-						configuration = {
-							updateBuildConfiguration = "automatic",
-						},
-						maven = {
-							downloadSources = true,
-						},
-						implementationsCodeLens = {
-							enabled = true,
-						},
-						referencesCodeLens = {
-							enabled = true,
-						},
-						format = {
-							enabled = true,
+				-- Configurações específicas de LSP para este plugin
+				lspconfig.jdtls.setup({
+					settings = {
+						java = {
+							configuration = {
+								updateBuildConfiguration = "automatic",
+							},
+							maven = {
+								downloadSources = true,
+							},
+							implementationsCodeLens = {
+								enabled = true,
+							},
+							referencesCodeLens = {
+								enabled = true,
+							},
+							format = {
+								enabled = true,
+							},
 						},
 					},
-				},
-			})
+				})
 
-			lspconfig.groovyls.setup({})
+				lspconfig.groovyls.setup({})
+			end)
 		end,
 	},
 
@@ -63,10 +64,19 @@ return {
 	-- Mason-LSPConfig: Integra Mason com o LSP
 	{
 		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"neovim/nvim-lspconfig",
+			"folke/neoconf.nvim",
+		},
 		config = function()
+			-- Garantir que neoconf está inicializado antes de configurar LSP
+			neoconf_wrapper.ensure_initialized()
+
 			require("mason-lspconfig").setup({
 				ensure_installed = { "ts_ls", "html", "cssls", "jsonls", "lua_ls" },
 			})
+
 			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"prettier",
@@ -97,6 +107,15 @@ return {
 					["mason-nvim-dap"] = false,
 				},
 			})
+
+			-- Configurar os servidores LSP do Mason após a instalação
+			neoconf_wrapper.setup_lspconfig(function()
+				require("mason-lspconfig").setup_handlers({
+					function(server_name)
+						require("lspconfig")[server_name].setup({})
+					end,
+				})
+			end)
 		end,
 	},
 }
