@@ -16,7 +16,36 @@ return {
 		},
 	},
 	-- Plugin principal do LSP
-	{ "neovim/nvim-lspconfig" },
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			local lspconfig = require("lspconfig")
+
+			lspconfig.jdtls.setup({
+				settings = {
+					java = {
+						configuration = {
+							updateBuildConfiguration = "automatic",
+						},
+						maven = {
+							downloadSources = true,
+						},
+						implementationsCodeLens = {
+							enabled = true,
+						},
+						referencesCodeLens = {
+							enabled = true,
+						},
+						format = {
+							enabled = true,
+						},
+					},
+				},
+			})
+
+			lspconfig.groovyls.setup({})
+		end,
+	},
 
 	-- Mason: Gerenciador de LSPs
 	{
@@ -56,6 +85,9 @@ return {
 					"prisma-language-server", -- Linting para prisma
 					-- "ktfmt", -- Formatação para Kotlin
 					"ktlint", -- Linting para Kotlin
+					"kotlin_language_server", -- LSP para Kotlin
+					"jdtls", -- LSP para Java e Kotlin
+					"groovyls", -- LSP para Groovy e Gradle
 				},
 				auto_update = true, -- Atualiza automaticamente as ferramentas instaladas
 				run_on_start = true, -- Instala automaticamente ao iniciar o Neovim

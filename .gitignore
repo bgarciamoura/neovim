@@ -1,4 +1,6 @@
 .DS_Store
 /sessions
 lazy-lock.*
+*.log
+*.http
 

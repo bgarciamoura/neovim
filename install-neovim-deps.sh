@@ -24,24 +24,30 @@ LSP_SERVERS=(
   "graphql-language-service-cli" # GraphQL
   "volar"                        # Vue
   "svelte-language-server"       # Svelte
+  "kotlin-language-server"       # Kotlin
+  "jdtls"                        # Java
+  "groovyls"                     # Groovy/Gradle
 )
 
 # Lista de linters e formatadores para instalar
 LINTERS_FORMATTERS=(
-  "eslint_d"         # JavaScript/TypeScript linter (mais rápido)
-  "prettier"         # Formatador universal
-  "stylelint"        # CSS linter
-  "markdownlint-cli" # Markdown linter
-  "jsonlint"         # JSON linter
-  "yamllint"         # YAML linter
-  "shellcheck"       # Bash linter
-  "shfmt"            # Bash formatter
-  "stylua"           # Lua formatter
-  "black"            # Python formatter
-  "flake8"           # Python linter
-  "hadolint"         # Dockerfile linter
-  "docsify-cli"      # Documentação
-  "@biomejs/biome"   # JavaScript/TypeScript linter/formatter novo e rápido
+  "eslint_d"           # JavaScript/TypeScript linter (mais rápido)
+  "prettier"           # Formatador universal
+  "stylelint"          # CSS linter
+  "markdownlint-cli"   # Markdown linter
+  "jsonlint"           # JSON linter
+  "yamllint"           # YAML linter
+  "shellcheck"         # Bash linter
+  "shfmt"              # Bash formatter
+  "stylua"             # Lua formatter
+  "black"              # Python formatter
+  "flake8"             # Python linter
+  "hadolint"           # Dockerfile linter
+  "docsify-cli"        # Documentação
+  "@biomejs/biome"     # JavaScript/TypeScript linter/formatter novo e rápido
+  "ktlint"             # Kotlin linter
+  "google-java-format" # Java formatter
+
 )
 
 # Lista de ferramentas extras para desenvolvimento
@@ -501,6 +507,129 @@ setup_environment() {
   print_message "$GREEN" "✅ Ambiente de sistema configurado com sucesso"
 }
 
+# Função para instalar ferramentas de desenvolvimento Kotlin e Spring
+install_kotlin_spring_tools() {
+  print_message "$BLUE" "==== Instalando ambiente para Spring Boot e Kotlin no Neovim ===="
+
+  # Verificar se o JDK está instalado
+  if ! command_exists java; then
+    print_message "$YELLOW" "JDK não encontrado. Instalando JDK..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      # macOS
+      install_brew_package "openjdk@17"
+      sudo ln -sfn $(brew --prefix)/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+    else
+      # Ubuntu/Debian
+      install_apt_package "openjdk-17-jdk"
+    fi
+  else
+    print_message "$GREEN" "✅ JDK já está instalado: $(java -version 2>&1 | head -n 1)"
+  fi
+
+  # Instalar Kotlin compiler
+  if ! command_exists kotlin; then
+    print_message "$YELLOW" "Kotlin não encontrado. Instalando Kotlin..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      install_brew_package "kotlin"
+    else
+      if command_exists snap; then
+        sudo snap install kotlin --classic
+      else
+        print_message "$YELLOW" "Instalando SDKMAN primeiro para gerenciar Kotlin..."
+        # Instalar SDKMAN e usar para instalar Kotlin
+        if ! command_exists sdk; then
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+        fi
+        sdk install kotlin
+      fi
+    fi
+  else
+    print_message "$GREEN" "✅ Kotlin já está instalado: $(kotlin -version 2>&1 | head -n 1)"
+  fi
+
+  # Instalar Gradle (usado pelo Spring Boot)
+  if ! command_exists gradle; then
+    print_message "$YELLOW" "Gradle não encontrado. Instalando Gradle..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      install_brew_package "gradle"
+    else
+      if command_exists sdk; then
+        sdk install gradle
+      else
+        install_apt_package "gradle"
+      fi
+    fi
+  else
+    print_message "$GREEN" "✅ Gradle já está instalado: $(gradle --version | head -n 1)"
+  fi
+
+  # Instalar Kotlin Language Server
+  if ! command_exists kotlin-language-server; then
+    print_message "$YELLOW" "Instalando Kotlin Language Server..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      install_brew_package "kotlin-language-server"
+    else
+      # Instalar via curl ou via repositórios
+      mkdir -p ~/.local/bin
+      curl -L https://github.com/fwcd/kotlin-language-server/releases/download/1.3.9/kotlin-language-server-1.3.9-linux.zip -o /tmp/kotlin-ls.zip
+      unzip -q /tmp/kotlin-ls.zip -d /tmp/kotlin-ls
+      mv /tmp/kotlin-ls/bin/kotlin-language-server ~/.local/bin/
+      chmod +x ~/.local/bin/kotlin-language-server
+      # Verificar se ~/.local/bin está no PATH, se não estiver, adicionamos
+      if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >>~/.bashrc
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >>~/.zshrc
+        export PATH="$HOME/.local/bin:$PATH"
+      fi
+      rm -rf /tmp/kotlin-ls /tmp/kotlin-ls.zip
+    fi
+  else
+    print_message "$GREEN" "✅ Kotlin Language Server já está instalado"
+  fi
+
+  # Instalar ktlint (linter para Kotlin)
+  if ! command_exists ktlint; then
+    print_message "$YELLOW" "Instalando ktlint..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      install_brew_package "ktlint"
+    else
+      print_message "$YELLOW" "Baixando e instalando ktlint..."
+      curl -sSLO "https://github.com/pinterest/ktlint/releases/download/1.0.0/ktlint"
+      chmod +x ktlint
+      sudo mv ktlint /usr/local/bin/
+    fi
+  else
+    print_message "$GREEN" "✅ ktlint já está instalado: $(ktlint --version)"
+  fi
+
+  # Instalar SDKMAN (gerenciador de SDK para Java/Kotlin)
+  if ! command_exists sdk; then
+    print_message "$YELLOW" "Instalando SDKMAN..."
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+  else
+    print_message "$GREEN" "✅ SDKMAN já está instalado"
+  fi
+
+  # Instalar Spring Boot CLI via SDKMAN
+  if ! command_exists spring; then
+    print_message "$YELLOW" "Instalando Spring Boot CLI..."
+    if command_exists sdk; then
+      sdk install springboot
+      source "$HOME/.sdkman/bin/sdkman-init.sh"
+    else
+      print_message "$RED" "❌ SDKMAN não está disponível para instalar Spring Boot CLI"
+    fi
+  else
+    print_message "$GREEN" "✅ Spring Boot CLI já está instalado: $(spring --version)"
+  fi
+
+  print_message "$GREEN" "✅ Ambiente para Spring Boot e Kotlin instalado com sucesso!"
+  print_message "$YELLOW" "Para começar a usar o ambiente, abra o Neovim e execute: :LspInfo para verificar a conexão com o Kotlin Language Server"
+
+}
+
 # Função principal
 main() {
   print_message "$MAGENTA" "===== Script de Instalação de Dependências do Neovim ====="
@@ -535,6 +664,13 @@ main() {
     configure_neovim_env
   else
     print_message "$YELLOW" "Configuração do ambiente Neovim ignorada pelo usuário."
+  fi
+
+  # Adicione ao final da função main()
+  if confirm "Deseja instalar ferramentas para desenvolvimento Kotlin e Spring Boot?"; then
+    install_kotlin_spring_tools
+  else
+    print_message "$YELLOW" "Instalação de ferramentas para Kotlin e Spring Boot ignorada pelo usuário."
   fi
 
   print_message "$MAGENTA" "===== Instalação de Dependências do Neovim Concluída ====="

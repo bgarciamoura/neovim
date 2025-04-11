@@ -175,6 +175,12 @@ return {
 				"<cmd>lua require('neotest').run.run({ jestCommand = 'pnpx jest --watch ' })<CR>",
 				desc = "Jest Watch",
 			},
+			{ "<leader>jkt", "<cmd>lua require('neotest').run.run()<cr>", desc = "Executar teste atual" },
+			{
+				"<leader>jkf",
+				"<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>",
+				desc = "Executar testes do arquivo",
+			},
 
 			-- [C] CÓDIGO/CLIPBOARD
 			{ "<leader>c", group = "Código/Clipboard" },
@@ -338,6 +344,16 @@ return {
 				{ "<C-k>", "<C-\\><C-n><C-w>k", desc = "Ir para janela acima" },
 				{ "<C-l>", "<C-\\><C-n><C-w>l", desc = "Ir para janela à direita" },
 			},
+
+			-- [K] KOTLIN SPRING
+			{ "<leader>k", group = "Kotlin/Spring" },
+			{ "<leader>ks", "<cmd>lua require('spring-boot').start()<cr>", desc = "Iniciar aplicação Spring Boot" },
+			{
+				"<leader>kr",
+				"<cmd>lua require('spring-boot').restart()<cr>",
+				desc = "Reiniciar aplicação Spring Boot",
+			},
+			{ "<leader>kl", "<cmd>lua require('spring-boot').showLogs()<cr>", desc = "Mostrar logs Spring Boot" },
 		})
 	end,
 }

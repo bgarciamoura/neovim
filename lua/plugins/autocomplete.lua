@@ -73,6 +73,110 @@ return {
 				}),
 			})
 
+			ls.add_snippets("kotlin", {
+				s("sbcontroller", {
+					t("@RestController"),
+					t({ "", '@RequestMapping("/api/' }),
+					i(1, "resource"),
+					t('")'),
+					t({ "", "class " }),
+					i(2, "NameController"),
+					t("("),
+					t({ "", "    private val " }),
+					i(3, "nameService"),
+					t(": "),
+					i(4, "NameService"),
+					t({ "", ") {", "" }),
+					t({ "", "    @GetMapping" }),
+					t({ "", "    fun getAll(): List<" }),
+					i(5, "Model"),
+					t("> {"),
+					t({ "", "        return " }),
+					i(3),
+					t("."),
+					i(6, "findAll()"),
+					t({ "", "    }" }),
+					t({ "", "}" }),
+				}),
+
+				s("sbservice", {
+					t("@Service"),
+					t({ "", "class " }),
+					i(1, "NameService"),
+					t("("),
+					t({ "", "    private val " }),
+					i(2, "repository"),
+					t(": "),
+					i(3, "NameRepository"),
+					t({ "", ") {", "" }),
+					t({ "", "    fun findAll(): List<" }),
+					i(4, "Model"),
+					t("> {"),
+					t({ "", "        return " }),
+					i(2),
+					t(".findAll()"),
+					t({ "", "    }" }),
+					t({ "", "}" }),
+				}),
+
+				s("sbrepo", {
+					t("@Repository"),
+					t({ "", "interface " }),
+					i(1, "NameRepository"),
+					t(" : JpaRepository<"),
+					i(2, "Model"),
+					t(", "),
+					i(3, "Long"),
+					t("> {"),
+					t({ "", "}" }),
+				}),
+
+				s("sbentity", {
+					t("@Entity"),
+					t({ "", "data class " }),
+					i(1, "Name"),
+					t("("),
+					t({ "", "    @Id" }),
+					t({ "", "    @GeneratedValue(strategy = GenerationType.IDENTITY)" }),
+					t({ "", "    val id: Long? = null," }),
+					t({ "", "    " }),
+					i(2, "val name: String"),
+					t({ "", ")" }),
+				}),
+
+				s("sbreqdto", {
+					t("data class "),
+					i(1, "NameRequest"),
+					t("("),
+					t({ "", "    " }),
+					i(2, "val name: String"),
+					t({ "", ")" }),
+				}),
+
+				s("sbresdto", {
+					t("data class "),
+					i(1, "NameResponse"),
+					t("("),
+					t({ "", "    val id: Long," }),
+					t({ "", "    " }),
+					i(2, "val name: String"),
+					t({ "", ")" }),
+				}),
+
+				s("ktextfun", {
+					t("fun "),
+					i(1, "Class"),
+					t("."),
+					i(2, "functionName"),
+					t("(): "),
+					i(3, "ReturnType"),
+					t(" {"),
+					t({ "", "    " }),
+					i(0),
+					t({ "", "}" }),
+				}),
+			})
+
 			cmp.setup({
 				formatting = {
 					format = lspkind.cmp_format({

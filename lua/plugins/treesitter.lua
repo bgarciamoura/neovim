@@ -18,6 +18,7 @@ return {
 					"markdown",
 					"scss",
 					"angular",
+					"kotlin",
 				}, -- Instala os parsers automaticamente:w
 
 				highlight = { enable = true }, -- Ativa o realce de sintaxe
