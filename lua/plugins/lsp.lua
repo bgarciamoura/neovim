@@ -54,6 +54,8 @@ return {
 					"hadolint", -- Linting para Dockerfile
 					"taplo", -- Linting para toml
 					"prisma-language-server", -- Linting para prisma
+					-- "ktfmt", -- Formatação para Kotlin
+					"ktlint", -- Linting para Kotlin
 				},
 				auto_update = true, -- Atualiza automaticamente as ferramentas instaladas
 				run_on_start = true, -- Instala automaticamente ao iniciar o Neovim
