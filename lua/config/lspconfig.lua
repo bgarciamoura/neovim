@@ -46,22 +46,22 @@ neoconf_wrapper.setup_lspconfig(function()
 	end
 
 	local default_config = {
-		virtual_lines = true,
-		virtual_text = false,
+		virtual_lines = false,
+		virtual_text = {
+			prefix = "●",
+			spacing = 2,
+		},
 	}
 
 	vim.diagnostic.config(default_config)
 
 	vim.keymap.set("n", "<leader>dI", function()
-		if vim.diagnostic.config().virtual_lines == false then
+		if vim.diagnostic.config().virtual_lines == true then
 			vim.diagnostic.config(default_config)
 		else
-			vim.diagnostic.config({ virtual_lines = false })
+			vim.diagnostic.config({ virtual_lines = true })
 			vim.diagnostic.config({
-				virtual_text = {
-					prefix = "●",
-					spacing = 2,
-				},
+				virtual_text = false,
 			})
 		end
 	end, { desc = "Toggle showing all diagnostics" })

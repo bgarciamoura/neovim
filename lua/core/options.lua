@@ -32,9 +32,12 @@ vim.o.signcolumn = "yes"
 -----------------------------------------------------------
 -- Memory, CPU
 -----------------------------------------------------------
-vim.opt.hidden = true      -- Enable background buffers
-vim.opt.history = 100      -- Remember N lines in history
-vim.opt.lazyredraw = true  -- Faster scrolling
-vim.opt.synmaxcol = 240    -- Max column for syntax highlight
-vim.opt.updatetime = 250   -- ms to wait for trigger an event
+vim.opt.hidden = true -- Enable background buffers
+vim.opt.history = 100 -- Remember N lines in history
+vim.opt.lazyredraw = true -- Faster scrolling
+vim.opt.synmaxcol = 240 -- Max column for syntax highlight
+vim.opt.updatetime = 250 -- ms to wait for trigger an event
 vim.opt.lazyredraw = false -- Don't redraw while executing macros
+
+vim.keymap.set("i", "<Home>", "<C-o>0", { noremap = true })
+vim.keymap.set("i", "<End>", "<C-o>$", { noremap = true })

@@ -98,6 +98,7 @@ return {
 					"kotlin_language_server", -- LSP para Kotlin
 					"jdtls", -- LSP para Java e Kotlin
 					"groovyls", -- LSP para Groovy e Gradle
+					"yamllint", -- Linting para YAML
 				},
 				auto_update = true, -- Atualiza automaticamente as ferramentas instaladas
 				run_on_start = true, -- Instala automaticamente ao iniciar o Neovim

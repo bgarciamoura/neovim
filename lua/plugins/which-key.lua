@@ -33,6 +33,7 @@ return {
 		})
 
 		wk.add({
+
 			-- Mapeamentos básicos em modo normal
 			{ "<C-a>", ":keepjumps normal! ggVG<CR>", desc = "Selecionar todo o texto" },
 			{ "<C-s>", ":w<CR>", desc = "Salvar arquivo" },
@@ -329,6 +330,8 @@ return {
 				{ "<C-k>", "<Up>", desc = "Mover cursor para cima" },
 				{ "<C-v>", "<C-r>+", desc = "Colar do clipboard" },
 				{ "<C-s>", "<Esc>:w<CR>a", desc = "Salvar" },
+				{ "<C-z>", "<Esc>:undo<CR>a", desc = "Desfazer" },
+				{ "<C-y>", "<Esc>:redo<CR>a", desc = "Refazer" },
 			},
 
 			{
