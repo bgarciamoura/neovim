@@ -30,6 +30,12 @@ return {
 					kotlin = {
 						"ktlint",
 					},
+					html = {
+						"prettierd",
+					},
+					htmlangular = {
+						"prettierd",
+					},
 				},
 				format_on_save = {
 					-- Aumentar o timeout para salvar
