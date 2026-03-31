@@ -83,14 +83,14 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
   -- Alternative: Tokyonight
   {
     "folke/tokyonight.nvim",
-    lazy = true,
+    lazy = false,
+    priority = 1000,
     opts = {
       style = "storm",
       transparent = false,
@@ -104,6 +104,10 @@ return {
         floats = "dark",
       },
     },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight")
+    end,
   },
 
   -- Alternative: Rose Pine
