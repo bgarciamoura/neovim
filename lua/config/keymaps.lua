@@ -17,7 +17,11 @@ map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit Neovim" })
 map("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 -- Save file
-map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr><Esc>", { desc = "Save file" })
+map({ "n", "i", "v" }, "<C-s>", function()
+  vim.cmd("w")
+  vim.notify("Arquivo salvo!", vim.log.levels.INFO)
+  vim.cmd("stopinsert")
+end, { desc = "Save file" })
 
 -- Navigate splits
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
