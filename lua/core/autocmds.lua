@@ -49,6 +49,22 @@ autocmd("VimResized", {
   end,
 })
 
+-- Force treesitter folding on buffer enter
+local ts_fold_group = augroup("TreesitterFolding", { clear = true })
+autocmd({ "BufReadPost", "BufNewFile", "BufEnter" }, {
+  group = ts_fold_group,
+  desc = "Ensure treesitter folding is active",
+  callback = function()
+    local ft = vim.bo.filetype
+    if ft == "" or ft == "alpha" or ft == "neo-tree" or ft == "noice" then
+      return
+    end
+    vim.wo.foldmethod = "expr"
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo.foldlevel = 99
+  end,
+})
+
 -- Force treesitter highlight on buffer enter
 local ts_highlight_group = augroup("TreesitterHighlight", { clear = true })
 autocmd({ "BufReadPost", "BufNewFile", "BufEnter" }, {
