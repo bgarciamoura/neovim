@@ -77,9 +77,9 @@ return {
         },
       })
 
-      -- Load extensions
-      telescope.load_extension("fzf")
-      telescope.load_extension("ui-select")
+      -- Load extensions (pcall in case build failed)
+      pcall(telescope.load_extension, "fzf")
+      pcall(telescope.load_extension, "ui-select")
     end,
   },
 }
