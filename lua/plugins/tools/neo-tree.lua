@@ -15,15 +15,14 @@ return {
         enable_git_status = true,
         enable_diagnostics = true,
 
-        sources = {
-          { source = "filesystem",  display_name = " 󰉓 Files " },
-          { source = "buffers",     display_name = " 󰈚 Buffers " },
-          { source = "git_status",  display_name = " 󰊢 Git " },
-        },
-
         source_selector = {
           winbar = true,
           statusline = false,
+          sources = {
+            { source = "filesystem",  display_name = " \u{f0c5} Files " },
+            { source = "buffers",     display_name = " \u{f0c5} Buffers " },
+            { source = "git_status",  display_name = " \u{f126} Git " },
+          },
         },
 
         default_component_configs = {

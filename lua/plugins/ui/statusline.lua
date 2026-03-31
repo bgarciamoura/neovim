@@ -124,7 +124,7 @@ return {
           lualine_z = {},
         },
 
-        extensions = { "neo-tree", "lazy", "mason", "toggleterm", "trouble" },
+        extensions = { "neo-tree", "lazy", "mason", "toggleterm" },
       })
     end,
   },
