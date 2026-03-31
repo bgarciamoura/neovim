@@ -61,7 +61,7 @@ opt.foldlevel = 99      -- abre todos os folds por padrão
 opt.foldlevelstart = 99 -- não colapsa nada ao abrir arquivo
 opt.foldenable = true
 
--- Tabline
+-- Tabline / Winbar
 opt.showtabline = 0 -- never show tabline
 
 -- Behaviour

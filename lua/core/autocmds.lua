@@ -49,6 +49,16 @@ autocmd("VimResized", {
   end,
 })
 
+-- Disable winbar on all windows
+local no_winbar_group = augroup("NoWinbar", { clear = true })
+autocmd({ "BufEnter", "WinEnter", "BufWinEnter" }, {
+  group = no_winbar_group,
+  desc = "Disable winbar",
+  callback = function()
+    vim.wo.winbar = nil
+  end,
+})
+
 -- Force treesitter folding on buffer enter
 local ts_fold_group = augroup("TreesitterFolding", { clear = true })
 autocmd({ "BufReadPost", "BufNewFile", "BufEnter" }, {
