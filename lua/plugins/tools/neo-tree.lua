@@ -27,21 +27,21 @@ return {
 
         default_component_configs = {
           icon = {
-            folder_closed = "",
-            folder_open = "",
-            folder_empty = "",
+            folder_closed = "\u{f07b}",  --
+            folder_open   = "\u{f07c}",  --
+            folder_empty  = "\u{f115}",  --
           },
           git_status = {
             symbols = {
-              added     = " ",
-              modified  = " ",
-              deleted   = "✖ ",
-              renamed   = "󰁕 ",
-              untracked = " ",
-              ignored   = " ",
-              unstaged  = "󰄱 ",
-              staged    = " ",
-              conflict  = " ",
+              added     = "\u{f055} ",   --
+              modified  = "\u{f06a} ",   --
+              deleted   = "\u{2716} ",   -- ✖
+              renamed   = "\u{db80}\u{dc55} ", -- 󰁕
+              untracked = "\u{f128} ",   --
+              ignored   = "\u{f05e} ",   --
+              unstaged  = "\u{db80}\u{dd31} ", -- 󰄱
+              staged    = "\u{f00c} ",   --
+              conflict  = "\u{f0e7} ",   --
             },
           },
         },
