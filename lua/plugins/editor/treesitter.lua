@@ -84,13 +84,7 @@ return {
           },
         },
         swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>a"] = "@parameter.inner",
-          },
-          swap_previous = {
-            ["<leader>A"] = "@parameter.inner",
-          },
+          enable = false, -- disabled: incompatible with Neovim 0.12 (tsrange:start)
         },
       },
     },
