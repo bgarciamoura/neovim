@@ -11,7 +11,6 @@ return {
     },
     spec = {
       { "<leader>f", group = "Find",     icon = "\u{f002}"  },  --
-      { "<leader>e", group = "Explorer", icon = "\u{f07b}"  },  --
       { "<leader>l", group = "LSP",      icon = "\u{f085}"  },  --
       { "<leader>g", group = "Git",      icon = "\u{f126}"  },  --
       { "<leader>d", group = "Debug",    icon = "\u{f188}"  },  --

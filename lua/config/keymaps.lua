@@ -74,7 +74,7 @@ map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Grep word und
 -- Explorer (Neo-tree) <leader>e
 -- ============================================================================
 
-map("n", "<leader>ee", "<cmd>Neotree toggle<cr>", { desc = "Toggle explorer" })
+map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle explorer" })
 map("n", "<leader>ef", "<cmd>Neotree reveal<cr>", { desc = "Reveal current file" })
 map("n", "<leader>eg", "<cmd>Neotree git_status<cr>", { desc = "Git status" })
 map("n", "<leader>eb", "<cmd>Neotree buffers<cr>", { desc = "Buffers" })
