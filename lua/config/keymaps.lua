@@ -13,6 +13,12 @@ map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 -- Quit Neovim
 map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit Neovim" })
 
+-- Select all
+map("n", "<C-a>", "ggVG", { desc = "Select all" })
+
+-- Save file
+map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr><Esc>", { desc = "Save file" })
+
 -- Navigate splits
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
