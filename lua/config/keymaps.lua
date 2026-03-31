@@ -10,6 +10,9 @@ map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 -- Clear search highlight
 map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 
+-- Quit Neovim
+map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit Neovim" })
+
 -- Navigate splits
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to lower split" })
