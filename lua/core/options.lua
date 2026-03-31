@@ -54,6 +54,13 @@ opt.mouse = "a"
 opt.timeoutlen = 300
 opt.updatetime = 250
 
+-- Folding (treesitter-based)
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 99      -- abre todos os folds por padrão
+opt.foldlevelstart = 99 -- não colapsa nada ao abrir arquivo
+opt.foldenable = true
+
 -- Behaviour
 opt.confirm = true
 
