@@ -9,6 +9,9 @@ return {
       "MunifTanjim/nui.nvim",
     },
     config = function()
+      -- Helper for Unicode codepoints above BMP (Lua \u{} doesn't support surrogates)
+      local nr = vim.fn.nr2char
+
       require("neo-tree").setup({
         close_if_last_window = true,
         popup_border_style = "rounded",
@@ -19,29 +22,29 @@ return {
           winbar = true,
           statusline = false,
           sources = {
-            { source = "filesystem",  display_name = " \u{f0c5} Files " },
-            { source = "buffers",     display_name = " \u{f0c5} Buffers " },
-            { source = "git_status",  display_name = " \u{f126} Git " },
+            { source = "filesystem", display_name = " " .. nr(0xf07b) .. " Files " },
+            { source = "buffers", display_name = " " .. nr(0xf0c5) .. " Buffers " },
+            { source = "git_status", display_name = " " .. nr(0xf126) .. " Git " },
           },
         },
 
         default_component_configs = {
           icon = {
-            folder_closed = "\u{f07b}",  --
-            folder_open   = "\u{f07c}",  --
-            folder_empty  = "\u{f115}",  --
+            folder_closed = nr(0xf07b),
+            folder_open = nr(0xf07c),
+            folder_empty = nr(0xf115),
           },
           git_status = {
             symbols = {
-              added     = "\u{f055} ",   --
-              modified  = "\u{f06a} ",   --
-              deleted   = "\u{2716} ",   -- ✖
-              renamed   = "\u{db80}\u{dc55} ", -- 󰁕
-              untracked = "\u{f128} ",   --
-              ignored   = "\u{f05e} ",   --
-              unstaged  = "\u{db80}\u{dd31} ", -- 󰄱
-              staged    = "\u{f00c} ",   --
-              conflict  = "\u{f0e7} ",   --
+              added = nr(0xf055) .. " ",
+              modified = nr(0xf06a) .. " ",
+              deleted = nr(0x2716) .. " ",
+              renamed = nr(0x100055) .. " ",
+              untracked = nr(0xf128) .. " ",
+              ignored = nr(0xf05e) .. " ",
+              unstaged = nr(0x100131) .. " ",
+              staged = nr(0xf00c) .. " ",
+              conflict = nr(0xf0e7) .. " ",
             },
           },
         },
