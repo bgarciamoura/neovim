@@ -49,13 +49,13 @@ autocmd("VimResized", {
   end,
 })
 
--- Disable winbar on all windows
-local no_winbar_group = augroup("NoWinbar", { clear = true })
-autocmd({ "BufEnter", "WinEnter", "BufWinEnter" }, {
+-- Disable winbar and tabline
+local no_winbar_group = augroup("NoWinbarTabline", { clear = true })
+autocmd({ "VimEnter", "BufEnter", "WinEnter" }, {
   group = no_winbar_group,
-  desc = "Disable winbar",
+  desc = "Disable winbar and tabline",
   callback = function()
-    vim.wo.winbar = nil
+    vim.opt.showtabline = 0
   end,
 })
 
