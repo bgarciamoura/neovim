@@ -56,3 +56,4 @@ opt.updatetime = 250
 
 -- Behaviour
 opt.confirm = true
+
