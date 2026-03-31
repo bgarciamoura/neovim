@@ -64,12 +64,16 @@ return {
       })
 
       -- ── LSP UI overrides (rounded borders) ─────────────────────────────────
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-        vim.lsp.handlers.hover, { border = "rounded" }
-      )
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help, { border = "rounded" }
-      )
+      vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
+        config = config or {}
+        config.border = "rounded"
+        return vim.lsp.handlers.hover(err, result, ctx, config)
+      end
+      vim.lsp.handlers["textDocument/signatureHelp"] = function(err, result, ctx, config)
+        config = config or {}
+        config.border = "rounded"
+        return vim.lsp.handlers.signature_help(err, result, ctx, config)
+      end
 
       -- ── Helper: disable formatting from LSP (defer to conform.nvim) ────────
       local function on_attach(client, _bufnr)
