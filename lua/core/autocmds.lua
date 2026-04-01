@@ -75,27 +75,7 @@ autocmd({ "BufReadPost", "BufNewFile", "BufEnter" }, {
   end,
 })
 
--- Force treesitter highlight on buffer enter
-local ts_highlight_group = augroup("TreesitterHighlight", { clear = true })
-autocmd({ "BufReadPost", "BufNewFile", "BufEnter" }, {
-  group = ts_highlight_group,
-  desc = "Ensure treesitter highlight is active",
-  callback = function(event)
-    local buf = event.buf
-    local ft = vim.bo[buf].filetype
-    if ft == "" or ft == "alpha" or ft == "neo-tree" or ft == "noice" then
-      return
-    end
-    local ok, lang = pcall(vim.treesitter.language.get_lang, ft)
-    if not ok or not lang then
-      return
-    end
-    local has_parser = pcall(vim.treesitter.language.add, lang)
-    if has_parser and not vim.treesitter.highlighter.active[buf] then
-      pcall(vim.treesitter.start, buf, lang)
-    end
-  end,
-})
+-- Treesitter highlight is handled in lua/plugins/editor/treesitter.lua
 
 -- Close certain filetypes with q
 local close_with_q_group = augroup("CloseWithQ", { clear = true })
