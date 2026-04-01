@@ -60,6 +60,7 @@ map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Move to right split" })
 -- Find (Telescope) <leader>f
 -- ============================================================================
 
+map("n", "<Space><Space>", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
@@ -69,6 +70,8 @@ map("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Diagnostics" 
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recent files" })
 map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document symbols" })
 map("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Grep word under cursor" })
+map("n", "<leader>fR", function() require("grug-far").open() end, { desc = "Find and Replace (GrugFar)" })
+map("n", "<leader>fW", function() require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } }) end, { desc = "Replace word under cursor (GrugFar)" })
 
 -- ============================================================================
 -- Explorer (Neo-tree) <leader>e
@@ -91,6 +94,7 @@ map("n", "<leader>lf", function() require("conform").format({ async = true, lsp_
 map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP info" })
 map("n", "<leader>lh", function() vim.lsp.buf.hover() end, { desc = "Hover" })
 map("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { desc = "Signature help" })
+map("n", "<leader>lt", function() vim.lsp.buf.type_definition() end, { desc = "Type definition" })
 map("n", "<leader>ll", function() vim.diagnostic.open_float() end, { desc = "Line diagnostics" })
 
 -- Diagnostics navigation (non-leader)
