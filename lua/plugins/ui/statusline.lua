@@ -19,30 +19,22 @@ return {
       require("lualine").setup({
         options = {
           icons_enabled = true,
-          theme = "tokyonight",
+          theme = "oasis",
           globalstatus = true,
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {
             statusline = { "alpha", "dashboard", "starter" },
-            winbar = {},
           },
-          ignore_focus = {},
           always_divide_middle = true,
-          refresh = {
-            statusline = 100,
-            tabline = 100,
-            winbar = 100,
-          },
+          refresh = { statusline = 100 },
         },
 
         sections = {
-          -- Left
           lualine_a = {
             {
               "mode",
-              icon = "",
-              separator = { left = "" },
+              separator = { left = "", right = "" },
               padding = { left = 1, right = 1 },
             },
           },
@@ -50,6 +42,7 @@ return {
             {
               "branch",
               icon = "",
+              separator = { right = "" },
             },
             {
               "diff",
@@ -60,14 +53,12 @@ return {
               },
             },
           },
-
-          -- Center
           lualine_c = {
             {
               "filename",
               path = 1,
               symbols = {
-                modified = " ",
+                modified = " ●",
                 readonly = " ",
                 unnamed = "[No Name]",
                 newfile = "[New]",
@@ -75,7 +66,7 @@ return {
             },
             {
               "diagnostics",
-              sources = { "nvim_lsp", "nvim_diagnostic" },
+              sources = { "nvim_diagnostic" },
               symbols = {
                 error = " ",
                 warn = " ",
@@ -83,25 +74,24 @@ return {
                 info = " ",
               },
               colored = true,
-              update_in_insert = false,
-              always_visible = false,
             },
           },
 
-          -- Right
           lualine_x = {
             { lsp_clients },
-            { "encoding" },
             { "filetype" },
           },
           lualine_y = {
-            { "progress" },
+            {
+              "progress",
+              separator = { left = "" },
+            },
           },
           lualine_z = {
             {
               "location",
-              icon = "",
-              separator = { right = "" },
+              separator = { left = "", right = "" },
+              padding = { left = 1, right = 1 },
             },
           },
         },
@@ -113,10 +103,7 @@ return {
             {
               "filename",
               path = 1,
-              symbols = {
-                modified = " ",
-                readonly = " ",
-              },
+              symbols = { modified = " ●", readonly = " " },
             },
           },
           lualine_x = { "location" },
