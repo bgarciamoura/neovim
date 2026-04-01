@@ -33,7 +33,7 @@ return {
   {
     dir = vim.fn.stdpath("config"),
     name = "lsp-config",
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
     dependencies = {
       "mason-org/mason.nvim",
       "b0o/SchemaStore.nvim",
@@ -85,7 +85,9 @@ return {
 
       -- TypeScript / JavaScript
       vim.lsp.config("ts_ls", {
+        cmd = { "typescript-language-server", "--stdio" },
         on_attach = on_attach,
+        root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
         filetypes = {
           "typescript",
           "typescriptreact",
@@ -120,7 +122,10 @@ return {
 
       -- Pyright
       vim.lsp.config("pyright", {
+        cmd = { "pyright-langserver", "--stdio" },
         on_attach = on_attach,
+        filetypes = { "python" },
+        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
         settings = {
           python = {
             analysis = {
@@ -135,7 +140,10 @@ return {
 
       -- Lua
       vim.lsp.config("lua_ls", {
+        cmd = { "lua-language-server" },
         on_attach = on_attach,
+        filetypes = { "lua" },
+        root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", ".git" },
         settings = {
           Lua = {
             workspace = {
@@ -155,7 +163,10 @@ return {
 
       -- JSON (SchemaStore)
       vim.lsp.config("jsonls", {
+        cmd = { "vscode-json-language-server", "--stdio" },
         on_attach = on_attach,
+        filetypes = { "json", "jsonc" },
+        root_markers = { ".git" },
         settings = {
           json = {
             schemas = require("schemastore").json.schemas(),
@@ -166,7 +177,10 @@ return {
 
       -- YAML (SchemaStore)
       vim.lsp.config("yamlls", {
+        cmd = { "yaml-language-server", "--stdio" },
         on_attach = on_attach,
+        filetypes = { "yaml", "yaml.docker-compose" },
+        root_markers = { ".git" },
         settings = {
           yaml = {
             schemaStore = {
@@ -182,9 +196,19 @@ return {
         },
       })
 
-      -- Simple servers (no extra config required)
-      for _, server in ipairs({ "html", "cssls", "taplo", "marksman", "dockerls", "docker_compose_language_service" }) do
-        vim.lsp.config(server, { on_attach = on_attach })
+      -- Simple servers
+      local simple_servers = {
+        html = { cmd = { "vscode-html-language-server", "--stdio" }, filetypes = { "html", "templ" } },
+        cssls = { cmd = { "vscode-css-language-server", "--stdio" }, filetypes = { "css", "scss", "less" } },
+        taplo = { cmd = { "taplo", "lsp", "stdio" }, filetypes = { "toml" } },
+        marksman = { cmd = { "marksman", "server" }, filetypes = { "markdown", "markdown.mdx" } },
+        dockerls = { cmd = { "docker-langserver", "--stdio" }, filetypes = { "dockerfile" } },
+        docker_compose_language_service = { cmd = { "docker-compose-langserver", "--stdio" }, filetypes = { "yaml.docker-compose" } },
+      }
+      for server, cfg in pairs(simple_servers) do
+        cfg.on_attach = on_attach
+        cfg.root_markers = cfg.root_markers or { ".git" }
+        vim.lsp.config(server, cfg)
       end
 
       -- ── Enable all servers ──────────────────────────────────────────────────
