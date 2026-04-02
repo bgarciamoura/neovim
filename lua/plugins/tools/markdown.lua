@@ -9,9 +9,9 @@ return {
 		},
 		config = function(_, opts)
 			-- Fundo suave para blocos de código (mais próximo do bg normal #101825)
-			vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#141c2a" })
-			vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { bg = "#141c2a" })
-			vim.api.nvim_set_hl(0, "RenderMarkdownCodeBorder", { bg = "#141c2a" })
+			vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#162133" })
+			vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { bg = "#162133" })
+			vim.api.nvim_set_hl(0, "RenderMarkdownCodeBorder", { bg = "#21324D", fg = "#7aa2f7" })
 
 			require("render-markdown").setup(opts)
 		end,
@@ -29,6 +29,7 @@ return {
 				enabled = true,
 				sign = true,
 				style = "full",
+				width = "block",
 			},
 			bullet = {
 				icons = { "●", "○", "◆", "◇" },
