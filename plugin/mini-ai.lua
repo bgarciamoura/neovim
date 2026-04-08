@@ -1,15 +1,7 @@
--- Enhanced textobjects (pattern-based, no nvim-treesitter dependency)
--- Built-in: a)/i) parens, a]/i] brackets, a}/i} braces, a"/i" quotes
--- Custom: af/if function call, aa/ia argument (already built-in in mini.ai)
+-- Enhanced textobjects (no nvim-treesitter dependency)
+-- Built-in defaults: af/if (function call), aa/ia (argument),
+-- a)/i), a]/i], a}/i}, a"/i", a'/i', a`/i`, at/it (tag)
 
-local ai = require('mini.ai')
-
-ai.setup({
-  -- Use built-in textobjects + pattern-based custom ones
-  -- 'f' (function call) and 'a' (argument) are built-in defaults
-  custom_textobjects = {
-    -- Function body: from 'function' keyword to 'end' or closing brace
-    F = ai.gen_spec.pattern('function[^(]*%b().-end', '^function[^(]*%b()%s*(.-)%s*end$'),
-  },
+require('mini.ai').setup({
   n_lines = 500,
 })

@@ -2,6 +2,7 @@
 -- Highlight, folding, and indent are handled natively by Neovim 0.12
 
 require('ts-install').setup({
+  auto_update = false,
   ensure_installed = {
     'typescript',
     'tsx',
