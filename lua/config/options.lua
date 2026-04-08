@@ -1,8 +1,12 @@
 -- Editor options
 
+-- Disable netrw (replaced by neo-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Leader key (must be set before plugins)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- Line numbers
 vim.o.number = true
@@ -11,6 +15,7 @@ vim.o.relativenumber = true
 -- Tabs & indentation
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 
@@ -64,5 +69,42 @@ vim.o.backup = false
 -- Clipboard
 vim.o.clipboard = 'unnamedplus'
 
--- Mouse
+-- Behaviour
+vim.o.confirm = true
 vim.o.mouse = 'a'
+
+-- Diagnostics
+vim.diagnostic.config({
+  severity_sort = true,
+  underline = true,
+  update_in_insert = false,
+  virtual_text = {
+    prefix = '',
+    spacing = 2,
+    source = 'if_many',
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN]  = ' ',
+      [vim.diagnostic.severity.HINT]  = ' ',
+      [vim.diagnostic.severity.INFO]  = ' ',
+    },
+  },
+  float = {
+    border = 'rounded',
+    source = 'always',
+  },
+})
+
+-- LSP UI (rounded borders)
+vim.lsp.handlers['textDocument/hover'] = function(err, result, ctx, config)
+  config = config or {}
+  config.border = 'rounded'
+  return vim.lsp.handlers.hover(err, result, ctx, config)
+end
+vim.lsp.handlers['textDocument/signatureHelp'] = function(err, result, ctx, config)
+  config = config or {}
+  config.border = 'rounded'
+  return vim.lsp.handlers.signature_help(err, result, ctx, config)
+end
