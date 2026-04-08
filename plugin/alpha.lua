@@ -59,28 +59,17 @@ dashboard.section.footer.val = {
 dashboard.section.footer.opts.hl = "AlphaFooter"
 dashboard.section.header.opts.hl = "AlphaHeader"
 
--- Startup time (deferred, updates after VimEnter)
-vim.api.nvim_create_autocmd("User", {
-  pattern = "AlphaReady",
+-- Update footer with startup time after UIEnter
+vim.api.nvim_create_autocmd("UIEnter", {
   once = true,
   callback = function()
-    vim.defer_fn(function()
-      local stats = vim.fn.reltime(vim.g.start_time or vim.fn.reltime())
-      -- Use lazy event stats if available, otherwise calculate
-      local startuptime = vim.fn.reltimefloat(vim.fn.reltime(vim.fn.reltime(), stats))
-
-      -- Try to read from --startuptime if available
-      local ok, result = pcall(function()
-        return vim.fn.execute('verbose messages')
-      end)
-
-      table.insert(info, string.format("\u{26a1} %.1fms", startuptime * 1000))
-      dashboard.section.footer.val = {
-        "",
-        table.concat(info, "    "),
-      }
-      pcall(vim.cmd, 'AlphaRedraw')
-    end, 50)
+    local ms = (vim.loop.hrtime() - (vim.g._start_time or vim.loop.hrtime())) / 1e6
+    table.insert(info, string.format("\u{26a1} %.0fms", ms))
+    dashboard.section.footer.val = {
+      "",
+      table.concat(info, "    "),
+    }
+    pcall(vim.cmd, 'AlphaRedraw')
   end,
 })
 
