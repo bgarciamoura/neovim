@@ -213,12 +213,10 @@ map('n', '<leader>nw', function() require('neotest').watch.toggle(vim.fn.expand(
 -- ── Buffers <leader>b ───────────────────────────────────────────────────────
 
 map('n', '<leader>q', function()
-  local bufs = vim.tbl_filter(function(b)
-    return vim.api.nvim_buf_is_loaded(b)
-      and vim.bo[b].buflisted
-      and vim.bo[b].filetype ~= 'neo-tree'
+  local listed = vim.tbl_filter(function(b)
+    return vim.api.nvim_buf_is_loaded(b) and vim.bo[b].buflisted
   end, vim.api.nvim_list_bufs())
-  if #bufs <= 1 then
+  if #listed <= 1 and #vim.api.nvim_list_wins() <= 1 then
     vim.cmd('quit')
   else
     vim.cmd('bdelete')
