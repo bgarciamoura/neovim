@@ -1,5 +1,10 @@
 return {
   cmd = { 'typescript-language-server', '--stdio' },
+  on_attach = function(client, _bufnr)
+    -- Disable formatting (conform.nvim handles it via prettierd)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
   filetypes = {
     'javascript',
     'javascriptreact',
