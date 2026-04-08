@@ -1,8 +1,8 @@
--- Treesitter parser installer (lightweight alternative to nvim-treesitter)
--- Highlight, folding, and indent are handled natively by Neovim 0.12
+-- Treesitter parser management via nvim-treesitter (main branch for 0.12)
+-- Highlight, folding, and commenting are handled natively by Neovim 0.12
+-- nvim-treesitter is used ONLY for parser installation and query files
 
-require('ts-install').setup({
-  auto_update = false,
+require('nvim-treesitter').setup({
   ensure_installed = {
     'typescript',
     'tsx',

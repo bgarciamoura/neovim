@@ -6,8 +6,8 @@ vim.pack.add({
   'https://github.com/mason-org/mason-lspconfig.nvim',
   'https://github.com/neovim/nvim-lspconfig',
 
-  -- Treesitter parser installer (lightweight, no highlight/fold management)
-  'https://github.com/lewis6991/ts-install.nvim',
+  -- Treesitter parser management (main branch, rewritten for 0.12)
+  'https://github.com/nvim-treesitter/nvim-treesitter',
 
   -- Textobjects via treesitter (no nvim-treesitter dependency)
   'https://github.com/echasnovski/mini.ai',
