@@ -81,7 +81,4 @@ neotree.setup({
     follow_current_file = { enabled = true },
   },
 })
-
--- Keymaps
-vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle file explorer' })
-vim.keymap.set('n', '<leader>E', '<Cmd>Neotree reveal<CR>', { desc = 'Reveal file in explorer' })
+-- Keymaps are defined in lua/config/keymaps.lua under <leader>e*

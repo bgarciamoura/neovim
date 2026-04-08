@@ -128,7 +128,7 @@ map('n', '<leader>fw', '<Cmd>Telescope grep_string<CR>', { desc = 'Grep word und
 
 -- ── Explorer (Neo-tree) <leader>e ───────────────────────────────────────────
 
-map('n', '<leader>e', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle explorer' })
+map('n', '<leader>ee', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle explorer' })
 map('n', '<leader>ef', '<Cmd>Neotree reveal<CR>', { desc = 'Reveal current file' })
 map('n', '<leader>eg', '<Cmd>Neotree git_status<CR>', { desc = 'Git status' })
 map('n', '<leader>eb', '<Cmd>Neotree buffers<CR>', { desc = 'Buffers' })
