@@ -1,2 +1,5 @@
 *.md
 !README.md
+
+# vim.pack plugins (downloaded at runtime)
+pack/
