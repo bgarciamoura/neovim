@@ -15,7 +15,7 @@ map('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 map('n', '<C-q>', '<Cmd>qa<CR>', { desc = 'Quit Neovim' })
 
 -- Save
-map({ 'n', 'i', 'v' }, '<C-s>', '<Cmd>write<CR>', { desc = 'Save file' })
+map({ 'n', 'i', 'v' }, '<C-s>', '<Cmd>stopinsert | write<CR>', { desc = 'Save file' })
 
 -- Select all
 map('n', '<C-a>', 'ggVG', { desc = 'Select all' })
