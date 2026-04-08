@@ -15,6 +15,9 @@ vim.pack.add({
   -- Keymap visibility
   'https://github.com/echasnovski/mini.clue',
 
+  -- Dashboard
+  'https://github.com/goolord/alpha-nvim',
+
   -- Colorscheme
   'https://github.com/uhs-robert/oasis.nvim',
 
