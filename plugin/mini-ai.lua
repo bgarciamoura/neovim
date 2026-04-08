@@ -1,18 +1,15 @@
--- Textobjects via treesitter (replacement for nvim-treesitter-textobjects)
--- Provides: af/if (function), ac/ic (class), aa/ia (argument), and more
+-- Enhanced textobjects (pattern-based, no nvim-treesitter dependency)
+-- Built-in: a)/i) parens, a]/i] brackets, a}/i} braces, a"/i" quotes
+-- Custom: af/if function call, aa/ia argument (already built-in in mini.ai)
 
 local ai = require('mini.ai')
-local spec_treesitter = ai.gen_spec.treesitter
 
 ai.setup({
+  -- Use built-in textobjects + pattern-based custom ones
+  -- 'f' (function call) and 'a' (argument) are built-in defaults
   custom_textobjects = {
-    f = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
-    c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
-    a = spec_treesitter({ a = '@parameter.outer', i = '@parameter.inner' }),
-    o = spec_treesitter({
-      a = { '@conditional.outer', '@loop.outer' },
-      i = { '@conditional.inner', '@loop.inner' },
-    }),
+    -- Function body: from 'function' keyword to 'end' or closing brace
+    F = ai.gen_spec.pattern('function[^(]*%b().-end', '^function[^(]*%b()%s*(.-)%s*end$'),
   },
   n_lines = 500,
 })
