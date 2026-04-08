@@ -45,11 +45,7 @@ table.insert(info, string.format("\u{e62b} v%d.%d.%d", v.major, v.minor, v.patch
 
 -- Plugin count
 local pack_path = vim.fn.stdpath('data') .. '/site/pack'
-local plugin_count = 0
-local glob = vim.fn.glob(pack_path .. '/*/*', false, true)
-for _, _ in ipairs(glob) do
-  plugin_count = plugin_count + 1
-end
+local plugin_count = #vim.fn.glob(pack_path .. '/*/*/*', false, true)
 table.insert(info, string.format("\u{f1b2} %d plugins", plugin_count))
 
 -- Current directory
