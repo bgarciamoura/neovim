@@ -21,8 +21,8 @@ map({ 'n', 'i', 'v' }, '<C-s>', '<Cmd>write<CR>', { desc = 'Save file' })
 map('n', '<C-a>', 'ggVG', { desc = 'Select all' })
 
 -- Toggle comment (native gcc/gc in 0.12)
-map('n', '<leader>;', 'gcc', { desc = 'Comment line', remap = true })
-map('v', '<leader>;', 'gc', { desc = 'Comment selection', remap = true })
+map('n', '<leader>;', 'gcc', { desc = "\u{f27a} Comment line", remap = true })
+map('v', '<leader>;', 'gc', { desc = "\u{f27a} Comment selection", remap = true })
 
 -- Undo / Redo
 map({ 'n', 'i' }, '<C-z>', '<Cmd>undo<CR>', { desc = 'Undo' })
@@ -115,7 +115,7 @@ end, { expr = true, desc = 'Prev completion / snippet jump back' })
 
 -- ── Find (Telescope) <leader>f ──────────────────────────────────────────────
 
-map('n', '<Space><Space>', '<Cmd>Telescope find_files<CR>', { desc = 'Find files' })
+map('n', '<Space><Space>', '<Cmd>Telescope find_files<CR>', { desc = "\u{f002} Find files" })
 map('n', '<leader>ff', '<Cmd>Telescope find_files<CR>', { desc = 'Find files' })
 map('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>', { desc = 'Live grep' })
 map('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', { desc = 'Buffers' })
@@ -212,7 +212,7 @@ map('n', '<leader>nw', function() require('neotest').watch.toggle(vim.fn.expand(
 
 -- ── Buffers <leader>b ───────────────────────────────────────────────────────
 
-map('n', '<leader>q', '<Cmd>bdelete<CR>', { desc = ' Close buffer' })
+map('n', '<leader>q', '<Cmd>bdelete<CR>', { desc = "\u{f2d3} Close buffer" })
 map('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' })
 map('n', '<leader>bn', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 map('n', '<leader>bp', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
