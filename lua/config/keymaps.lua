@@ -212,7 +212,16 @@ map('n', '<leader>nw', function() require('neotest').watch.toggle(vim.fn.expand(
 
 -- ── Buffers <leader>b ───────────────────────────────────────────────────────
 
-map('n', '<leader>q', '<Cmd>bdelete<CR>', { desc = "\u{f2d3} Close buffer" })
+map('n', '<leader>q', function()
+  local bufs = vim.tbl_filter(function(b)
+    return vim.api.nvim_buf_is_loaded(b) and vim.bo[b].buflisted
+  end, vim.api.nvim_list_bufs())
+  if #bufs <= 1 then
+    vim.cmd('quit')
+  else
+    vim.cmd('bdelete')
+  end
+end, { desc = "\u{f2d3} Close buffer / Quit" })
 map('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' })
 map('n', '<leader>bn', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 map('n', '<leader>bp', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
