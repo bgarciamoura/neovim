@@ -214,7 +214,9 @@ map('n', '<leader>nw', function() require('neotest').watch.toggle(vim.fn.expand(
 
 map('n', '<leader>q', function()
   local bufs = vim.tbl_filter(function(b)
-    return vim.api.nvim_buf_is_loaded(b) and vim.bo[b].buflisted
+    return vim.api.nvim_buf_is_loaded(b)
+      and vim.bo[b].buflisted
+      and vim.bo[b].filetype ~= 'neo-tree'
   end, vim.api.nvim_list_bufs())
   if #bufs <= 1 then
     vim.cmd('quit')
