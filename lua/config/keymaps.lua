@@ -212,7 +212,7 @@ map('n', '<leader>nw', function() require('neotest').watch.toggle(vim.fn.expand(
 
 -- ── Buffers <leader>b ───────────────────────────────────────────────────────
 
-map('n', '<leader>q', '<Cmd>bdelete<CR>', { desc = 'Close buffer' })
+map('n', '<leader>q', '<Cmd>bdelete<CR>', { desc = ' Close buffer' })
 map('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' })
 map('n', '<leader>bn', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 map('n', '<leader>bp', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
@@ -254,16 +254,16 @@ miniclue.setup({
     miniclue.gen_clues.square_brackets(),
     miniclue.gen_clues.windows(),
     miniclue.gen_clues.z(),
-    -- Group labels
-    { mode = 'n', keys = '<Leader>b', desc = '+Buffers' },
-    { mode = 'n', keys = '<Leader>d', desc = '+Debug' },
-    { mode = 'n', keys = '<Leader>e', desc = '+Explorer' },
-    { mode = 'n', keys = '<Leader>f', desc = '+Find' },
-    { mode = 'n', keys = '<Leader>g', desc = '+Git' },
-    { mode = 'n', keys = '<Leader>j', desc = '+Jupyter' },
-    { mode = 'n', keys = '<Leader>l', desc = '+LSP' },
-    { mode = 'n', keys = '<Leader>n', desc = '+Tests' },
-    { mode = 'n', keys = '<Leader>t', desc = '+Terminal' },
+    -- Group labels with icons
+    { mode = 'n', keys = '<Leader>b', desc = ' Buffers' },
+    { mode = 'n', keys = '<Leader>d', desc = ' Debug' },
+    { mode = 'n', keys = '<Leader>e', desc = ' Explorer' },
+    { mode = 'n', keys = '<Leader>f', desc = ' Find' },
+    { mode = 'n', keys = '<Leader>g', desc = ' Git' },
+    { mode = 'n', keys = '<Leader>j', desc = ' Jupyter' },
+    { mode = 'n', keys = '<Leader>l', desc = ' LSP' },
+    { mode = 'n', keys = '<Leader>n', desc = ' Tests' },
+    { mode = 'n', keys = '<Leader>t', desc = ' Terminal' },
   },
   window = {
     delay = 300,
