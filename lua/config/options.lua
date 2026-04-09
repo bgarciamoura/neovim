@@ -53,7 +53,9 @@ vim.o.foldnestmax = 4
 vim.o.foldcolumn = '1'
 
 -- Completion (LSP native)
-vim.o.autocomplete = true
+if vim.fn.has('nvim-0.12') == 1 then
+  vim.o.autocomplete = true
+end
 vim.o.completeopt = 'menuone,noselect,popup,fuzzy'
 vim.o.pumheight = 15
 
