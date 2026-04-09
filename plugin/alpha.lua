@@ -35,6 +35,7 @@ dashboard.section.buttons.val = {
 		"Lazygit",
 		"<Cmd>lua require('toggleterm.terminal').Terminal:new({cmd='lazygit',direction='float',float_opts={border='rounded'}}):toggle()<CR>"
 	),
+	button("s", "\u{f0c7}", "Restore Session", "<Cmd>lua require('persistence').load()<CR>"),
 	button("n", "\u{f0f6}", "New File", "<Cmd>ene<CR>"),
 	button("c", "\u{f013}", "Config", "<Cmd>e $MYVIMRC<CR>"),
 	button("t", "\u{f0c3}", "Run Tests", "<Cmd>Neotest summary<CR>"),

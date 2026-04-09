@@ -1,11 +1,16 @@
--- Session management
+-- Session management (deferred to avoid slowing startup)
 
-local ok, persistence = pcall(require, 'persistence')
-if not ok then return end
+vim.api.nvim_create_autocmd('VimEnter', {
+  once = true,
+  callback = function()
+    local ok, persistence = pcall(require, 'persistence')
+    if not ok then return end
 
-persistence.setup({
-  need = 1,
-  branch = true,
+    persistence.setup({
+      need = 1,
+      branch = true,
+    })
+  end,
 })
 
 -- Re-attach treesitter/LSP after restoring a session
