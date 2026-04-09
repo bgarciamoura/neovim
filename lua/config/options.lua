@@ -35,6 +35,7 @@ vim.opt.fillchars = {
 }
 vim.o.termguicolors = true
 vim.o.signcolumn = 'yes'
+vim.o.statuscolumn = '%s%C %l  '
 vim.o.cursorline = true
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
