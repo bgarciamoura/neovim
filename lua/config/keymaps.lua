@@ -240,7 +240,8 @@ map('n', '<leader>jd', '<Cmd>MoltenDelete<CR>', { desc = 'Delete cell' })
 
 -- ── mini.clue setup ─────────────────────────────────────────────────────────
 
-local miniclue = require('mini.clue')
+local ok_clue, miniclue = pcall(require, 'mini.clue')
+if not ok_clue then return end
 miniclue.setup({
   triggers = {
     { mode = { 'n', 'x' }, keys = '<Leader>' },

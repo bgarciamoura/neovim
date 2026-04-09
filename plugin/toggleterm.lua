@@ -1,6 +1,9 @@
 -- Terminal management
 
-require('toggleterm').setup({
+local ok, toggleterm = pcall(require, 'toggleterm')
+if not ok then return end
+
+toggleterm.setup({
   size = function(term)
     if term.direction == 'horizontal' then
       return 15

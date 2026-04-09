@@ -1,6 +1,9 @@
 -- Flutter development tools (replaces raw dartls)
 
-require('flutter-tools').setup({
+local ok, flutter = pcall(require, 'flutter-tools')
+if not ok then return end
+
+flutter.setup({
   debugger = {
     enabled = true,
     run_via_dap = true,

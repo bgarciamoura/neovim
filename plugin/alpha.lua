@@ -1,6 +1,7 @@
 -- Dashboard
 
-local alpha = require("alpha")
+local ok, alpha = pcall(require, "alpha")
+if not ok then return end
 local dashboard = require("alpha.themes.dashboard")
 
 -- Header

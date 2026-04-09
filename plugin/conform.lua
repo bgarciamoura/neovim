@@ -1,6 +1,9 @@
 -- Formatting via external tools
 
-require('conform').setup({
+local ok, conform = pcall(require, 'conform')
+if not ok then return end
+
+conform.setup({
   formatters_by_ft = {
     javascript      = { 'prettierd', stop_after_first = true },
     javascriptreact = { 'prettierd', stop_after_first = true },

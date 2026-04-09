@@ -1,6 +1,9 @@
 -- Git signs in the gutter
 
-require('gitsigns').setup({
+local ok, gitsigns = pcall(require, 'gitsigns')
+if not ok then return end
+
+gitsigns.setup({
   signs = {
     add          = { text = '▎' },
     change       = { text = '▎' },

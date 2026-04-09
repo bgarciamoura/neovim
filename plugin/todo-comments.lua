@@ -1,6 +1,9 @@
 -- Highlight TODO/FIXME/HACK comments
 
-require('todo-comments').setup({
+local ok, todo = pcall(require, 'todo-comments')
+if not ok then return end
+
+todo.setup({
   signs = true,
   keywords = {
     FIX  = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' } },

@@ -1,6 +1,9 @@
 -- Colorscheme: oasis (lagoon style)
 
-require('oasis').setup({
+local ok, oasis = pcall(require, 'oasis')
+if not ok then return end
+
+oasis.setup({
   style = 'lagoon',
   themed_syntax = true,
   styles = {

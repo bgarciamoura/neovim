@@ -2,7 +2,10 @@
 -- Highlight, folding, and commenting are handled natively by Neovim 0.12
 -- nvim-treesitter is used ONLY for parser installation and query files
 
-require('nvim-treesitter').setup({
+local ok, ts = pcall(require, 'nvim-treesitter')
+if not ok then return end
+
+ts.setup({
   ensure_installed = {
     'typescript',
     'tsx',

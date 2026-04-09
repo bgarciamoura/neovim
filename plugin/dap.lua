@@ -1,6 +1,7 @@
 -- Debug Adapter Protocol
 
-local dap = require('dap')
+local ok, dap = pcall(require, 'dap')
+if not ok then return end
 local dapui = require('dapui')
 
 -- Signs
@@ -117,7 +118,8 @@ dapui.setup({
 })
 
 -- Virtual text
-require('nvim-dap-virtual-text').setup({ commented = true })
+local ok_vt, vt = pcall(require, 'nvim-dap-virtual-text')
+if ok_vt then vt.setup({ commented = true }) end
 
 -- Auto open/close DAP UI
 dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open() end
