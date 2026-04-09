@@ -84,6 +84,11 @@ vim.pack.add({
   -- Session
   'https://github.com/folke/persistence.nvim',
 
+  -- Tiny UI enhancements
+  'https://github.com/rachartier/tiny-inline-diagnostic.nvim',
+  'https://github.com/rachartier/tiny-cmdline.nvim',
+  'https://github.com/rachartier/tiny-code-action.nvim',
+
   -- Shared dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',

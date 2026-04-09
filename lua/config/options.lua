@@ -73,17 +73,14 @@ vim.o.clipboard = 'unnamedplus'
 -- Behaviour
 vim.o.confirm = true
 vim.o.mouse = 'a'
+vim.o.cmdheight = 0
 
 -- Diagnostics
 vim.diagnostic.config({
   severity_sort = true,
   underline = true,
   update_in_insert = false,
-  virtual_text = {
-    prefix = '',
-    spacing = 2,
-    source = 'if_many',
-  },
+  virtual_text = false,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = ' ',
