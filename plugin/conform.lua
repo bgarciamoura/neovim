@@ -3,19 +3,30 @@
 local ok, conform = pcall(require, 'conform')
 if not ok then return end
 
+-- Use biome if project has biome.json, otherwise prettierd
+local function web_formatter()
+  local root = vim.fn.getcwd()
+  if vim.fn.filereadable(root .. '/biome.json') == 1
+    or vim.fn.filereadable(root .. '/biome.jsonc') == 1 then
+    return { 'biome', stop_after_first = true }
+  end
+  return { 'prettierd', stop_after_first = true }
+end
+
 conform.setup({
   formatters_by_ft = {
-    javascript      = { 'prettierd', stop_after_first = true },
-    javascriptreact = { 'prettierd', stop_after_first = true },
-    typescript      = { 'prettierd', stop_after_first = true },
-    typescriptreact = { 'prettierd', stop_after_first = true },
-    json            = { 'prettierd', stop_after_first = true },
-    jsonc           = { 'prettierd', stop_after_first = true },
+    javascript      = web_formatter,
+    javascriptreact = web_formatter,
+    typescript      = web_formatter,
+    typescriptreact = web_formatter,
+    json            = web_formatter,
+    jsonc           = web_formatter,
+    css             = web_formatter,
     yaml            = { 'prettierd', stop_after_first = true },
     html            = { 'prettierd', stop_after_first = true },
-    css             = { 'prettierd', stop_after_first = true },
     scss            = { 'prettierd', stop_after_first = true },
     markdown        = { 'prettierd', stop_after_first = true },
+    graphql         = web_formatter,
     python          = { 'black' },
     lua             = { 'stylua' },
     dart            = { 'dart_format' },

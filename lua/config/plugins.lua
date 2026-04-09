@@ -132,6 +132,8 @@ end)
 require('mason-lspconfig').setup({
   ensure_installed = {
     'ts_ls',
+    'eslint',
+    'biome',
     'pyright',
     'ruff',
     'lua_ls',
@@ -146,6 +148,8 @@ require('mason-lspconfig').setup({
   },
   automatic_enable = {
     'ts_ls',
+    'eslint',
+    'biome',
     'pyright',
     'ruff',
     'lua_ls',

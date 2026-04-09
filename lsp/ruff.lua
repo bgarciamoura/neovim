@@ -7,4 +7,8 @@ return {
     '.ruff.toml',
     '.git',
   },
+  settings = {
+    organizeImports = true,
+    fixAll = true,
+  },
 }

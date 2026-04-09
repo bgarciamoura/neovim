@@ -4,11 +4,8 @@ local ok, lint = pcall(require, 'lint')
 if not ok then return end
 
 lint.linters_by_ft = {
-  javascript      = { 'eslint_d' },
-  javascriptreact = { 'eslint_d' },
-  typescript      = { 'eslint_d' },
-  typescriptreact = { 'eslint_d' },
-  python          = { 'ruff' },
+  -- JS/TS: eslint is now an LSP server (provides code actions)
+  -- Python: ruff is now an LSP server (provides code actions)
   lua             = { 'luacheck' },
   markdown        = { 'markdownlint' },
   dockerfile      = { 'hadolint' },
