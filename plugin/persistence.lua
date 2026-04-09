@@ -13,7 +13,15 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
--- Re-attach treesitter/LSP after restoring a session
+-- Close Neo-tree before saving (special buffers break mksession)
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'PersistenceSavePre',
+  callback = function()
+    pcall(vim.cmd, 'Neotree close')
+  end,
+})
+
+-- Re-attach treesitter/LSP and reopen Neo-tree after restoring
 vim.api.nvim_create_autocmd('User', {
   pattern = 'PersistenceLoadPost',
   callback = function()
@@ -28,6 +36,8 @@ vim.api.nvim_create_autocmd('User', {
           end
         end
       end
+      -- Reopen Neo-tree
+      pcall(vim.cmd, 'Neotree show')
     end, 100)
   end,
 })
