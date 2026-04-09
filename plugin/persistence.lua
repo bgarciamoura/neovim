@@ -13,19 +13,32 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
--- Close Neo-tree before saving (special buffers break mksession)
+-- Close Neo-tree and wipe its buffers before saving
 vim.api.nvim_create_autocmd('User', {
   pattern = 'PersistenceSavePre',
   callback = function()
     pcall(vim.cmd, 'Neotree close')
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.bo[buf].filetype == 'neo-tree' then
+        pcall(vim.api.nvim_buf_delete, buf, { force = true })
+      end
+    end
   end,
 })
 
--- Re-attach treesitter/LSP and reopen Neo-tree after restoring
+-- Re-attach treesitter/LSP after restoring
 vim.api.nvim_create_autocmd('User', {
   pattern = 'PersistenceLoadPost',
   callback = function()
     vim.defer_fn(function()
+      -- Kill any neo-tree buffers that leaked into the session
+      for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.bo[buf].filetype == 'neo-tree'
+          or (vim.api.nvim_buf_get_name(buf)):match('neo%-tree') then
+          pcall(vim.api.nvim_buf_delete, buf, { force = true })
+        end
+      end
+      -- Re-attach treesitter/LSP on real file buffers
       for _, buf in ipairs(vim.api.nvim_list_bufs()) do
         if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
           local name = vim.api.nvim_buf_get_name(buf)
@@ -36,8 +49,6 @@ vim.api.nvim_create_autocmd('User', {
           end
         end
       end
-      -- Reopen Neo-tree
-      pcall(vim.cmd, 'Neotree show')
     end, 100)
   end,
 })
