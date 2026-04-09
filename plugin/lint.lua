@@ -3,13 +3,24 @@
 local ok, lint = pcall(require, 'lint')
 if not ok then return end
 
-lint.linters_by_ft = {
-  -- JS/TS: eslint is now an LSP server (provides code actions)
-  -- Python: ruff is now an LSP server (provides code actions)
+-- Only register linters whose binary is available
+local all_linters = {
   lua             = { 'luacheck' },
   markdown        = { 'markdownlint' },
   dockerfile      = { 'hadolint' },
 }
+
+for ft, linters in pairs(all_linters) do
+  local available = {}
+  for _, name in ipairs(linters) do
+    if vim.fn.executable(name) == 1 then
+      table.insert(available, name)
+    end
+  end
+  if #available > 0 then
+    lint.linters_by_ft[ft] = available
+  end
+end
 
 vim.api.nvim_create_autocmd({ 'BufWritePost', 'InsertLeave', 'BufEnter' }, {
   group = vim.api.nvim_create_augroup('nvim-lint', { clear = true }),
