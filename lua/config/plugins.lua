@@ -77,6 +77,10 @@ vim.pack.add({
   'https://github.com/benlubas/molten-nvim',
   'https://github.com/3rd/image.nvim',
 
+  -- Markdown
+  'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+  'https://github.com/iamcco/markdown-preview.nvim',
+
   -- Shared dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',

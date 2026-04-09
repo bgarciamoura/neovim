@@ -1,0 +1,3 @@
+-- Browser-based markdown preview
+-- Commands: :MarkdownPreview, :MarkdownPreviewStop
+-- After first install, run :call mkdp#util#install()
