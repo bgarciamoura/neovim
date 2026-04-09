@@ -238,6 +238,13 @@ map('n', '<leader>jn', '<Cmd>MoltenNext<CR>', { desc = 'Next cell' })
 map('n', '<leader>jp', '<Cmd>MoltenPrev<CR>', { desc = 'Previous cell' })
 map('n', '<leader>jd', '<Cmd>MoltenDelete<CR>', { desc = 'Delete cell' })
 
+-- ── Session (persistence) <leader>s ────────────────────────────────────────
+
+map('n', '<leader>sr', function() require('persistence').load() end, { desc = 'Restore session (cwd)' })
+map('n', '<leader>sl', function() require('persistence').load({ last = true }) end, { desc = 'Restore last session' })
+map('n', '<leader>ss', function() require('persistence').select() end, { desc = 'Select session' })
+map('n', '<leader>sd', function() require('persistence').stop() end, { desc = 'Stop auto-save' })
+
 -- ── mini.clue setup ─────────────────────────────────────────────────────────
 
 local ok_clue, miniclue = pcall(require, 'mini.clue')
@@ -273,6 +280,7 @@ miniclue.setup({
     { mode = 'n', keys = '<Leader>j', desc = "\u{f02d} Jupyter" },
     { mode = 'n', keys = '<Leader>l', desc = "\u{f085} LSP" },
     { mode = 'n', keys = '<Leader>n', desc = "\u{f0c3} Tests" },
+    { mode = 'n', keys = '<Leader>s', desc = "\u{f0c7} Session" },
     { mode = 'n', keys = '<Leader>t', desc = "\u{f120} Terminal" },
   },
   window = {

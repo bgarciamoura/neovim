@@ -81,6 +81,9 @@ vim.pack.add({
   'https://github.com/MeanderingProgrammer/render-markdown.nvim',
   'https://github.com/iamcco/markdown-preview.nvim',
 
+  -- Session
+  'https://github.com/folke/persistence.nvim',
+
   -- Shared dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
