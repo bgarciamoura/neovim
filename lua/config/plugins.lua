@@ -89,6 +89,10 @@ vim.pack.add({
   'https://github.com/rachartier/tiny-cmdline.nvim',
   'https://github.com/rachartier/tiny-code-action.nvim',
 
+  -- Completion
+  'https://github.com/saghen/blink.cmp',
+  'https://github.com/rafamadriz/friendly-snippets',
+
   -- Shared dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',

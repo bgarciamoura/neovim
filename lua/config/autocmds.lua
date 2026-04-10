@@ -9,11 +9,6 @@ autocmd('LspAttach', {
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
 
-    -- Enable LSP completion with autotrigger
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-
     -- Upgrade to LSP folding when supported (more accurate than treesitter)
     if client:supports_method('textDocument/foldingRange') then
       local win = vim.api.nvim_get_current_win()
@@ -65,38 +60,6 @@ autocmd({ 'FileType', 'BufReadPost', 'BufWinEnter' }, {
 
     if ignored_fts[ft] then return end
     pcall(vim.treesitter.start, buf)
-  end,
-})
-
--- Resolve completion item for auto-imports (additionalTextEdits)
-autocmd('CompleteDone', {
-  group = augroup('lsp-complete-resolve', { clear = true }),
-  callback = function()
-    local item = vim.v.completed_item
-    if not item or not item.user_data then return end
-
-    local user_data = item.user_data
-    if type(user_data) == 'string' then
-      local ok, parsed = pcall(vim.json.decode, user_data)
-      if not ok then return end
-      user_data = parsed
-    end
-
-    local completion_item = user_data.nvim and user_data.nvim.lsp and user_data.nvim.lsp.completion_item
-    if not completion_item then return end
-
-    local clients = vim.lsp.get_clients({ bufnr = 0 })
-    for _, client in ipairs(clients) do
-      if client:supports_method('completionItem/resolve') then
-        client:request('completionItem/resolve', completion_item, function(err, result)
-          if err or not result then return end
-          if result.additionalTextEdits then
-            vim.lsp.util.apply_text_edits(result.additionalTextEdits, vim.api.nvim_get_current_buf(), client.offset_encoding)
-          end
-        end, 0)
-        break
-      end
-    end
   end,
 })
 

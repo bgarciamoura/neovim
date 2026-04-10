@@ -27,13 +27,7 @@ map('v', '<leader>;', 'gc', { desc = "\u{f27a} Comment selection", remap = true 
 -- Undo / Redo
 map({ 'n', 'i' }, '<C-z>', '<Cmd>undo<CR>', { desc = 'Undo' })
 map('n', '<C-y>', '<C-r>', { desc = 'Redo' })
-map('i', '<C-y>', function()
-  if vim.fn.pumvisible() == 1 then
-    return '<C-y>'
-  else
-    return '<Cmd>redo<CR>'
-  end
-end, { expr = true, desc = 'Redo / Accept completion' })
+map('i', '<C-y>', '<Cmd>redo<CR>', { desc = 'Redo' })
 
 -- ── Navigation ──────────────────────────────────────────────────────────────
 
@@ -80,38 +74,6 @@ map('t', '<C-h>', '<Cmd>wincmd h<CR>', { desc = 'Move to left split' })
 map('t', '<C-j>', '<Cmd>wincmd j<CR>', { desc = 'Move to lower split' })
 map('t', '<C-k>', '<Cmd>wincmd k<CR>', { desc = 'Move to upper split' })
 map('t', '<C-l>', '<Cmd>wincmd l<CR>', { desc = 'Move to right split' })
-
--- ── Completion (insert mode) ────────────────────────────────────────────────
-
-map('i', '<C-Space>', function() vim.lsp.completion.get() end, { desc = 'Trigger completion' })
-
-map('i', '<CR>', function()
-  if vim.fn.pumvisible() == 1 then
-    return '<C-y>'
-  else
-    return '<CR>'
-  end
-end, { expr = true, desc = 'Accept completion / Enter' })
-
-map('i', '<Tab>', function()
-  if vim.fn.pumvisible() == 1 then
-    return '<C-n>'
-  elseif vim.snippet.active({ direction = 1 }) then
-    return '<Cmd>lua vim.snippet.jump(1)<CR>'
-  else
-    return '<Tab>'
-  end
-end, { expr = true, desc = 'Next completion / snippet jump' })
-
-map('i', '<S-Tab>', function()
-  if vim.fn.pumvisible() == 1 then
-    return '<C-p>'
-  elseif vim.snippet.active({ direction = -1 }) then
-    return '<Cmd>lua vim.snippet.jump(-1)<CR>'
-  else
-    return '<S-Tab>'
-  end
-end, { expr = true, desc = 'Prev completion / snippet jump back' })
 
 -- ── Find (Telescope) <leader>f ──────────────────────────────────────────────
 

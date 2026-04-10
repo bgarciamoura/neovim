@@ -53,8 +53,7 @@ vim.o.foldlevelstart = 99
 vim.o.foldnestmax = 4
 vim.o.foldcolumn = '1'
 
--- Completion (LSP native)
-pcall(function() vim.o.autocomplete = true end)
+-- Completion
 vim.o.completeopt = 'menuone,noselect,popup,fuzzy'
 vim.o.pumheight = 15
 
