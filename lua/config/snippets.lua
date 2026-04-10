@@ -20,8 +20,10 @@ local function get_snippets(ft)
   if snippet_cache[ft] then return snippet_cache[ft] end
 
   local result = {}
-  local dir = vim.fs.joinpath(vim.fn.stdpath('config'), 'snippets')
-  local pkg_path = vim.fs.joinpath(dir, 'package.json')
+  local config_dir = vim.fn.stdpath('config')
+  if type(config_dir) == 'table' then config_dir = config_dir[1] end
+  local dir = config_dir .. '/snippets'
+  local pkg_path = dir .. '/package.json'
   local pkg_ok, pkg_raw = pcall(vim.fn.readfile, pkg_path)
   if not pkg_ok then return result end
 
@@ -30,7 +32,7 @@ local function get_snippets(ft)
     local langs = entry.language
     if vim.list_contains(langs, ft) or vim.list_contains(langs, 'all') then
       local clean_path = entry.path:gsub('^%./', '')
-      local file_path = vim.fs.joinpath(dir, clean_path)
+      local file_path = dir .. '/' .. clean_path
       local ok, raw = pcall(vim.fn.readfile, file_path)
       if ok then
         local data = vim.json.decode(table.concat(raw, '\n'))
