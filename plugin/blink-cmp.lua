@@ -1,6 +1,8 @@
+pcall(vim.cmd.packadd, 'blink.cmp')
+
 local ok, blink = pcall(require, 'blink.cmp')
 if not ok then
-  vim.notify('blink.cmp not found — restart Neovim after :Pack install', vim.log.levels.WARN)
+  vim.notify('blink.cmp not found — restart Neovim after plugins install', vim.log.levels.WARN)
   return
 end
 
