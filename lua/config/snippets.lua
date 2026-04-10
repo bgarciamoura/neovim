@@ -29,7 +29,8 @@ local function get_snippets(ft)
   for _, entry in ipairs(pkg.contributes.snippets) do
     local langs = entry.language
     if vim.list_contains(langs, ft) or vim.list_contains(langs, 'all') then
-      local file_path = vim.fs.joinpath(dir, entry.path:gsub('^%./', ''))
+      local clean_path = entry.path:gsub('^%./', '')
+      local file_path = vim.fs.joinpath(dir, clean_path)
       local ok, raw = pcall(vim.fn.readfile, file_path)
       if ok then
         local data = vim.json.decode(table.concat(raw, '\n'))
