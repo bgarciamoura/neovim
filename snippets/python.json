@@ -1,0 +1,42 @@
+{
+  "Function": {
+    "prefix": "def",
+    "body": ["def ${1:name}(${2:self}${3:, params}):", "\t${0:pass}"]
+  },
+  "Class": {
+    "prefix": "cls",
+    "body": ["class ${1:Name}:", "\tdef __init__(self${2:, params}):", "\t\t${0:pass}"]
+  },
+  "If main": {
+    "prefix": "ifmain",
+    "body": ["if __name__ == '__main__':", "\t${0:pass}"]
+  },
+  "For loop": {
+    "prefix": "fori",
+    "body": ["for ${1:i} in ${2:range(n)}:", "\t$0"]
+  },
+  "With": {
+    "prefix": "with",
+    "body": ["with ${1:expression} as ${2:var}:", "\t$0"]
+  },
+  "List comprehension": {
+    "prefix": "lc",
+    "body": "[${1:x} for ${2:x} in ${3:iterable}]$0"
+  },
+  "Import numpy": {
+    "prefix": "impnp",
+    "body": "import numpy as np"
+  },
+  "Import pandas": {
+    "prefix": "imppd",
+    "body": "import pandas as pd"
+  },
+  "Import matplotlib": {
+    "prefix": "impplt",
+    "body": "import matplotlib.pyplot as plt"
+  },
+  "Try except": {
+    "prefix": "trycatch",
+    "body": ["try:", "\t$1", "except ${2:Exception} as ${3:e}:", "\t$0"]
+  }
+}

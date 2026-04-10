@@ -1,64 +1,8 @@
--- Custom snippets using vim.snippet (built-in)
--- Trigger: type the prefix and press <C-l> to expand
+-- Custom snippets are defined in snippets/*.json (VSCode format)
+-- blink.cmp reads them automatically via search_paths config
+--
+-- Manual expand: type prefix + <C-l> as a fallback when completion menu is closed
 
-local snippets = {
-  all = {
-    ['as'] = "'$0'",
-    ['ass'] = '"$0"',
-  },
-
-  typescript = {
-    ['fn'] = 'function ${1:name}(${2:params}): ${3:void} {\n\t$0\n}',
-    ['afn'] = 'const ${1:name} = (${2:params})${3: => {\n\t$0\n\\}}',
-    ['imp'] = "import { $1 } from '${2:module}'$0",
-    ['impt'] = "import type { $1 } from '${2:module}'$0",
-    ['us'] = 'const [${1:state}, set${2:State}] = useState($3)$0',
-    ['ue'] = 'useEffect(() => {\n\t$0\n}, [${1:deps}])',
-    ['cl'] = 'console.log($0)',
-    ['trycatch'] = 'try {\n\t$1\n} catch (${2:error}) {\n\t$0\n}',
-  },
-  typescriptreact = 'typescript', -- inherit from typescript
-  javascript = 'typescript',
-  javascriptreact = 'typescript',
-
-  python = {
-    ['def'] = 'def ${1:name}(${2:self}${3:, params}):\n\t${0:pass}',
-    ['cls'] = 'class ${1:Name}:\n\tdef __init__(self${2:, params}):\n\t\t${0:pass}',
-    ['ifmain'] = "if __name__ == '__main__':\n\t${0:pass}",
-    ['fori'] = 'for ${1:i} in ${2:range(n)}:\n\t$0',
-    ['with'] = 'with ${1:expression} as ${2:var}:\n\t$0',
-    ['lc'] = '[${1:x} for ${2:x} in ${3:iterable}]$0',
-    ['impnp'] = 'import numpy as np',
-    ['imppd'] = 'import pandas as pd',
-    ['impplt'] = 'import matplotlib.pyplot as plt',
-    ['trycatch'] = 'try:\n\t$1\nexcept ${2:Exception} as ${3:e}:\n\t$0',
-  },
-
-  dart = {
-    ['stl'] = 'class ${1:Name} extends StatelessWidget {\n\tconst ${1:Name}({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn ${0:Container()};\n\t}\n}',
-    ['stf'] = 'class ${1:Name} extends StatefulWidget {\n\tconst ${1:Name}({super.key});\n\n\t@override\n\tState<${1:Name}> createState() => _${1:Name}State();\n}\n\nclass _${1:Name}State extends State<${1:Name}> {\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn ${0:Container()};\n\t}\n}',
-    ['build'] = '@override\nWidget build(BuildContext context) {\n\treturn ${0:Container()};\n}',
-    ['init'] = '@override\nvoid initState() {\n\tsuper.initState();\n\t$0\n}',
-  },
-
-  lua = {
-    ['fn'] = 'function ${1:name}(${2:params})\n\t$0\nend',
-    ['lfn'] = 'local function ${1:name}(${2:params})\n\t$0\nend',
-    ['req'] = "local ${1:mod} = require('${2:module}')",
-    ['if'] = 'if ${1:cond} then\n\t$0\nend',
-  },
-}
-
--- Resolve inheritance (e.g., typescriptreact -> typescript) and merge with 'all'
-local function get_snippets(ft)
-  local ft_snippets = snippets[ft]
-  if type(ft_snippets) == 'string' then
-    ft_snippets = snippets[ft_snippets] or {}
-  end
-  return vim.tbl_extend('keep', ft_snippets or {}, snippets.all or {})
-end
-
--- Get word before cursor
 local function get_word_before_cursor()
   local col = vim.fn.col('.') - 1
   if col == 0 then return '' end
@@ -70,17 +14,45 @@ local function get_word_before_cursor()
   return line:sub(word_start + 1, col)
 end
 
--- Expand snippet at cursor
+-- Load VSCode JSON snippets for current filetype
+local snippet_cache = {}
+local function get_snippets(ft)
+  if snippet_cache[ft] then return snippet_cache[ft] end
+
+  local result = {}
+  local dir = vim.fs.joinpath(vim.fn.stdpath('config'), 'snippets')
+  local pkg_path = vim.fs.joinpath(dir, 'package.json')
+  local pkg_ok, pkg_raw = pcall(vim.fn.readfile, pkg_path)
+  if not pkg_ok then return result end
+
+  local pkg = vim.json.decode(table.concat(pkg_raw, '\n'))
+  for _, entry in ipairs(pkg.contributes.snippets) do
+    local langs = entry.language
+    if vim.list_contains(langs, ft) or vim.list_contains(langs, 'all') then
+      local file_path = vim.fs.joinpath(dir, entry.path:gsub('^%./', ''))
+      local ok, raw = pcall(vim.fn.readfile, file_path)
+      if ok then
+        local data = vim.json.decode(table.concat(raw, '\n'))
+        for _, snip in pairs(data) do
+          local body = type(snip.body) == 'table' and table.concat(snip.body, '\n') or snip.body
+          result[snip.prefix] = body
+        end
+      end
+    end
+  end
+
+  snippet_cache[ft] = result
+  return result
+end
+
 vim.keymap.set('i', '<C-l>', function()
   local word = get_word_before_cursor()
   local ft_snippets = get_snippets(vim.bo.filetype)
 
   if ft_snippets[word] then
-    -- Delete the trigger word
     local col = vim.fn.col('.')
     local row = vim.fn.line('.') - 1
     vim.api.nvim_buf_set_text(0, row, col - #word - 1, row, col - 1, {})
-    -- Expand the snippet
     vim.snippet.expand(ft_snippets[word])
   end
 end, { desc = 'Expand snippet' })

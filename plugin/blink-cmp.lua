@@ -19,6 +19,15 @@ blink.setup({
 
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
+    providers = {
+      snippets = {
+        opts = {
+          search_paths = {
+            vim.fs.joinpath(vim.fn.stdpath('config'), 'snippets'),
+          },
+        },
+      },
+    },
   },
 
   completion = {

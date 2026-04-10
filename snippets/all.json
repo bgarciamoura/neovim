@@ -1,0 +1,10 @@
+{
+  "Single quotes": {
+    "prefix": "as",
+    "body": "'$0'"
+  },
+  "Double quotes": {
+    "prefix": "ass",
+    "body": "\"$0\""
+  }
+}

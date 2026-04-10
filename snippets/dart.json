@@ -1,0 +1,52 @@
+{
+  "Stateless widget": {
+    "prefix": "stl",
+    "body": [
+      "class ${1:Name} extends StatelessWidget {",
+      "\tconst ${1:Name}({super.key});",
+      "",
+      "\t@override",
+      "\tWidget build(BuildContext context) {",
+      "\t\treturn ${0:Container()};",
+      "\t}",
+      "}"
+    ]
+  },
+  "Stateful widget": {
+    "prefix": "stf",
+    "body": [
+      "class ${1:Name} extends StatefulWidget {",
+      "\tconst ${1:Name}({super.key});",
+      "",
+      "\t@override",
+      "\tState<${1:Name}> createState() => _${1:Name}State();",
+      "}",
+      "",
+      "class _${1:Name}State extends State<${1:Name}> {",
+      "\t@override",
+      "\tWidget build(BuildContext context) {",
+      "\t\treturn ${0:Container()};",
+      "\t}",
+      "}"
+    ]
+  },
+  "Build method": {
+    "prefix": "build",
+    "body": [
+      "@override",
+      "Widget build(BuildContext context) {",
+      "\treturn ${0:Container()};",
+      "}"
+    ]
+  },
+  "InitState": {
+    "prefix": "init",
+    "body": [
+      "@override",
+      "void initState() {",
+      "\tsuper.initState();",
+      "\t$0",
+      "}"
+    ]
+  }
+}
