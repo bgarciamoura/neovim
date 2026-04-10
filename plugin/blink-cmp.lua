@@ -1,4 +1,8 @@
-pcall(vim.cmd.packadd, 'blink.cmp')
+-- Ensure blink.cmp is on runtimepath (vim.pack uses opt/)
+local blink_path = vim.fs.joinpath(vim.fn.stdpath('data'), 'site', 'pack', 'core', 'opt', 'blink.cmp')
+if vim.uv.fs_stat(blink_path) and not vim.list_contains(vim.opt.rtp:get(), blink_path) then
+  vim.opt.rtp:prepend(blink_path)
+end
 
 local ok, blink = pcall(require, 'blink.cmp')
 if not ok then
