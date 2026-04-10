@@ -2,6 +2,11 @@
 -- Trigger: type the prefix and press <C-l> to expand
 
 local snippets = {
+  all = {
+    ["'"] = "'$0'",
+    ['"'] = '"$0"',
+  },
+
   typescript = {
     ['fn'] = 'function ${1:name}(${2:params}): ${3:void} {\n\t$0\n}',
     ['afn'] = 'const ${1:name} = (${2:params})${3: => {\n\t$0\n\\}}',
@@ -44,13 +49,13 @@ local snippets = {
   },
 }
 
--- Resolve inheritance (e.g., typescriptreact -> typescript)
+-- Resolve inheritance (e.g., typescriptreact -> typescript) and merge with 'all'
 local function get_snippets(ft)
   local ft_snippets = snippets[ft]
   if type(ft_snippets) == 'string' then
-    return snippets[ft_snippets] or {}
+    ft_snippets = snippets[ft_snippets] or {}
   end
-  return ft_snippets or {}
+  return vim.tbl_extend('keep', ft_snippets or {}, snippets.all or {})
 end
 
 -- Get word before cursor
