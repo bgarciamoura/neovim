@@ -1,4 +1,7 @@
-require('blink.cmp').setup({
+local ok, blink = pcall(require, 'blink.cmp')
+if not ok then return end
+
+blink.setup({
   keymap = { preset = 'super-tab' },
 
   appearance = {
