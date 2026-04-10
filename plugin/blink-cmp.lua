@@ -1,5 +1,8 @@
 local ok, blink = pcall(require, 'blink.cmp')
-if not ok then return end
+if not ok then
+  vim.notify('blink.cmp not found — restart Neovim after :Pack install', vim.log.levels.WARN)
+  return
+end
 
 blink.setup({
   keymap = { preset = 'super-tab' },
