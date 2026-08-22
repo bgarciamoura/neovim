@@ -17,13 +17,8 @@ local ok_python, neotest_python = pcall(require, 'neotest-python')
 if ok_python then
   table.insert(adapters, neotest_python({
     runner = 'pytest',
-    python = function()
-      local venv = vim.fn.getcwd() .. '/.venv/Scripts/python.exe'
-      if vim.fn.filereadable(venv) == 1 then
-        return venv
-      end
-      return 'python'
-    end,
+    -- Project venv (Linux or Windows layout) with fallback to system python
+    python = require('config.python').interpreter,
   }))
 end
 local ok_dart, neotest_dart = pcall(require, 'neotest-dart')

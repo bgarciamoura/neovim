@@ -63,7 +63,10 @@ for _, ft in ipairs({ 'javascript', 'typescript', 'typescriptreact', 'javascript
 end
 
 -- Python Adapter (debugpy via Mason)
-local debugpy_path = vim.fn.stdpath('data') .. '/mason/packages/debugpy/venv/Scripts/python.exe'
+-- Mason's debugpy venv lives at venv/bin (Linux/macOS) or venv/Scripts (Windows)
+local python_helpers = require('config.python')
+local debugpy_path = python_helpers.venv_python(vim.fn.stdpath('data') .. '/mason/packages/debugpy')
+  or 'python'
 
 dap.adapters.python = {
   type = 'executable',
@@ -77,13 +80,8 @@ dap.configurations.python = {
     request = 'launch',
     name = 'Launch file',
     program = '${file}',
-    pythonPath = function()
-      local venv_python = vim.fn.getcwd() .. '/.venv/Scripts/python.exe'
-      if vim.fn.executable(venv_python) == 1 then
-        return venv_python
-      end
-      return 'python'
-    end,
+    -- Project venv (Linux or Windows layout) with fallback to system python
+    pythonPath = python_helpers.interpreter,
   },
 }
 

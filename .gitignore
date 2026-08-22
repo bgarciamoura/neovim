@@ -3,3 +3,7 @@
 
 # vim.pack plugins (downloaded at runtime)
 pack/
+
+# Secrets (API keys for AI plugins) — loaded by lua/config/env.lua
+.env
+.env.*

@@ -163,6 +163,37 @@ map('n', '<leader>th', '<Cmd>ToggleTerm direction=horizontal<CR>', { desc = 'Hor
 map('n', '<leader>tv', '<Cmd>ToggleTerm direction=vertical<CR>', { desc = 'Vertical terminal' })
 map('n', '<leader>tf', '<Cmd>ToggleTerm direction=float<CR>', { desc = 'Float terminal' })
 
+-- Python run / REPL (lua/config/python.lua)
+map('n', '<leader>tr', function() require('config.python').run_file() end, { desc = 'Run current file (python)' })
+map('n', '<leader>tp', function() require('config.python').repl_toggle() end, { desc = 'Toggle Python REPL' })
+map('n', '<leader>ts', function() require('config.python').repl_send('line') end, { desc = 'Send line to REPL' })
+map('v', '<leader>ts', function()
+  -- Leave visual mode so '< and '> marks are set before reading the selection
+  vim.cmd('normal! \27')
+  require('config.python').repl_send('visual')
+end, { desc = 'Send selection to REPL' })
+
+-- ── AI <leader>a ────────────────────────────────────────────────────────────
+
+-- CodeCompanion (chat / inline / prompt library)
+map({ 'n', 'v' }, '<leader>aa', '<Cmd>CodeCompanionActions<CR>', { desc = 'Actions / prompt library' })
+map({ 'n', 'v' }, '<leader>ac', '<Cmd>CodeCompanionChat Toggle<CR>', { desc = 'Toggle chat' })
+map('v', '<leader>ap', '<Cmd>CodeCompanionChat Add<CR>', { desc = 'Add selection to chat' })
+map('v', '<leader>ai', ':CodeCompanion ', { desc = 'Inline prompt on selection' })
+map('n', '<leader>ai', ':CodeCompanion ', { desc = 'Inline prompt' })
+
+-- Avante (Cursor-style edits with diff)
+map('n', '<leader>at', '<Cmd>AvanteToggle<CR>', { desc = 'Toggle Avante sidebar' })
+map({ 'n', 'v' }, '<leader>ak', '<Cmd>AvanteAsk<CR>', { desc = 'Avante ask' })
+map('v', '<leader>ae', '<Cmd>AvanteEdit<CR>', { desc = 'Avante edit selection' })
+map('n', '<leader>am', '<Cmd>AvanteModels<CR>', { desc = 'Avante select model' })
+
+-- Kulala (.http requests — call the Groq API directly)
+map('n', '<leader>ah', function() require('kulala').run() end, { desc = 'HTTP: run request' })
+map('n', '<leader>aH', function() require('kulala').run_all() end, { desc = 'HTTP: run all requests' })
+map('n', '<leader>ar', function() require('kulala').replay() end, { desc = 'HTTP: replay last' })
+map('n', '<leader>av', function() require('kulala').toggle_view() end, { desc = 'HTTP: toggle body/headers' })
+
 -- ── Tests (neotest) <leader>n ───────────────────────────────────────────────
 
 map('n', '<leader>nr', function() require('neotest').run.run() end, { desc = 'Run nearest test' })
@@ -234,6 +265,8 @@ miniclue.setup({
     miniclue.gen_clues.windows(),
     miniclue.gen_clues.z(),
     -- Group labels with icons (Nerd Font codepoints)
+    { mode = 'n', keys = '<Leader>a', desc = "\u{f0ea} AI" },
+    { mode = 'x', keys = '<Leader>a', desc = "\u{f0ea} AI" },
     { mode = 'n', keys = '<Leader>b', desc = "\u{f0c5} Buffers" },
     { mode = 'n', keys = '<Leader>d', desc = "\u{f188} Debug" },
     { mode = 'n', keys = '<Leader>e', desc = "\u{f07b} Explorer" },

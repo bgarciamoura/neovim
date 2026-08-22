@@ -4,6 +4,7 @@ vim.g._start_time = vim.loop.hrtime()
 vim.tbl_flatten = function(t) return vim.iter(t):flatten():totable() end
 
 require("config.options")
+require("config.env")
 require("config.plugins")
 require("config.autocmds")
 require("config.keymaps")

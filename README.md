@@ -26,7 +26,7 @@ No lazy.nvim. No external plugin manager. Just `vim.pack` and Neovim 0.12.
 This config prioritizes **built-in Neovim features** over third-party abstractions:
 
 - **`vim.pack`** for plugin management (no lazy.nvim, no packer)
-- **Native LSP** completion with `vim.lsp.completion` (no nvim-cmp, no blink.cmp)
+- **blink.cmp** for completion (LSP, path, buffer, snippets, on-demand LLM via minuet)
 - **Native treesitter** highlighting via `vim.treesitter.start()` (no `nvim-treesitter` highlight module)
 - **`vim.snippet`** for snippet expansion (no LuaSnip)
 - **Native folding** with treesitter + LSP foldexpr
@@ -38,7 +38,7 @@ Plugins are used only when Neovim doesn't provide a built-in equivalent.
 | Category           | Details                                                      |
 | ------------------ | ------------------------------------------------------------ |
 | **Plugin Manager** | `vim.pack` (Neovim 0.12 built-in)                            |
-| **Completion**     | Native LSP completion with fuzzy matching                    |
+| **Completion**     | blink.cmp (LSP, path, buffer, snippets) + minuet LLM on demand |
 | **Snippets**       | `vim.snippet` with custom snippets for TS, Python, Dart, Lua |
 | **LSP**            | 12 language servers auto-installed via Mason                 |
 | **Formatting**     | conform.nvim (prettierd, black, stylua)                      |
@@ -54,6 +54,8 @@ Plugins are used only when Neovim doesn't provide a built-in equivalent.
 | **Keymaps**        | mini.clue for discoverability                                |
 | **Colorscheme**    | Oasis (lagoon style)                                         |
 | **Notebooks**      | Molten.nvim for Jupyter REPL                                 |
+| **AI / LLM**       | CodeCompanion (chat/inline) + Avante (Cursor-style) via Groq |
+| **HTTP client**    | kulala.nvim (`.http` files, `.env` variables)                |
 
 ## Structure
 
@@ -63,10 +65,12 @@ Plugins are used only when Neovim doesn't provide a built-in equivalent.
 ├── lua/
 │   └── config/
 │       ├── options.lua      # Editor settings, diagnostics, LSP UI
+│       ├── env.lua          # Loads <config>/.env (API keys) into vim.env
 │       ├── plugins.lua      # vim.pack declarations + Mason setup
 │       ├── keymaps.lua      # All keymaps + mini.clue config
 │       ├── autocmds.lua     # Autocommands (LSP attach, treesitter, etc.)
 │       ├── snippets.lua     # Custom snippets (TS, Python, Dart, Lua)
+│       ├── python.lua       # Venv detection, run file, REPL helpers
 │       └── project.lua      # Project type detection
 ├── lsp/                     # Per-server LSP configurations
 │   ├── ts_ls.lua
@@ -80,6 +84,8 @@ Plugins are used only when Neovim doesn't provide a built-in equivalent.
 │   ├── lualine.lua          # Statusline
 │   ├── dap.lua              # Debug adapters
 │   ├── neotest.lua          # Test runner
+│   ├── codecompanion.lua    # AI chat (Groq adapter + prompt library)
+│   ├── avante.lua           # AI edits with diff (Groq provider)
 │   └── ...                  # 22 plugin configs
 └── scripts/
     └── install-deps.sh      # Cross-platform dependency installer
@@ -101,6 +107,7 @@ Plugins are used only when Neovim doesn't provide a built-in equivalent.
 - **lazygit** — Git TUI (mapped to `<leader>gg`)
 - **Flutter SDK** — for Dart/Flutter development
 - **ImageMagick** — for inline image rendering in Molten
+- **Groq API key** — for the AI plugins (see [AI / LLM](#ai--llm))
 
 ## Installation
 
@@ -234,6 +241,9 @@ Press `<Space>` and wait 300ms to see all available keymaps via mini.clue.
 | `<leader>th` | Horizontal terminal |
 | `<leader>tv` | Vertical terminal   |
 | `<leader>tf` | Float terminal      |
+| `<leader>tr` | Run current Python file (venv / `uv run`) |
+| `<leader>tp` | Toggle Python REPL (ipython if available) |
+| `<leader>ts` | Send line / selection to REPL |
 | `<Esc><Esc>` | Exit terminal mode  |
 
 ### Jupyter (`<leader>j`)
@@ -245,6 +255,24 @@ Press `<Space>` and wait 300ms to see all available keymaps via mini.clue.
 | `<leader>jl`                | Evaluate line                |
 | `<leader>ja`                | Re-evaluate all              |
 | `<leader>jn` / `<leader>jp` | Next / Previous cell         |
+
+### AI (`<leader>a`)
+
+| Key          | Mode | Action                                              |
+| ------------ | ---- | --------------------------------------------------- |
+| `<leader>aa` | n/v  | CodeCompanion actions / prompt library              |
+| `<leader>ac` | n/v  | Toggle CodeCompanion chat                           |
+| `<leader>ap` | v    | Add selection to chat                               |
+| `<leader>ai` | n/v  | Inline prompt (`:CodeCompanion <prompt>`)           |
+| `<leader>at` | n    | Toggle Avante sidebar                               |
+| `<leader>ak` | n/v  | Avante ask                                          |
+| `<leader>ae` | v    | Avante edit selection (diff accept/reject)          |
+| `<leader>am` | n    | Avante select model                                 |
+| `<leader>ah` | n    | Kulala: run HTTP request under cursor               |
+| `<leader>aH` | n    | Kulala: run all requests in file                    |
+| `<leader>ar` | n    | Kulala: replay last request                         |
+| `<leader>av` | n    | Kulala: toggle body / headers view                  |
+| `<A-y>`      | i    | Request an LLM completion (minuet via blink.cmp)    |
 
 ### Snippets
 
@@ -262,6 +290,62 @@ Type a prefix in insert mode and press `<C-l>` to expand.
 **Lua:** `fn`, `lfn`, `req`, `if`
 
 </details>
+
+## AI / LLM
+
+All AI plugins talk to the [Groq API](https://console.groq.com) (OpenAI-compatible) and default to `qwen/qwen3.6-27b`. Nothing is sent anywhere until you trigger an action.
+
+### Setup
+
+1. Create a key at <https://console.groq.com/keys>.
+2. Save it in `~/.config/nvim/.env` (gitignored, loaded by `lua/config/env.lua`):
+
+   ```sh
+   GROQ_API_KEY=gsk_...
+   ```
+
+3. Restart Neovim. `vim.pack` installs the plugins; the `PackChanged` hook in `lua/config/plugins.lua` downloads Avante's prebuilt native library (`make BUILD_FROM_SOURCE=false`, no Rust toolchain needed). Restart once more after the "avante.nvim built" notification.
+4. Verify: `:checkhealth codecompanion`, `:checkhealth avante`, `:checkhealth kulala`.
+
+### Plugins
+
+| Plugin                                                                   | Role                                                                              |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim)   | Chat buffer, inline edits, prompt library (`/avaliar`, `/agno`, `/system`)        |
+| [avante.nvim](https://github.com/avante-corp/avante.nvim)               | Cursor-style sidebar: ask / edit with diff accept-reject                          |
+| [minuet-ai.nvim](https://github.com/milanglacier/minuet-ai.nvim)        | LLM completions through blink.cmp, on demand only (`<A-y>`) to respect rate limits |
+| [kulala.nvim](https://github.com/mistweaverco/kulala.nvim)              | `.http` client — inspect raw requests/responses, `{{GROQ_API_KEY}}` from `.env`   |
+
+Models are configured in `plugin/codecompanion.lua`, `plugin/avante.lua` and `plugin/minuet.lua`. Inside a chat buffer, `ga` switches adapter and `gM` switches model.
+
+### Calling the API by hand (`.http`)
+
+Create `groq.http` in your project with a `.env` next to it containing `GROQ_API_KEY`, then `<leader>ah`:
+
+```http
+POST https://api.groq.com/openai/v1/chat/completions
+Authorization: Bearer {{GROQ_API_KEY}}
+Content-Type: application/json
+
+{
+  "model": "qwen/qwen3.6-27b",
+  "temperature": 0.7,
+  "messages": [
+    { "role": "system", "content": "Você é um assistente conciso." },
+    { "role": "user", "content": "Explique o que é few-shot prompting." }
+  ]
+}
+```
+
+### Python projects (Agno, Groq SDK)
+
+Per project, not in this config:
+
+```sh
+uv init && uv add agno groq
+```
+
+`lua/config/python.lua` picks `.venv/bin/python` (or `Scripts/python.exe` on Windows) for DAP, neotest, `<leader>tr` and the REPL.
 
 ## Language Support
 

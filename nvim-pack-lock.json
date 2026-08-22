@@ -8,9 +8,19 @@
       "rev": "a9d8fb72213c8b461e791409e7feabb74eb6ce73",
       "src": "https://github.com/goolord/alpha-nvim"
     },
+    "avante.nvim": {
+      "rev": "a9334315e05ac750985c7d0b391e360e36e0278e",
+      "src": "https://github.com/avante-corp/avante.nvim"
+    },
     "blink.cmp": {
       "rev": "78336bc4ae42c9452909ee070e40e72a1a6a3b81",
-      "src": "https://github.com/saghen/blink.cmp"
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.10.0 - 2.0.0"
+    },
+    "codecompanion.nvim": {
+      "rev": "2b959b2bf5fdb13e3b333c078ba549996e477b7c",
+      "src": "https://github.com/olimorris/codecompanion.nvim",
+      "version": "19.0.0 - 20.0.0"
     },
     "conform.nvim": {
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
@@ -36,6 +46,10 @@
       "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
       "src": "https://github.com/3rd/image.nvim"
     },
+    "kulala.nvim": {
+      "rev": "232a9939919fe9bc88d573bce92de50f2f160c60",
+      "src": "https://github.com/mistweaverco/kulala.nvim"
+    },
     "lualine.nvim": {
       "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -59,6 +73,10 @@
     "mini.clue": {
       "rev": "f8a11789cf34a7bae396dc0f828d06cdb5066793",
       "src": "https://github.com/echasnovski/mini.clue"
+    },
+    "minuet-ai.nvim": {
+      "rev": "3b0a4c5f97b7124d94302c608fbe01c0270d4fbe",
+      "src": "https://github.com/milanglacier/minuet-ai.nvim"
     },
     "molten-nvim": {
       "rev": "c1db39e78fe18559d8f2204bf5c4d476bdc80d3e",

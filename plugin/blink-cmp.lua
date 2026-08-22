@@ -10,8 +10,16 @@ if not ok then
   return
 end
 
+-- LLM completion (minuet) is triggered on demand with <A-y>; the source is
+-- deliberately kept out of `default` so it never fires as-you-type.
+local keymap = { preset = 'super-tab' }
+local ok_minuet, minuet = pcall(require, 'minuet')
+if ok_minuet then
+  keymap['<A-y>'] = minuet.make_blink_map()
+end
+
 blink.setup({
-  keymap = { preset = 'super-tab' },
+  keymap = keymap,
 
   appearance = {
     nerd_font_variant = 'mono',
@@ -19,6 +27,10 @@ blink.setup({
 
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
+    per_filetype = {
+      -- Slash commands, variables and tools inside CodeCompanion chat buffers
+      codecompanion = { 'codecompanion' },
+    },
     providers = {
       snippets = {
         opts = {
@@ -27,10 +39,21 @@ blink.setup({
           },
         },
       },
+      minuet = {
+        name = 'minuet',
+        module = 'minuet.blink',
+        async = true,
+        timeout_ms = 5000,
+        score_offset = 50,
+      },
     },
   },
 
   completion = {
+    trigger = {
+      -- Recommended by minuet: avoid prefetching LLM completions on InsertEnter
+      prefetch_on_insert = false,
+    },
     menu = {
       border = 'rounded',
       scrollbar = true,

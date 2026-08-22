@@ -1,5 +1,37 @@
 -- Plugin management via vim.pack (Neovim 0.12 built-in)
 
+-- Build hooks: vim.pack has no `build` key, so run post-install/update steps
+-- via the PackChanged event (see :h PackChanged).
+local build_hooks = {
+  -- avante.nvim ships native libs (tokenizers, templates, …). Our script
+  -- downloads the prebuilt release for the checked-out tag via curl+tar;
+  -- `make` would compile from source and require cargo.
+  ['avante.nvim'] = { 'bash', vim.fs.joinpath(vim.fn.stdpath('config'), 'scripts', 'avante-build.sh') },
+}
+
+vim.api.nvim_create_autocmd('PackChanged', {
+  group = vim.api.nvim_create_augroup('config_pack_build', { clear = true }),
+  callback = function(ev)
+    local data = ev.data
+    local cmd = build_hooks[data.spec.name]
+    if not cmd or (data.kind ~= 'install' and data.kind ~= 'update') then return end
+
+    vim.notify(('Building %s…'):format(data.spec.name), vim.log.levels.INFO)
+    vim.system(cmd, { cwd = data.path }, function(result)
+      vim.schedule(function()
+        if result.code == 0 then
+          vim.notify(('%s built — restart Neovim to load it'):format(data.spec.name), vim.log.levels.INFO)
+        else
+          vim.notify(
+            ('%s build failed (exit %d):\n%s'):format(data.spec.name, result.code, result.stderr or ''),
+            vim.log.levels.ERROR
+          )
+        end
+      end)
+    end)
+  end,
+})
+
 vim.pack.add({
   -- LSP server installer
   'https://github.com/mason-org/mason.nvim',
@@ -89,9 +121,18 @@ vim.pack.add({
   'https://github.com/rachartier/tiny-cmdline.nvim',
   'https://github.com/rachartier/tiny-code-action.nvim',
 
-  -- Completion
-  'https://github.com/saghen/blink.cmp',
+  -- Completion (pinned to 1.x: v2 requires blink.lib and a different config;
+  -- plugin/blink-cmp.lua targets the v1.10 prebuilt fuzzy binary)
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('^1.10.0') },
   'https://github.com/rafamadriz/friendly-snippets',
+
+  -- AI / LLM (Groq API — see plugin/codecompanion.lua, avante.lua, minuet.lua)
+  { src = 'https://github.com/olimorris/codecompanion.nvim', version = vim.version.range('^19.0.0') },
+  'https://github.com/avante-corp/avante.nvim',
+  'https://github.com/milanglacier/minuet-ai.nvim',
+
+  -- HTTP client (.http files, for calling LLM APIs directly)
+  'https://github.com/mistweaverco/kulala.nvim',
 
   -- Shared dependencies
   'https://github.com/nvim-lua/plenary.nvim',

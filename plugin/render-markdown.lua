@@ -8,6 +8,8 @@ vim.api.nvim_set_hl(0, 'RenderMarkdownCodeInline', { bg = '#162133' })
 vim.api.nvim_set_hl(0, 'RenderMarkdownCodeBorder', { bg = '#21324D', fg = '#7aa2f7' })
 
 render_md.setup({
+  -- Also render AI chat/sidebar buffers (CodeCompanion, Avante)
+  file_types = { 'markdown', 'codecompanion', 'Avante' },
   render_modes = { 'n', 'c' },
   anti_conceal = {
     enabled = false,
