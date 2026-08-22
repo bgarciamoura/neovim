@@ -319,6 +319,13 @@ All AI plugins default to the [Groq API](https://console.groq.com) (OpenAI-compa
 
 Models are configured in `plugin/codecompanion.lua`, `plugin/avante.lua` and `plugin/minuet.lua`. Inside a chat buffer, `ga` switches adapter and `gM` switches model.
 
+### Autocomplete (minuet)
+
+minuet is the only plugin that provides Copilot-style code completion; CodeCompanion and Avante are chat/edit tools. It runs through blink.cmp against Groq (`qwen/qwen3.6-27b` by default):
+
+- **On demand (default):** in insert mode press `<A-y>`; the suggestion shows up in the blink.cmp menu and `<Tab>` accepts it (`super-tab` preset). The source is intentionally left out of `sources.default` so an API call is not fired on every keystroke — Groq's free tier is rate-limited.
+- **As-you-type:** add `'minuet'` to `sources.default` in `plugin/blink-cmp.lua`. `throttle = 2000` / `debounce = 800` in `plugin/minuet.lua` cap it at roughly one request every 2 s. For this mode prefer the fastest model, `openai/gpt-oss-20b`, by changing `model` in `plugin/minuet.lua`.
+
 ### Claude Code via ACP (Pro/Max subscription)
 
 A Claude subscription does **not** include API credits, so the plugins' native `anthropic`/`claude` adapters would need a paid API key. What the subscription does cover is Claude Code itself, and both chat plugins can run it as an agent through the [Agent Client Protocol](https://agentclientprotocol.com):
