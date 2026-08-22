@@ -268,6 +268,7 @@ Press `<Space>` and wait 300ms to see all available keymaps via mini.clue.
 | `<leader>ak` | n/v  | Avante ask                                          |
 | `<leader>ae` | v    | Avante edit selection (diff accept/reject)          |
 | `<leader>am` | n    | Avante select model                                 |
+| `<leader>as` | n    | Avante switch provider (groq / claude-code)         |
 | `<leader>ah` | n    | Kulala: run HTTP request under cursor               |
 | `<leader>aH` | n    | Kulala: run all requests in file                    |
 | `<leader>ar` | n    | Kulala: replay last request                         |
@@ -293,7 +294,7 @@ Type a prefix in insert mode and press `<C-l>` to expand.
 
 ## AI / LLM
 
-All AI plugins talk to the [Groq API](https://console.groq.com) (OpenAI-compatible) and default to `qwen/qwen3.6-27b`. Nothing is sent anywhere until you trigger an action.
+All AI plugins default to the [Groq API](https://console.groq.com) (OpenAI-compatible) with `qwen/qwen3.6-27b`. CodeCompanion and Avante can also drive **Claude Code** through ACP, which is covered by a Claude Pro/Max subscription (see below). Nothing is sent anywhere until you trigger an action.
 
 ### Setup
 
@@ -317,6 +318,16 @@ All AI plugins talk to the [Groq API](https://console.groq.com) (OpenAI-compatib
 | [kulala.nvim](https://github.com/mistweaverco/kulala.nvim)              | `.http` client — inspect raw requests/responses, `{{GROQ_API_KEY}}` from `.env`   |
 
 Models are configured in `plugin/codecompanion.lua`, `plugin/avante.lua` and `plugin/minuet.lua`. Inside a chat buffer, `ga` switches adapter and `gM` switches model.
+
+### Claude Code via ACP (Pro/Max subscription)
+
+A Claude subscription does **not** include API credits, so the plugins' native `anthropic`/`claude` adapters would need a paid API key. What the subscription does cover is Claude Code itself, and both chat plugins can run it as an agent through the [Agent Client Protocol](https://agentclientprotocol.com):
+
+1. Install and log in to [Claude Code](https://docs.anthropic.com/en/docs/claude-code/quickstart) (`claude` on `PATH`).
+2. `npm i -g @zed-industries/claude-agent-acp` (provides the `claude-agent-acp` binary).
+3. CodeCompanion: press `ga` in a chat buffer and pick `claude_code`. Avante: `<leader>as` → `claude-code`.
+
+If the adapter asks for authentication, run `claude setup-token` and add `CLAUDE_CODE_OAUTH_TOKEN=...` to `~/.config/nvim/.env`. minuet (autocomplete) has no ACP support and stays on Groq.
 
 ### Calling the API by hand (`.http`)
 

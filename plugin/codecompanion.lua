@@ -1,7 +1,14 @@
--- AI chat / inline assistant (CodeCompanion) backed by the Groq API
+-- AI chat / inline assistant (CodeCompanion)
 --
--- Requires GROQ_API_KEY in the environment (see lua/config/env.lua and
--- <config>/.env). Models: https://console.groq.com/docs/models
+-- Two adapters are available (switch inside a chat buffer with `ga`):
+--   * groq        — default; Groq API, requires GROQ_API_KEY in the
+--                   environment (see lua/config/env.lua and <config>/.env).
+--                   Models: https://console.groq.com/docs/models
+--   * claude_code — Claude Code via ACP (Agent Client Protocol), covered by
+--                   the Claude Max subscription. Requires the `claude` CLI
+--                   (logged in) and `npm i -g @zed-industries/claude-agent-acp`.
+--                   If it asks for auth, run `claude setup-token` and put
+--                   CLAUDE_CODE_OAUTH_TOKEN in <config>/.env.
 
 local ok, codecompanion = pcall(require, 'codecompanion')
 if not ok then return end
@@ -14,6 +21,12 @@ local GROQ_MODELS = {
 
 codecompanion.setup({
   adapters = {
+    acp = {
+      -- Claude Code as an agent inside the chat buffer (uses your Claude login)
+      claude_code = function()
+        return require('codecompanion.adapters').extend('claude_code', {})
+      end,
+    },
     http = {
       -- Groq exposes an OpenAI-compatible endpoint
       groq = function()

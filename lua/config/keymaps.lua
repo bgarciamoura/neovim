@@ -187,6 +187,7 @@ map('n', '<leader>at', '<Cmd>AvanteToggle<CR>', { desc = 'Toggle Avante sidebar'
 map({ 'n', 'v' }, '<leader>ak', '<Cmd>AvanteAsk<CR>', { desc = 'Avante ask' })
 map('v', '<leader>ae', '<Cmd>AvanteEdit<CR>', { desc = 'Avante edit selection' })
 map('n', '<leader>am', '<Cmd>AvanteModels<CR>', { desc = 'Avante select model' })
+map('n', '<leader>as', '<Cmd>AvanteSwitchProvider<CR>', { desc = 'Avante switch provider (groq / claude-code)' })
 
 -- Kulala (.http requests — call the Groq API directly)
 map('n', '<leader>ah', function() require('kulala').run() end, { desc = 'HTTP: run request' })

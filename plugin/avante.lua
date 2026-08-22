@@ -1,8 +1,13 @@
--- Cursor-style AI editing (Avante) backed by the Groq API
+-- Cursor-style AI editing (Avante)
 --
--- Requires GROQ_API_KEY in the environment (see lua/config/env.lua).
--- The native tokenizer library is downloaded by the PackChanged hook in
--- lua/config/plugins.lua (`make BUILD_FROM_SOURCE=false`).
+-- Providers (switch with :AvanteSwitchProvider / <leader>as):
+--   * groq        — default; Groq API, requires GROQ_API_KEY (lua/config/env.lua)
+--   * claude-code — Claude Code via ACP, covered by the Claude Max subscription.
+--                   Built-in provider: runs `claude-agent-acp` with the `claude`
+--                   CLI found on PATH (npm i -g @zed-industries/claude-agent-acp).
+--
+-- The native libraries are downloaded by the PackChanged hook in
+-- lua/config/plugins.lua (scripts/avante-build.sh).
 
 local ok, avante = pcall(require, 'avante')
 if not ok then return end
@@ -26,6 +31,19 @@ avante.setup({
       extra_request_body = {
         temperature = 0.3,
         max_tokens = 8192,
+      },
+    },
+  },
+
+  acp_providers = {
+    ['claude-code'] = {
+      command = 'claude-agent-acp',
+      args = {},
+      env = {
+        NODE_NO_WARNINGS = '1',
+        ACP_PATH_TO_CLAUDE_CODE_EXECUTABLE = vim.fn.exepath('claude'),
+        -- Ask before running tools/editing files (default is bypassPermissions)
+        ACP_PERMISSION_MODE = 'default',
       },
     },
   },
