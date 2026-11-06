@@ -12,6 +12,15 @@ local function lsp_clients()
   return ' ' .. table.concat(names, ', ')
 end
 
+-- cmdheight=0 hides Neovim's own "recording @q" message.
+local function macro_recording()
+  local register = vim.fn.reg_recording()
+  if register == '' then
+    return ''
+  end
+  return '\u{f111} REC @' .. register
+end
+
 local ok, lualine = pcall(require, 'lualine')
 if not ok then return end
 
@@ -77,6 +86,7 @@ lualine.setup({
     },
 
     lualine_x = {
+      { macro_recording, color = 'DiagnosticError' },
       { lsp_clients },
       { 'filetype' },
     },

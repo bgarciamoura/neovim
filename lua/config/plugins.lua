@@ -120,6 +120,10 @@ vim.pack.add({
   -- Session
   'https://github.com/folke/persistence.nvim',
 
+  -- Window labels, indent guides and word highlights
+  'https://github.com/b0o/incline.nvim',
+  'https://github.com/folke/snacks.nvim',
+
   -- Tiny UI enhancements
   'https://github.com/rachartier/tiny-inline-diagnostic.nvim',
   'https://github.com/rachartier/tiny-cmdline.nvim',

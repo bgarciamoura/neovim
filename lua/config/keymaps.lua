@@ -138,6 +138,10 @@ map('n', '<leader>gH', '<Cmd>CodeDiff history<CR>', { desc = 'Repo history' })
 map('n', ']h', '<Cmd>Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
 map('n', '[h', '<Cmd>Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
 
+-- Word references (snacks.words)
+map('n', ']]', function() require('snacks').words.jump(vim.v.count1) end, { desc = 'Next reference' })
+map('n', '[[', function() require('snacks').words.jump(-vim.v.count1) end, { desc = 'Previous reference' })
+
 -- ── Yank for agents <leader>y ───────────────────────────────────────────────
 
 map('n', '<leader>yf', function() require('config.review').yank_relative_path() end, { desc = 'Yank relative path#line' })

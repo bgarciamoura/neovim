@@ -63,6 +63,17 @@ autocmd({ 'FileType', 'BufReadPost', 'BufWinEnter' }, {
   end,
 })
 
+-- Show the cursorline only in the active window
+local cursorline = augroup('active-cursorline', { clear = true })
+autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter' }, {
+  group = cursorline,
+  callback = function() vim.wo.cursorline = true end,
+})
+autocmd('WinLeave', {
+  group = cursorline,
+  callback = function() vim.wo.cursorline = false end,
+})
+
 -- Highlight yanked text
 autocmd('TextYankPost', {
   group = augroup('highlight-yank', {}),
