@@ -7,6 +7,9 @@ local build_hooks = {
   -- downloads the prebuilt release for the checked-out tag via curl+tar;
   -- `make` would compile from source and require cargo.
   ['avante.nvim'] = { 'bash', vim.fs.joinpath(vim.fn.stdpath('config'), 'scripts', 'avante-build.sh') },
+  -- Build the diff library from source instead of running the prebuilt binary
+  -- codediff would download. See plugin/codediff.lua.
+  ['codediff.nvim'] = vim.fn.has('win32') == 1 and { 'cmd', '/c', 'build.cmd' } or { 'bash', 'build.sh' },
 }
 
 vim.api.nvim_create_autocmd('PackChanged', {
@@ -66,6 +69,7 @@ vim.pack.add({
 
   -- Git
   'https://github.com/lewis6991/gitsigns.nvim',
+  { src = 'https://github.com/esmuellert/codediff.nvim', version = vim.version.range('^4') },
 
   -- Formatting & linting
   'https://github.com/stevearc/conform.nvim',

@@ -1,0 +1,17 @@
+# Layered over the regular lazygit config when lazygit runs inside Neovim
+# (see open_lazygit in lua/config/review.lua).
+#
+# `e` quits lazygit and opens the file in the window lazygit was launched from,
+# instead of starting a nested Neovim in the floating terminal. `sh -c` keeps
+# the command independent of the user's shell, which may be Nushell. Focus moves
+# first, so the file can't land in the float while it closes.
+os:
+  edit: >-
+    sh -c 'nvim --server "$NVIM" --remote-send q;
+    nvim --server "$NVIM" --remote-send "<Cmd>lua require(\"config.review\").focus_lazygit_origin()<CR>";
+    nvim --server "$NVIM" --remote "$1"' -- {{filename}}
+  editAtLine: >-
+    sh -c 'nvim --server "$NVIM" --remote-send q;
+    nvim --server "$NVIM" --remote-send "<Cmd>lua require(\"config.review\").focus_lazygit_origin()<CR>";
+    nvim --server "$NVIM" --remote "$1";
+    nvim --server "$NVIM" --remote-send "<Cmd>$2<CR>"' -- {{filename}} {{line}}

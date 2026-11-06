@@ -116,19 +116,7 @@ map('n', '[d', function() vim.diagnostic.goto_prev() end, { desc = 'Previous dia
 
 -- ── Git <leader>g ───────────────────────────────────────────────────────────
 
-map('n', '<leader>gg', function()
-  local Terminal = require('toggleterm.terminal').Terminal
-  local lazygit = Terminal:new({
-    cmd = 'lazygit',
-    direction = 'float',
-    float_opts = { border = 'rounded' },
-    on_open = function(term)
-      vim.cmd('startinsert!')
-      vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<Cmd>close<CR>', { noremap = true, silent = true })
-    end,
-  })
-  lazygit:toggle()
-end, { desc = 'Lazygit' })
+map('n', '<leader>gg', function() require('config.review').open_lazygit() end, { desc = 'Lazygit' })
 
 map('n', '<leader>gb', '<Cmd>Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle blame' })
 map('n', '<leader>gp', '<Cmd>Gitsigns preview_hunk<CR>', { desc = 'Preview hunk' })
@@ -137,10 +125,28 @@ map('n', '<leader>gr', '<Cmd>Gitsigns reset_hunk<CR>', { desc = 'Reset hunk' })
 map('n', '<leader>gS', '<Cmd>Gitsigns stage_buffer<CR>', { desc = 'Stage buffer' })
 map('n', '<leader>gR', '<Cmd>Gitsigns reset_buffer<CR>', { desc = 'Reset buffer' })
 map('n', '<leader>gd', '<Cmd>Gitsigns diffthis<CR>', { desc = 'Diff this' })
+map('n', '<leader>gi', '<Cmd>Gitsigns preview_hunk_inline<CR>', { desc = 'Preview hunk inline' })
+map('n', '<leader>gB', '<Cmd>Gitsigns blame<CR>', { desc = 'Blame buffer' })
+map('n', '<leader>go', function() require('config.review').open_line_commit() end, { desc = 'Open file at line commit' })
+
+-- CodeDiff (side-by-side review; compact mode is toggled with gc inside it)
+map('n', '<leader>gv', '<Cmd>CodeDiff<CR>', { desc = 'Review changes' })
+map('n', '<leader>gh', '<Cmd>CodeDiff history %<CR>', { desc = 'File history' })
+map('n', '<leader>gH', '<Cmd>CodeDiff history<CR>', { desc = 'Repo history' })
 
 -- Hunk navigation
 map('n', ']h', '<Cmd>Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
 map('n', '[h', '<Cmd>Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
+
+-- ── Yank for agents <leader>y ───────────────────────────────────────────────
+
+map('n', '<leader>yf', function() require('config.review').yank_relative_path() end, { desc = 'Yank relative path#line' })
+map('n', '<leader>yp', function() require('config.review').yank_absolute_path() end, { desc = 'Yank absolute path#line' })
+map('v', '<leader>yc', function()
+  -- Leave visual mode so '< and '> marks are set before reading the selection
+  vim.cmd('normal! \27')
+  require('config.review').yank_selection_as_codeblock()
+end, { desc = 'Yank selection as code block' })
 
 -- ── Debug <leader>d ─────────────────────────────────────────────────────────
 
@@ -278,6 +284,8 @@ miniclue.setup({
     { mode = 'n', keys = '<Leader>n', desc = "\u{f0c3} Tests" },
     { mode = 'n', keys = '<Leader>s', desc = "\u{f0c7} Session" },
     { mode = 'n', keys = '<Leader>t', desc = "\u{f120} Terminal" },
+    { mode = 'n', keys = '<Leader>y', desc = "\u{f0c5} Yank for agents" },
+    { mode = 'x', keys = '<Leader>y', desc = "\u{f0c5} Yank for agents" },
   },
   window = {
     delay = 300,

@@ -35,7 +35,7 @@ dashboard.section.buttons.val = {
 		"G",
 		"\u{f126}",
 		"Lazygit",
-		"<Cmd>lua require('toggleterm.terminal').Terminal:new({cmd='lazygit',direction='float',float_opts={border='rounded'}}):toggle()<CR>"
+		"<Cmd>lua require('config.review').open_lazygit()<CR>"
 	),
 	button("s", "\u{f0c7}", "Restore Session", "<Cmd>lua require('persistence').load()<CR>"),
 	button("n", "\u{f0f6}", "New File", "<Cmd>ene<CR>"),
